@@ -1,0 +1,46 @@
+#root {
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 2rem;
+  text-align: center;
+}
+
+.title-mushroom {
+  color: rgb(168, 72, 59);
+  -webkit-text-stroke-width: 0px;
+  -webkit-text-stroke-color: rgb(73, 72, 72);
+}
+
+input {
+  height: 38px;
+  width: 60%;
+  background-color: rgb(255, 252, 247);
+  font-family: "SCDream3";
+  border: 1px solid;
+  border-radius: 3px;
+  border-color: rgb(180, 180, 180);
+  color:rgb(65, 65, 65);
+  font-size: 25px;
+  padding: 3px 5px 3px 5px;
+  margin: 3px;
+}
+
+.btn-3d {
+  position: relative;
+  border: 0;
+  padding: 10px 20px;
+  width: 60%;
+  display: inline-block;
+  text-align: center;
+  font-size: 30px;
+  margin: 20px 10px 10px;
+  border-radius: 6px;
+  transition: top .01s linear;
+  color:rgb(51, 51, 51);
+  background-color: #7cc29a;
+}
+.btn-3d:active {
+  box-shadow: 0 0 0 1px #82c8a0 inset,
+        0 0 0 2px rgba(255,255,255,0.15) inset,
+        0 0 0 1px rgba(0,0,0,0.4);
+}

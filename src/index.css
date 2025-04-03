@@ -1,0 +1,81 @@
+:root {
+  font-family: system-ui, Avenir, Helvetica, Arial, sans-serif;
+  line-height: 1.5;
+  font-weight: 400;
+
+  color-scheme: light dark;
+  color: rgb(46, 46, 46);
+  background-color: #F8F1E5;
+
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+@font-face {
+  font-family: "GowunDodum-Regular";
+  font-weight: normal;
+  src: url("./fonts/GowunDodum-Regular.ttf") format("truetype");
+}
+
+@font-face {
+  font-family: "Moneygraphy-Rounded";
+  font-weight: normal;
+  src: url("./fonts/Moneygraphy-Rounded.ttf") format("truetype");
+}
+
+@font-face {
+  font-family: "SCDream3";
+  font-weight: normal;
+  src: url("./fonts/SCDream3.otf") format("opentype");
+}
+
+@font-face {
+  font-family: "SCDream4";
+  font-weight: normal;
+  src: url("./fonts/SCDream4.otf") format("opentype");
+}
+
+@font-face {
+  font-family: "SCDream5";
+  font-weight: normal;
+  src: url("./fonts/SCDream5.otf") format("opentype");
+}
+
+body {
+  margin: 0;
+  display: flex;
+  place-items: center;
+  min-width: 320px;
+  min-height: 100vh;
+  font-family: "SCDream3";
+}
+
+h1 {
+  font-size: 3.5em;
+  line-height: 1.1;
+  font-family: "Moneygraphy-Rounded";
+  margin: 20px;
+}
+
+button {
+  border-radius: 8px;
+  border: 1px solid transparent;
+  padding: 0.6em 1.2em;
+  font-size: 1em;
+  font-weight: 500;
+  font-family: inherit;
+  background-color: #1a1a1a;
+  cursor: pointer;
+  transition: border-color 0.25s;
+}
+button:hover {
+  border-color: #646cff;
+}
+button:focus,
+button:focus-visible {
+  outline: 4px auto -webkit-focus-ring-color;
+}
+
+
