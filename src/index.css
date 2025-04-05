@@ -1,16 +1,25 @@
 :root {
-  font-family: system-ui, Avenir, Helvetica, Arial, sans-serif;
-  line-height: 1.5;
-  font-weight: 400;
+  --bg-color-main: #F8F1E5;
+  --bg-color-box: #f1ead0;
+  --color-title: rgb(168, 72, 59);
+  --color-button: #7cc29a;
+  --font-kor: "SCDream3";
+}
 
-  color-scheme: light dark;
-  color: rgb(46, 46, 46);
-  background-color: #F8F1E5;
+/* 공통 배경 및 폰트 */
+html, body, #root {
+  height: 100%;
+  margin: 0;
+  padding: 0;
+  background-color: var(--bg-color-main);
+  font-family: var(--font-kor);
+}
 
-  font-synthesis: none;
-  text-rendering: optimizeLegibility;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+.app-wrapper {
+  min-height: 100vh;
+  width: 100vw;
+  background-color: #f6faee;
+  overflow-x: hidden;
 }
 
 @font-face {
@@ -47,7 +56,7 @@ body {
   margin: 0;
   display: flex;
   place-items: center;
-  min-width: 320px;
+  min-width: 100vw;
   min-height: 100vh;
   font-family: "SCDream3";
 }

@@ -1,0 +1,88 @@
+
+/* ---------- Layout ---------- */
+.login-page {
+    display: flex;
+    justify-content: center; /* 가로 중앙 */
+    align-items: center;     /* 세로 중앙 */
+    min-height: 100vh;       /* 화면 전체 높이 */
+    width: 100vw;
+    background-color: #F8F1E5; /* 배경색도 여기 지정 */
+  }
+  
+  .login-box {
+  
+    width: 45vw;
+    min-width: 400px;
+    height: 70vh;
+    min-height: 400px;
+  
+    margin: auto;
+    padding: 20px;
+    background-color: #fcf4dc;
+    border-radius: 12px;
+    border: solid 2px rgb(224, 224, 173);
+    text-align: center;
+  }
+  
+  /* ---------- Typography ---------- */
+  .title {
+    font-size: clamp(30px, 4vw, 40px);
+    line-height: 1.1;
+    font-family: "Moneygraphy-Rounded";
+    margin: 10px;
+  }
+  
+  .title-mushroom {
+    color: rgb(168, 72, 59);
+    -webkit-text-stroke: 0px;
+    -webkit-text-stroke-color: rgb(73, 72, 72);
+  }
+  
+  
+  /* ---------- Input ---------- */
+  .login-input {
+    width: clamp(30px, 48vw, 250px);
+    height: 5vh;
+    display: block;
+    margin: 4px auto;
+    font-size: 22px;
+    font-family: "SCDream3";
+    color: rgb(65, 65, 65);
+  
+    border: 1px solid rgb(134, 134, 101);
+    border-radius: 6px;
+  
+    padding: 3px 5px;
+  }
+  
+  /* ---------- Button ---------- */
+  .login-button {
+    width: clamp(30px, 50vw, 250px);
+    height: 50px;
+    padding: 10px 20px;
+    font-size: 22px;
+    font-family: "SCDream5";
+    color: rgb(51, 51, 51);
+    background-color: #b5cf84;
+  
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: top 0.01s linear;
+    margin: 10px;
+    display: inline-block;
+    text-align: center;
+    position: relative;
+  }
+  
+  .login-button:active {
+    box-shadow:
+      0 0 0 1px #82c8a0 inset,
+      0 0 0 2px rgba(255, 255, 255, 0.15) inset,
+      0 0 0 1px rgba(0, 0, 0, 0.4);
+  }
+  
+  /* ---------- IMG ---------- */
+  .login-mushroom {
+    width: clamp(20px, 30vw, 200px);
+  }
