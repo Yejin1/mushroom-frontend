@@ -15,7 +15,7 @@ function Navbar() {
             </div>
             <ul className="navbar-menu">
                 <li><Link to="/">홈</Link></li>
-                <li><Link to="/login">전자결재</Link></li>
+                <li><Link to="/approval">전자결재</Link></li>
                 <li><Link to="/about">게시판</Link></li>
                 <li><Link to="/about">조직도</Link></li>
             </ul>

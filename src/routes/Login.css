@@ -20,8 +20,9 @@
     padding: 20px;
     background-color: #fcf4dc;
     border-radius: 12px;
-    border: solid 2px rgb(224, 224, 173);
+    border: solid 1px rgb(210, 219, 167);
     text-align: center;
+    box-shadow: 5px 5px 5px rgb(152, 158, 136);
   }
   
   /* ---------- Typography ---------- */

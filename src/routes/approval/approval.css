@@ -1,0 +1,45 @@
+.sidebar {
+    width: 200px;
+    background-color: rgb(241, 250, 191);
+    height: 100vh;
+    z-index: 10;
+    position: relative;
+}
+
+.createBtn {
+    width: 155px;
+    height: 48px;
+    background-color: rgb(244, 245, 242);
+    font-family: "SCDream4";
+    color:rgb(144, 163, 114);
+    font-size: 18px;
+    margin: 20px 5px;
+    padding: 0px;
+    border: 2px solid rgb(208, 230, 175);
+    box-shadow: 4px 4px 4px rgb(154, 163, 131);
+    border-radius: 15px;
+}
+
+.createBtn:hover{
+    color:#b1d67a;
+    border: 3px solid rgb(195, 226, 149);
+}
+
+.createBtn:focus{
+    outline: none;
+}
+
+.menu-box{
+
+}
+.menu-title{
+    font-family: "SCDream4";
+    color:#4b5a36;
+}
+
+.menu-line{
+    background-image: linear-gradient(to right, #e8ece2,  #a2b488,  #e7ebe1);
+    height: 1px;
+    border: 0;
+    margin: 10px 16px;
+}
