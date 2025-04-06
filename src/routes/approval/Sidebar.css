@@ -1,0 +1,109 @@
+/*사이드바용 스타일 */
+
+.sidebar {
+    width: 200px;
+    background-color: rgb(241, 250, 191);
+    height: 100vh;
+    z-index: 10;
+    position: relative;
+}
+
+.createBtn {
+    width: 155px;
+    height: 48px;
+    background-color: rgb(244, 245, 242);
+    font-family: "SCDream4";
+    color:rgb(144, 163, 114);
+    font-size: 18px;
+    margin: 20px 5px 5px 10px;
+    padding: 0px;
+    border: 2px solid rgb(208, 230, 175);
+    box-shadow: 4px 4px 4px rgb(154, 163, 131);
+    border-radius: 15px;
+}
+
+.createBtn:hover{
+    color:#b1d67a;
+    border: 3px solid rgb(195, 226, 149);
+}
+
+.createBtn:focus{
+    outline: none;
+}
+
+.menu-box{
+    position: relative;
+
+}
+.menu-title{
+    font-family: "SCDream5";
+    color:#4b5a36;
+    font-size:17px;
+    display: flex;
+    margin: 8px 20px;
+    
+}
+.menu-list{
+    font-family: "SCDream4";
+    color:#3f4439;
+    font-size:14px;
+    display: flex;
+    margin: 2px 10px;
+    padding: 4px 14px;
+    border-radius: 10px;
+    cursor: pointer;
+}
+.menu-list:hover{
+    font-family: "SCDream5";
+    background-color: #d5ff9f;
+    color:#599208;
+}
+.menu-list sel{
+    font-family: "SCDream5";
+    background-color: #d5ff9f;
+    color:#599208;
+}
+
+.menu-line{
+    background-image: linear-gradient(to right, #a5c07d,  #c0cfa9,  #e7ebe1);
+    height: 1px;
+    border: 0;
+    margin: 22px 25px 10px 0;
+}
+
+/*결재작성 모달(임시) */
+.dropdown-menu {
+    position: absolute;
+    right: 0;
+    top: 48px;
+    background-color: white;
+    border: 1px solid #ddd;
+    border-radius: 6px;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+    list-style: none;
+    padding: 8px 0;
+    width: 140px;
+    z-index: 100;
+  }
+  
+  .dropdown-menu li {
+    padding: 10px 16px;
+  }
+  
+  .dropdown-menu li a,
+  .dropdown-menu li button {
+    text-decoration: none;
+    color: #333;
+    font-size: 14px;
+    background: none;
+    border: none;
+    width: 100%;
+    text-align: left;
+    cursor: pointer;
+    font-family: "SCDream3";
+  }
+  
+  .dropdown-menu li:hover {
+    background-color: #f5f5f5;
+  }
+  

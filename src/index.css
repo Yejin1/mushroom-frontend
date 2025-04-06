@@ -35,6 +35,12 @@ html, body, #root {
 }
 
 @font-face {
+  font-family: "SCDream2";
+  font-weight: normal;
+  src: url("./fonts/SCDream2.otf") format("opentype");
+}
+
+@font-face {
   font-family: "SCDream3";
   font-weight: normal;
   src: url("./fonts/SCDream3.otf") format("opentype");

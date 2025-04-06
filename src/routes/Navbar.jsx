@@ -1,10 +1,12 @@
 import './Navbar.css';
 import { Link } from 'react-router-dom';
 import { useState } from 'react';
+import OrgModal from './OrgModal'; 
 
 function Navbar() {
 
     let [isOpen, setIsOpen] = useState(false);
+    let [showOrg, setShowOrg] = useState(false);
 
     return (
         <nav className="navbar">
@@ -17,7 +19,8 @@ function Navbar() {
                 <li><Link to="/">홈</Link></li>
                 <li><Link to="/approval">전자결재</Link></li>
                 <li><Link to="/about">게시판</Link></li>
-                <li><Link to="/about">조직도</Link></li>
+                <li><Link onClick={() => setShowOrg(true)}>조직도</Link></li>
+                {showOrg && <OrgModal onClose={() => setShowOrg(false)} />}
             </ul>
             </div>
 
