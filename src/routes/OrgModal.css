@@ -13,7 +13,7 @@
   .modal-content {
     background-color: #fffdf5;
     border-radius: 12px;
-    padding: 24px;
+    padding: 20px;
     width: 500px;
     max-height: 80vh;
     overflow-y: auto;
@@ -24,6 +24,9 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
+    color: #575742;
+    height: 40px;
+    margin-bottom: 30px;
   }
   
   .close-btn {
@@ -31,5 +34,53 @@
     border: none;
     font-size: 20px;
     cursor: pointer;
+    width: 30px;
   }
   
+  .org-mushroom{
+    display: flex;
+    gap:10px;
+    margin-bottom: 30px;
+  }
+  .org-mushroom-profile{
+    width: 120px;
+    height: 120px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    
+  }
+    .org-mushroom-profile img{
+      width: 100px;
+      height: 100px;
+      border-radius: 50%;
+      border: 0px solid #838379;
+    }
+  .org-mushroom-info{
+    display: block;
+    flex: 1;
+  }
+  .org-mushroom-info-name{
+    color: #666645;
+    text-align: left;
+    margin-bottom: 6px;
+    font-family: 'SCDream5';
+    font-size:18px;
+  }
+  .org-mushroom-info-position{
+    color: #74743a;
+    font-family: 'SCDream4';
+    font-size:16px;
+  }
+  .org-mushroom-info-head{
+    color: #575742;
+    text-align: left;
+    font-family: 'SCDream5';
+    font-size:15px;
+  }
+  .org-mushroom-info-cont{
+    color:#838379;
+    font-family: 'SCDream3';
+    margin-left: 6px;
+    font-size:15px;
+  }

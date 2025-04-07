@@ -5,6 +5,7 @@ import Login from './routes/login'
 import Home from './routes/Home'
 import Navbar from "./routes/Navbar"
 import ApprovalMain from './routes/approval/ApprovalMain'
+import WriteModal from './routes/approval/WriteModal'
 
 function App() {
 
@@ -19,6 +20,7 @@ function App() {
         <Route path="/login" element={<Login/>}></Route>
         <Route path="/home" element={<Home/>}></Route>
         <Route path="/approval" element={<ApprovalMain></ApprovalMain>}></Route>
+        <Route path="/approval/write" element={<WriteModal></WriteModal>}></Route>
       </Routes>
     </div>
   )

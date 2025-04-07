@@ -20,6 +20,10 @@ function ApprovalMain() {
               <div>작성일 <span className="approval-search-s">▼</span></div>
               <input></input>
             </div>
+            <div className="approval-search-open-wrapper">
+            <img src="./options.png" className="approval-search-open-img"></img>
+              <div className="approval-search-open">상세검색</div>
+            </div>
           </div>
           <div className="approval-list-wrapper">
           <table className="approval-list-table">
@@ -44,6 +48,70 @@ function ApprovalMain() {
               </tr>
               <tr>
                 <td>2</td>
+                <td>품의서</td>
+                <td>세계정복 계획보고</td>
+                <td>능이버섯</td>
+                <td>2024-04-06</td>
+                <td>2024-04-07</td>
+              </tr>
+              <tr>
+                <td>3</td>
+                <td>품의서</td>
+                <td>세계정복 계획보고</td>
+                <td>능이버섯</td>
+                <td>2024-04-06</td>
+                <td>2024-04-07</td>
+              </tr>
+              <tr>
+                <td>4</td>
+                <td>품의서</td>
+                <td>세계정복 계획보고</td>
+                <td>능이버섯</td>
+                <td>2024-04-06</td>
+                <td>2024-04-07</td>
+              </tr>
+              <tr>
+                <td>5</td>
+                <td>품의서</td>
+                <td>세계정복 계획보고</td>
+                <td>능이버섯</td>
+                <td>2024-04-06</td>
+                <td>2024-04-07</td>
+              </tr>
+              <tr>
+                <td>6</td>
+                <td>품의서</td>
+                <td>세계정복 계획보고</td>
+                <td>능이버섯</td>
+                <td>2024-04-06</td>
+                <td>2024-04-07</td>
+              </tr>
+              <tr>
+                <td>7</td>
+                <td>품의서</td>
+                <td>세계정복 계획보고</td>
+                <td>능이버섯</td>
+                <td>2024-04-06</td>
+                <td>2024-04-07</td>
+              </tr>
+              <tr>
+                <td>8</td>
+                <td>품의서</td>
+                <td>세계정복 계획보고</td>
+                <td>능이버섯</td>
+                <td>2024-04-06</td>
+                <td>2024-04-07</td>
+              </tr>
+              <tr>
+                <td>9</td>
+                <td>품의서</td>
+                <td>세계정복 계획보고</td>
+                <td>능이버섯</td>
+                <td>2024-04-06</td>
+                <td>2024-04-07</td>
+              </tr>
+              <tr>
+                <td>10</td>
                 <td>품의서</td>
                 <td>세계정복 계획보고</td>
                 <td>능이버섯</td>

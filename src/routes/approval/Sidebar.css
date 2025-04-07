@@ -6,16 +6,18 @@
     height: 100vh;
     z-index: 10;
     position: relative;
+    justify-content: center;
+    align-items: center;
 }
 
 .createBtn {
-    width: 155px;
+    width: 160px;
     height: 48px;
     background-color: rgb(244, 245, 242);
     font-family: "SCDream4";
     color:rgb(144, 163, 114);
     font-size: 18px;
-    margin: 20px 5px 5px 10px;
+    margin: 20px 5px 5px 5px;
     padding: 0px;
     border: 2px solid rgb(208, 230, 175);
     box-shadow: 4px 4px 4px rgb(154, 163, 131);

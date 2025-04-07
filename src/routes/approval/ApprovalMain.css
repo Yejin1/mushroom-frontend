@@ -63,11 +63,29 @@
     border: 0px;
     margin: 6px 5px;
 }
+.approval-search-open-wrapper{
+    display: flex;
+    width: 250px;
+    margin: 14px 14px;
+    align-items: center;
+}
+
+.approval-search-open{
+    font-size: 14px;
+    color:#8d996a;
+    font-family: "SCDream4";
+    cursor: pointer;
+    text-align: left;
+}
+.approval-search-open-img{
+    margin: 4px;
+}
 
 .approval-list-table{
     background-color: #fcfff5;
     width: 100%;
     border-collapse : collapse;
+    margin: 5px 10px;
 }
 
 .approval-list-table th{
@@ -77,6 +95,7 @@
     padding: 6px 6px;
     border: 1px solid  #ccd8b3;
     border-left: none;
+    border-right: none;
 }
 
 .approval-list-table td{
@@ -85,4 +104,5 @@
     padding: 4px 4px;
     border: 1px solid #dce4cc;
     border-left: none;
+    border-right: none;
 }

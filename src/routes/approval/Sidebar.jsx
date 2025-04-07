@@ -1,8 +1,10 @@
 import { useState } from "react"
+import WriteModal from "./WriteModal";
 
 function Sidebar() {
 
   let [createOpen, setCreateOpen] = useState(false);
+
 
     return (
       <>
@@ -14,9 +16,10 @@ function Sidebar() {
                             <ul className="dropdown-menu">
                                 <li>기안서</li>
                                 <li>품의서</li>
-                                <li>휴가신청서</li>
+                                <li onClick={()=>window.open('http://localhost:5173/approval/write', '_blank')}>휴가신청서</li>
                             </ul>
                         )}
+            {writeYn && <WriteModal docNo={1} />}
             <div className="menu-box">
             <hr className="menu-line"></hr>
                 <div className="menu-title">개인결재함</div>
@@ -37,6 +40,7 @@ function Sidebar() {
       </>
     )
   }
+
   
   export default Sidebar
   
