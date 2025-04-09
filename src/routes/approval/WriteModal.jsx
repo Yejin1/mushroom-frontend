@@ -1,10 +1,20 @@
+// 📦 WriteModal.jsx
+/**
+ * - 결재 작성 화면
+ * - 조직도 선택, 결재양식 선택, 저장/제출 기능 포함
+ * - 모달 형태로 사용됨 (Navbar 숨겨짐)
+ */
 import './WriteModal.css'
+import LeavRequest from './Forms/LeaveRequest';
+import ApprovalBtn from './ApprovalBtn';
 
 function WriteModal({docNo}) {
+
+
     return (
-    <div className="modal-overlay-approval">
-      <div className="modal-content">
-      </div>
+    <div >
+      <ApprovalBtn></ApprovalBtn>
+      <LeavRequest></LeavRequest>
     </div>
     );
 }

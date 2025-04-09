@@ -9,8 +9,10 @@ import WriteModal from './routes/approval/WriteModal'
 
 function App() {
 
+  
   const location = useLocation();
-  const hideNavbar = location.pathname === '/login';
+  const hideNavbarPath = ['login', '/approval/write'];
+  const hideNavbar = hideNavbarPath.includes(location.pathname);
 
   return (
     <div className="app-wrapper">

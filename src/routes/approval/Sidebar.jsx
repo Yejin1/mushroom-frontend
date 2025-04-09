@@ -16,10 +16,13 @@ function Sidebar() {
                             <ul className="dropdown-menu">
                                 <li>기안서</li>
                                 <li>품의서</li>
-                                <li onClick={()=>window.open('http://localhost:5173/approval/write', '_blank')}>휴가신청서</li>
+                                <li onClick={()=>window.open(
+                                  '/approval/write',
+                                  '_blank',
+                                  'width=800,height=600,top=100,left=200'
+                                )}>휴가신청서</li>
                             </ul>
                         )}
-            {writeYn && <WriteModal docNo={1} />}
             <div className="menu-box">
             <hr className="menu-line"></hr>
                 <div className="menu-title">개인결재함</div>
