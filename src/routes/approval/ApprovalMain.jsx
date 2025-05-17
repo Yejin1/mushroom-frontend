@@ -1,8 +1,22 @@
 import Sidebar from "./Sidebar"
+import React, {useEffect, useState} from "react"
+import axios from 'axios'
 import './ApprovalMain.css'
 import './Sidebar.css'
 
 function ApprovalMain() {
+
+  const [approvals, setApprovals] = useState([]);
+
+  useEffect(() => {
+    axios.get('http://localhost:8080/api/approvals')
+    .then((response) => {
+      setApprovals(response.data);
+    })
+    .catch((error) => {
+      console.error(' 실패 ', error);
+    });
+  },[])
 
     return (
       <div className="approval-wrapper">
@@ -38,86 +52,13 @@ function ApprovalMain() {
               </tr>
             </thead>
             <tbody>
-              <tr>
-                <td>1</td>
-                <td>품의서</td>
-                <td>세계정복 계획보고</td>
-                <td>능이버섯</td>
-                <td>2024-04-06</td>
-                <td>2024-04-07</td>
-              </tr>
-              <tr>
-                <td>2</td>
-                <td>품의서</td>
-                <td>세계정복 계획보고</td>
-                <td>능이버섯</td>
-                <td>2024-04-06</td>
-                <td>2024-04-07</td>
-              </tr>
-              <tr>
-                <td>3</td>
-                <td>품의서</td>
-                <td>세계정복 계획보고</td>
-                <td>능이버섯</td>
-                <td>2024-04-06</td>
-                <td>2024-04-07</td>
-              </tr>
-              <tr>
-                <td>4</td>
-                <td>품의서</td>
-                <td>세계정복 계획보고</td>
-                <td>능이버섯</td>
-                <td>2024-04-06</td>
-                <td>2024-04-07</td>
-              </tr>
-              <tr>
-                <td>5</td>
-                <td>품의서</td>
-                <td>세계정복 계획보고</td>
-                <td>능이버섯</td>
-                <td>2024-04-06</td>
-                <td>2024-04-07</td>
-              </tr>
-              <tr>
-                <td>6</td>
-                <td>품의서</td>
-                <td>세계정복 계획보고</td>
-                <td>능이버섯</td>
-                <td>2024-04-06</td>
-                <td>2024-04-07</td>
-              </tr>
-              <tr>
-                <td>7</td>
-                <td>품의서</td>
-                <td>세계정복 계획보고</td>
-                <td>능이버섯</td>
-                <td>2024-04-06</td>
-                <td>2024-04-07</td>
-              </tr>
-              <tr>
-                <td>8</td>
-                <td>품의서</td>
-                <td>세계정복 계획보고</td>
-                <td>능이버섯</td>
-                <td>2024-04-06</td>
-                <td>2024-04-07</td>
-              </tr>
-              <tr>
-                <td>9</td>
-                <td>품의서</td>
-                <td>세계정복 계획보고</td>
-                <td>능이버섯</td>
-                <td>2024-04-06</td>
-                <td>2024-04-07</td>
-              </tr>
-              <tr>
-                <td>10</td>
-                <td>품의서</td>
-                <td>세계정복 계획보고</td>
-                <td>능이버섯</td>
-                <td>2024-04-06</td>
-                <td>2024-04-07</td>
-              </tr>
+              {approvals.map((doc) => (
+                <tr key={doc.id}>
+                  <td>{doc.form}</td>
+                  <td>{doc.title}</td>
+                </tr>
+              ))
+            }
             </tbody>
           </table>
         </div>
