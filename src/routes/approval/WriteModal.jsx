@@ -7,6 +7,7 @@
 import './WriteModal.css'
 import LeavRequest from './Forms/LeaveRequest';
 import ApprovalBtn from './ApprovalBtn';
+import VacationForm from './Forms/VacationForm';
 
 function WriteModal({docNo}) {
 
@@ -14,7 +15,7 @@ function WriteModal({docNo}) {
     return (
     <div >
       <ApprovalBtn></ApprovalBtn>
-      <LeavRequest></LeavRequest>
+      <VacationForm></VacationForm>
     </div>
     );
 }

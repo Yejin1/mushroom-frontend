@@ -11,7 +11,9 @@ function Sidebar() {
         <div className="sidebar">
             <button className="createBtn" onClick={()=>{
               setCreateOpen(!createOpen);
-            }}><span><img src={'/pencil.png'} ></img></span> 결재작성</button>
+            }}><span>
+              {/* <img src={'/pencil.png'} ></img> */}
+              </span> 결재작성</button>
             {createOpen && (
                             <ul className="dropdown-menu">
                                 <li>기안서</li>
