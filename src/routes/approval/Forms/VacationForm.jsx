@@ -19,7 +19,7 @@ function VacationForm() {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    console.log("제출된 데이터:", form);
+    //console.log("제출된 데이터:", form);
 
     const payload = {
       formId : 1,

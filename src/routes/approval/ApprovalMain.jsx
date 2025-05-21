@@ -52,10 +52,14 @@ function ApprovalMain() {
               </tr>
             </thead>
             <tbody>
-              {approvals.map((doc) => (
+              {approvals.map((doc, index) => (
                 <tr key={doc.id}>
-                  <td>{doc.form}</td>
+                  <td>{index+1}</td>
+                  <td>{doc.formNm}</td>
                   <td>{doc.title}</td>
+                  <td>{doc.writerNm}</td>
+                  <td>{doc.createDt}</td>
+                  <td>{doc.completedDt}</td>
                 </tr>
               ))
             }
