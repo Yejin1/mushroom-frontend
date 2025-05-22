@@ -9,7 +9,7 @@ function ApprovalMain() {
   const [approvals, setApprovals] = useState([]);
 
   useEffect(() => {
-    axios.get('http://localhost:8080/api/approvals')
+    axios.get('http://localhost:8080/api/approvals/list?usrId=1&statusCd=3')
     .then((response) => {
       setApprovals(response.data);
     })
