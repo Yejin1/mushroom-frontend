@@ -7,9 +7,19 @@ import './Sidebar.css'
 function ApprovalMain() {
 
   const [approvals, setApprovals] = useState([]);
+  const token = localStorage.getItem('accesToken');
+  console.log(token);
 
   useEffect(() => {
-    axios.get('http://localhost:8080/api/approvals/list?usrId=1&statusCd=3')
+    axios.get('http://localhost:8080/api/approvals/list', {
+      headers: {
+        Authorization: `Bearer ${token}`
+      },
+      params: {
+        usrId: 1,
+        statusCd: 3
+      }
+    })
     .then((response) => {
       setApprovals(response.data);
     })
