@@ -9,7 +9,6 @@ function Login() {
 
   const [loginId, setLoginId] = useState('');
   const [password, setPassword] = useState('');
-  
 
   const handleLogin = async () => {
     try {
@@ -31,7 +30,7 @@ function Login() {
       localStorage.setItem('accesToken', token);
 
       alert('로그인 성공');
-      redirect('/approval');
+      navigate("/approval");
 
     } catch(error) {
       console.error(error);

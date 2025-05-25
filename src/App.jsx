@@ -1,11 +1,11 @@
 import { useState } from 'react'
 import './App.css'
 import {BrowserRouter as Router, Routes, Route, Navigate, useLocation} from 'react-router-dom'
-import Login from './routes/login'
+import Login from './routes/Login'
 import Home from './routes/Home'
 import Navbar from "./routes/Navbar"
 import ApprovalMain from './routes/approval/ApprovalMain'
-import WriteModal from './routes/approval/WriteModal'
+import WritePopup from './routes/approval/WritePopup'
 
 function App() {
 
@@ -22,7 +22,7 @@ function App() {
         <Route path="/login" element={<Login/>}></Route>
         <Route path="/home" element={<Home/>}></Route>
         <Route path="/approval" element={<ApprovalMain></ApprovalMain>}></Route>
-        <Route path="/approval/write" element={<WriteModal></WriteModal>}></Route>
+        <Route path="/approval/write" element={<WritePopup></WritePopup>}></Route>
       </Routes>
     </div>
   )

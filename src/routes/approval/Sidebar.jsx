@@ -1,5 +1,5 @@
 import { useState } from "react"
-import WriteModal from "./WriteModal";
+import WritePopup from "./WritePopup";
 
 function Sidebar() {
 

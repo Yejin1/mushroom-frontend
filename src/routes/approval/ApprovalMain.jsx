@@ -7,8 +7,9 @@ import './Sidebar.css'
 function ApprovalMain() {
 
   const [approvals, setApprovals] = useState([]);
+  const [page, setPage] = useState(0);
   const token = localStorage.getItem('accesToken');
-  console.log(token);
+  const [totalPages, setTotalPages] = useState(0);
 
   useEffect(() => {
     axios.get('http://localhost:8080/api/approvals/list', {
@@ -17,16 +18,30 @@ function ApprovalMain() {
       },
       params: {
         usrId: 1,
-        statusCd: 3
+        statusCd: 3,
+        page: page, 
+        size: 10,   
+        sort: 'createDt,desc'
       }
     })
     .then((response) => {
-      setApprovals(response.data);
+       setTotalPages(response.data.totalPages);
+      setApprovals(response.data.content);
     })
     .catch((error) => {
       console.error(' 실패 ', error);
     });
-  },[])
+  },[page]);
+
+  const handlePageChange = (newPage) => {
+    setPage(newPage);
+  };
+
+  const handleOpenDoc = (docId) => {
+  window.open('/approval/read',
+                                  '_blank',
+                                  'width=800,height=600,top=100,left=200'); 
+};
 
     return (
       <div className="approval-wrapper">
@@ -64,9 +79,9 @@ function ApprovalMain() {
             <tbody>
               {approvals.map((doc, index) => (
                 <tr key={doc.id}>
-                  <td>{index+1}</td>
+                  <td>{index + page * 10 + 1}</td>
                   <td>{doc.formNm}</td>
-                  <td>{doc.title}</td>
+                  <td><span onClick={() => handleOpenDoc(doc.id)}>{doc.title}</span></td>
                   <td>{doc.writerNm}</td>
                   <td>{doc.createDt}</td>
                   <td>{doc.completedDt}</td>
@@ -76,6 +91,13 @@ function ApprovalMain() {
             </tbody>
           </table>
         </div>
+         <div>
+          {Array.from({ length: totalPages }, (_, i) => (
+            <button key={i} onClick={() => handlePageChange(i)}>
+              {i + 1}
+            </button>
+          ))}
+         </div>
         </div>
       </div>
     )
