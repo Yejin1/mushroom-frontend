@@ -1,3 +1,7 @@
+//  OrgModal.jsx
+/**
+ * - 조직도 모달
+ */
 import './OrgModal.css';
 
 function OrgModal({ onClose }) {

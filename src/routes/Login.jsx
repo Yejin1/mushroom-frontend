@@ -1,3 +1,7 @@
+//  Login.jsx
+/**
+ * - 로그인화면
+ */
 import {BrowserRouter as Router, Routes, Route, Navigate, useNavigate, redirect} from 'react-router-dom'
 import React, {useState} from 'react'
 import './Login.css'
@@ -25,11 +29,10 @@ function Login() {
       }
       
       const data = await response.json();
+      //로그인 토큰 저장
       const token = data.token;
-
       localStorage.setItem('accesToken', token);
 
-      alert('로그인 성공');
       navigate("/approval");
 
     } catch(error) {

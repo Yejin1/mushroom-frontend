@@ -1,3 +1,7 @@
+//  Navbar.jsx
+/**
+ * - 최상단 네비게이션 바
+ */
 import './Navbar.css';
 import { Link } from 'react-router-dom';
 import { useState } from 'react';

@@ -1,17 +1,17 @@
-// 📦 WritePopup.jsx
+//  ReadPopup.jsx
 /**
- * - 결재 작성 화면
- * - 조직도 선택, 결재양식 선택, 저장/제출 기능 포함
+ * - 결재 조회 화면
+ * - 참조 기능 포함함
  */
 import './WritePopup.css'
 import ApprovalBtn from './ApprovalBtn';
-import VacationForm from './WriteForms/VacationForm';
+import VacationRead from './ReadForms/VacationRead';
 
 function ReadPopup({docNo}) {
     return (
     <div >
       <ApprovalBtn></ApprovalBtn>
-      <VacationForm></VacationForm>
+      <VacationRead></VacationRead>
     </div>
     );
 }

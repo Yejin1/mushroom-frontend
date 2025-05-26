@@ -1,3 +1,7 @@
+// ApprovalBtn.jsx
+/**
+ * - 결재 작성 화면 버튼
+ */
 import './ApprovalBtn.css'
 
 function ApprovalBtn() {

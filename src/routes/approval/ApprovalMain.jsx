@@ -1,3 +1,8 @@
+// ApprovalMain.jsx
+/**
+ * - 결재 목록 화면
+ * - 전자결재 로그인 시 가장 먼저 보이는 화면
+ */
 import Sidebar from "./Sidebar"
 import React, {useEffect, useState} from "react"
 import axios from 'axios'

@@ -1,9 +1,13 @@
-// src/components/VacationForm.jsx
+// 📦 VacationWrite.jsx
+/**
+ * - 결재 양식 : 휴가 신청서(작성)
+ * - 양식 코드 : VACATION
+ */
 
 import React, { useState } from "react";
 import axios from 'axios';
 
-function VacationForm() {
+function VacationWrite() {
   const [form, setForm] = useState({
     title: "",
     startDate: "",
@@ -40,7 +44,9 @@ function VacationForm() {
           Authorization: `Bearer ${token}`
         }
       });
+      window.close();
       console.log("저장성공:", response.data);
+
     } catch (error) {
       console.log("저장실패:", error);
     }
@@ -116,4 +122,4 @@ function VacationForm() {
   );
 };
 
-export default VacationForm;
+export default VacationWrite;

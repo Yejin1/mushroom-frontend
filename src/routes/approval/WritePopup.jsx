@@ -5,13 +5,13 @@
  */
 import './WritePopup.css'
 import ApprovalBtn from './ApprovalBtn';
-import VacationForm from './WriteForms/VacationForm';
+import VacationWrite from './WriteForms/VacationWrite';
 
 function WritePopup({docNo}) {
     return (
     <div >
       <ApprovalBtn></ApprovalBtn>
-      <VacationForm></VacationForm>
+      <VacationWrite></VacationWrite>
     </div>
     );
 }

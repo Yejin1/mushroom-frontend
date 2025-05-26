@@ -1,3 +1,8 @@
+// Sidebar.jsx
+/**
+ * - 사이드바
+ * - 전자결재 결재함 리스트 선택
+ */
 import { useState } from "react"
 import WritePopup from "./WritePopup";
 

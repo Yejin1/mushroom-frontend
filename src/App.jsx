@@ -1,3 +1,8 @@
+//  App.jsx
+/**
+ * - 최상단 컴포넌트
+ * - 라우트 정보 관리
+ */
 import { useState } from 'react'
 import './App.css'
 import {BrowserRouter as Router, Routes, Route, Navigate, useLocation} from 'react-router-dom'
@@ -6,6 +11,7 @@ import Home from './routes/Home'
 import Navbar from "./routes/Navbar"
 import ApprovalMain from './routes/approval/ApprovalMain'
 import WritePopup from './routes/approval/WritePopup'
+import ReadPopup from './routes/approval/ReadPopup'
 
 function App() {
 
@@ -23,6 +29,7 @@ function App() {
         <Route path="/home" element={<Home/>}></Route>
         <Route path="/approval" element={<ApprovalMain></ApprovalMain>}></Route>
         <Route path="/approval/write" element={<WritePopup></WritePopup>}></Route>
+        <Route path="/approval/read" element={<ReadPopup></ReadPopup>}></Route>
       </Routes>
     </div>
   )
