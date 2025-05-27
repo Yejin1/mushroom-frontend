@@ -12,6 +12,7 @@ import Navbar from "./routes/Navbar"
 import ApprovalMain from './routes/approval/ApprovalMain'
 import WritePopup from './routes/approval/WritePopup'
 import ReadPopup from './routes/approval/ReadPopup'
+import Join from './routes/Join'
 
 function App() {
 
@@ -27,6 +28,7 @@ function App() {
         <Route path="/" element={<Navigate to="/login" replace />} />
         <Route path="/login" element={<Login/>}></Route>
         <Route path="/home" element={<Home/>}></Route>
+        <Route path="/join" element={<Join/>}></Route>
         <Route path="/approval" element={<ApprovalMain></ApprovalMain>}></Route>
         <Route path="/approval/write" element={<WritePopup></WritePopup>}></Route>
         <Route path="/approval/read" element={<ReadPopup></ReadPopup>}></Route>

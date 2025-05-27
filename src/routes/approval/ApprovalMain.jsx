@@ -31,7 +31,7 @@ function ApprovalMain() {
     })
     .then((response) => {
        setTotalPages(response.data.totalPages);
-      setApprovals(response.data.content);
+       setApprovals(response.data.content);
     })
     .catch((error) => {
       console.error(' 실패 ', error);
@@ -43,9 +43,9 @@ function ApprovalMain() {
   };
 
   const handleOpenDoc = (docId) => {
-  window.open('/approval/read',
-                                  '_blank',
-                                  'width=800,height=600,top=100,left=200'); 
+    window.open(`/approval/read?docId=${docId}`,
+                '_blank',
+                'width=800,height=600,top=100,left=200'); 
 };
 
     return (

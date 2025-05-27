@@ -7,7 +7,7 @@
 import React, {useEffect, useState} from "react";
 import axios from 'axios';
 
-function VacationRead() {
+function VacationRead({docId}) {
   const token = localStorage.getItem('accesToken');
   const [form, setForm] = useState({
     title: "",
@@ -21,7 +21,7 @@ function VacationRead() {
         Authorization: `Bearer ${token}`
       },
       params: {
-        docId: 67
+        docId: docId
       }
     })
     .then((response) => {

@@ -3,12 +3,37 @@
  * - 사이드바
  * - 전자결재 결재함 리스트 선택
  */
-import { useState } from "react"
+import { useState, useEffect, useRef } from "react"
+import axios from 'axios'
 import WritePopup from "./WritePopup";
 
 function Sidebar() {
 
   let [createOpen, setCreateOpen] = useState(false);
+  let [forms, setforms] = useState([]);
+  let isFirst = useRef(true);
+  const token = localStorage.getItem('accesToken');
+  
+    useEffect(() => {
+      if(isFirst.current) {
+        isFirst.current = false;
+        return;
+      }
+    axios.get('http://localhost:8080/api/approvals/formList', {
+      headers: {
+        Authorization: `Bearer ${token}`
+      },
+      params: {
+      }
+    })
+    .then((response) => {
+      console.log(response);
+      setforms(response.data);
+    })
+    .catch((error) => {
+      console.error(' 실패 ', error);
+    });
+  },[createOpen]);
 
 
     return (
@@ -21,13 +46,13 @@ function Sidebar() {
               </span> 결재작성</button>
             {createOpen && (
                             <ul className="dropdown-menu">
-                                <li>기안서</li>
-                                <li>품의서</li>
-                                <li onClick={()=>window.open(
-                                  '/approval/write',
+                              {forms.map((form,index) =>(
+                                <li key={form.id} onClick={()=>window.open(
+                                  `/approval/write?form=${form.reactName}`,
                                   '_blank',
                                   'width=800,height=600,top=100,left=200'
-                                )}>휴가신청서</li>
+                                )}>{form.name}</li>
+                              ) )}
                             </ul>
                         )}
             <div className="menu-box">

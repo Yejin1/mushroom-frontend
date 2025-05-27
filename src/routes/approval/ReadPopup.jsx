@@ -6,12 +6,17 @@
 import './WritePopup.css'
 import ApprovalBtn from './ApprovalBtn';
 import VacationRead from './ReadForms/VacationRead';
+import React ,{ useState } from 'react';
 
-function ReadPopup({docNo}) {
+function ReadPopup() {
+  const params = new URLSearchParams(window.location.search);
+  const docId = params.get('docId');
+
+
     return (
     <div >
       <ApprovalBtn></ApprovalBtn>
-      <VacationRead></VacationRead>
+      <VacationRead docId={docId}></VacationRead>
     </div>
     );
 }
