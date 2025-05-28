@@ -14,6 +14,10 @@ function Login() {
   const [loginId, setLoginId] = useState('');
   const [password, setPassword] = useState('');
 
+  const join = () => {
+    navigate('/join');
+  }
+
   const handleLogin = async () => {
     try {
       const response = await fetch('http://localhost:8080/api/auth/login', {
@@ -64,6 +68,9 @@ function Login() {
         </div>
         <div>
           <button className='login-button' onClick={handleLogin}> 로그인</button>
+        </div>
+        <div>
+          <button className='login-' onClick={join}> 회원가입</button>
         </div>
       </div>
     </div>
