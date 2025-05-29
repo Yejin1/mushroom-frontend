@@ -1,13 +1,14 @@
-// 📦 VacationWrite.jsx
+// 📦 DraftWrite.jsx
 /**
- * - 결재 양식 : 휴가 신청서(작성)
- * - 양식 코드 : VACATION
+ * - 결재 양식 : 일반기안서 
+ * - 화면 구분 : 작성
+ * - 양식 코드 : DRAFT
  */
 
 import React, { useState } from "react";
 import axios from 'axios';
 
-function VacationWrite() {
+function DraftWrite() {
   const [form, setForm] = useState({
     title: "",
     startDate: "",
@@ -54,7 +55,7 @@ function VacationWrite() {
 
   return (
     <form onSubmit={handleSubmit}>
-      <h2>휴가 신청서</h2>
+      <h2>일반기안서</h2>
 
       <div>
         <label>제목</label>
@@ -68,7 +69,7 @@ function VacationWrite() {
       </div>
 
       <div>
-        <label>시작일</label>
+        <label>텍스트에디터 넣을거임</label>
         <input
           name="startDate"
           type="date"
@@ -122,4 +123,4 @@ function VacationWrite() {
   );
 };
 
-export default VacationWrite;
+export default DraftWrite;

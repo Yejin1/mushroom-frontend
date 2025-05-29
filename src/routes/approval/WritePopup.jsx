@@ -6,23 +6,24 @@
 import './WritePopup.css'
 import ApprovalBtn from './ApprovalBtn';
 import VacationWrite from './WriteForms/VacationWrite';
+import DraftWrite from './WriteForms/DraftWrite';
 
 function WritePopup() {
   const params = new URLSearchParams(window.location.search);
   const form = params.get('form') + 'Write';
 
   //문서 양식 컴포넌트 목록 변수화(양식 신규 생성할때마다 여기 추가해줘야함)
-  const formComponents ={ VacationWrite };
+  const formComponents = { VacationWrite, DraftWrite };
 
   //양식명으로 컴포넌트 할당
   const FormComponent = formComponents[form];
 
-    return (
+  return (
     <div >
       <ApprovalBtn></ApprovalBtn>
       <FormComponent></FormComponent>
     </div>
-    );
+  );
 }
 
 export default WritePopup;
