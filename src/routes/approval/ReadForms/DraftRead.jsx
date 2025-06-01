@@ -32,7 +32,7 @@ function DraftRead({ docId }) {
 
         //문서 내용 json 파싱 및 세팅 
         setCont(response.data.editorContent);
-        console.log(response.data.editorContent)
+        console.log(response.data.editorContent);
 
       })
       .catch((error) => {

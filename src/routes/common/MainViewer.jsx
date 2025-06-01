@@ -5,6 +5,7 @@ function MainViewer({ markdownContent }) {
     return (
         <div>
             <Viewer
+                key={markdownContent}
                 initialValue={markdownContent}
                 height="auto"
             />
