@@ -3,9 +3,13 @@
  * - 최상단 컴포넌트
  * - 라우트 정보 관리
  */
+import 'prismjs/themes/prism.css'
+import '@toast-ui/editor/dist/toastui-editor.css'
+import '@toast-ui/editor-plugin-color-syntax/dist/toastui-editor-plugin-color-syntax.css';
+import '@toast-ui/editor/dist/toastui-editor-viewer.css';
 import { useState } from 'react'
 import './App.css'
-import {BrowserRouter as Router, Routes, Route, Navigate, useLocation} from 'react-router-dom'
+import { BrowserRouter as Router, Routes, Route, Navigate, useLocation } from 'react-router-dom'
 import Login from './routes/Login'
 import Home from './routes/Home'
 import Navbar from "./routes/Navbar"
@@ -13,12 +17,13 @@ import ApprovalMain from './routes/approval/ApprovalMain'
 import WritePopup from './routes/approval/WritePopup'
 import ReadPopup from './routes/approval/ReadPopup'
 import Join from './routes/Join'
+import MainEditor from './routes/common/MainEditor'
 
 function App() {
 
-  
+
   const location = useLocation();
-  const hideNavbarPath = ['login', '/approval/write'];
+  const hideNavbarPath = ['login', '/approval/write', '/approval/read'];
   const hideNavbar = hideNavbarPath.includes(location.pathname);
 
   return (
@@ -26,9 +31,9 @@ function App() {
       {!hideNavbar && <Navbar />}
       <Routes>
         <Route path="/" element={<Navigate to="/login" replace />} />
-        <Route path="/login" element={<Login/>}></Route>
-        <Route path="/home" element={<Home/>}></Route>
-        <Route path="/join" element={<Join/>}></Route>
+        <Route path="/login" element={<Login />}></Route>
+        <Route path="/home" element={<Home />}></Route>
+        <Route path="/join" element={<Join />}></Route>
         <Route path="/approval" element={<ApprovalMain></ApprovalMain>}></Route>
         <Route path="/approval/write" element={<WritePopup></WritePopup>}></Route>
         <Route path="/approval/read" element={<ReadPopup></ReadPopup>}></Route>

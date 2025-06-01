@@ -7,6 +7,7 @@
 
 import React, { useState } from "react";
 import axios from 'axios';
+import MainEditor from "../../common/MainEditor";
 
 function DraftWrite() {
   const [form, setForm] = useState({
@@ -17,6 +18,8 @@ function DraftWrite() {
     urgentYn: "N",
   });
 
+  const [content, setContent] = useState('');
+
   const handleChange = (e) => {
     const { name, value } = e.target;
     setForm((prev) => ({ ...prev, [name]: value }));
@@ -24,20 +27,17 @@ function DraftWrite() {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    //console.log("제출된 데이터:", form);
 
     const token = localStorage.getItem('accesToken');
     const payload = {
-      formId: 1,
+      formId: 2,
       title: form.title,
-      writer: 1,
+      writer: 1, //백엔드에서 세팅함
       urgentYn: form.urgentYn,
-      formContent: {
-        startDate: form.startDate,
-        endDate: form.endDate,
-        reason: form.reason
-      }
+      editorYn: 'Y',
+      editorContent: content
     };
+
 
     try {
       const response = await axios.post("http://localhost:8080/api/approvals", payload, {
@@ -69,35 +69,12 @@ function DraftWrite() {
       </div>
 
       <div>
-        <label>텍스트에디터 넣을거임</label>
-        <input
-          name="startDate"
-          type="date"
-          value={form.startDate}
-          onChange={handleChange}
+        <MainEditor
+          initialContent={content}
+          onContentChange={setContent}
         />
       </div>
 
-      <div>
-        <label>종료일</label>
-        <input
-          name="endDate"
-          type="date"
-          value={form.endDate}
-          onChange={handleChange}
-        />
-      </div>
-
-      <div>
-        <label>사유</label>
-        <textarea
-          name="reason"
-          value={form.reason}
-          onChange={handleChange}
-          rows="4"
-          placeholder="휴가 사유 입력"
-        />
-      </div>
 
       <div>
         <label>

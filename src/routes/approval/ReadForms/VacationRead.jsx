@@ -4,10 +4,11 @@
  * - 양식 코드 : VACATION
  */
 
-import React, {useEffect, useState} from "react";
+import React, { useEffect, useState } from "react";
 import axios from 'axios';
+import MainViewer from '../../common/MainViewer'
 
-function VacationRead({docId}) {
+function VacationRead({ docId }) {
   const token = localStorage.getItem('accesToken');
   const [form, setForm] = useState({
     title: "",
@@ -15,7 +16,7 @@ function VacationRead({docId}) {
   });
   const [cont, setCont] = useState([]);
 
-    useEffect(() => {
+  useEffect(() => {
     axios.get('http://localhost:8080/api/approvals/read', {
       headers: {
         Authorization: `Bearer ${token}`
@@ -24,19 +25,19 @@ function VacationRead({docId}) {
         docId: docId
       }
     })
-    .then((response) => {
-      //제목, 긴급여부 데이터 세팅
-      setForm(response.data.doc);
+      .then((response) => {
+        //제목, 긴급여부 데이터 세팅
+        setForm(response.data.doc);
 
-      //문서 내용 json 파싱 및 세팅 
-      const obj = JSON.parse(response.data.formContent);
-      setCont(obj);
+        //문서 내용 json 파싱 및 세팅 
+        const obj = JSON.parse(response.data.formContent);
+        setCont(obj);
 
-    })
-    .catch((error) => {
-      console.error(' 실패 ', error);
-    });
-  },[]);
+      })
+      .catch((error) => {
+        console.error(' 실패 ', error);
+      });
+  }, []);
 
 
 

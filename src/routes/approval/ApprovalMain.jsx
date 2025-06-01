@@ -4,7 +4,7 @@
  * - 전자결재 로그인 시 가장 먼저 보이는 화면
  */
 import Sidebar from "./Sidebar"
-import React, {useEffect, useState} from "react"
+import React, { useEffect, useState } from "react"
 import axios from 'axios'
 import './ApprovalMain.css'
 import './Sidebar.css'
@@ -24,52 +24,52 @@ function ApprovalMain() {
       params: {
         usrId: 1,
         statusCd: 3,
-        page: page, 
-        size: 10,   
+        page: page,
+        size: 10,
         sort: 'createDt,desc'
       }
     })
-    .then((response) => {
-       setTotalPages(response.data.totalPages);
-       setApprovals(response.data.content);
-    })
-    .catch((error) => {
-      console.error(' 실패 ', error);
-    });
-  },[page]);
+      .then((response) => {
+        setTotalPages(response.data.totalPages);
+        setApprovals(response.data.content);
+      })
+      .catch((error) => {
+        console.error(' 실패 ', error);
+      });
+  }, [page]);
 
   const handlePageChange = (newPage) => {
     setPage(newPage);
   };
 
-  const handleOpenDoc = (docId) => {
-    window.open(`/approval/read?docId=${docId}`,
-                '_blank',
-                'width=800,height=600,top=100,left=200'); 
-};
+  const handleOpenDoc = (docId, formId) => {
+    window.open(`/approval/read?formId=${formId}&docId=${docId}`,
+      '_blank',
+      'width=800,height=600,top=100,left=200');
+  };
 
-    return (
-      <div className="approval-wrapper">
-        <Sidebar>
-        </Sidebar>
-        <div className="approval-in-wrapper">
-          <div className="menu-name">결재완료함</div>
-          <div className="approval-search-wrapper">
-            <div className="approval-search">
-              <div>제목 <span className="approval-search-s">▼</span></div>
-              <input></input>
-              <img src={'/search.png'}></img>
-            </div>
-            <div className="approval-search">
-              <div>작성일 <span className="approval-search-s">▼</span></div>
-              <input></input>
-            </div>
-            <div className="approval-search-open-wrapper">
-            <img src="./options.png" className="approval-search-open-img"></img>
-              <div className="approval-search-open">상세검색</div>
-            </div>
+  return (
+    <div className="approval-wrapper">
+      <Sidebar>
+      </Sidebar>
+      <div className="approval-in-wrapper">
+        <div className="menu-name">결재완료함</div>
+        <div className="approval-search-wrapper">
+          <div className="approval-search">
+            <div>제목 <span className="approval-search-s">▼</span></div>
+            <input></input>
+            <img src={'/search.png'}></img>
           </div>
-          <div className="approval-list-wrapper">
+          <div className="approval-search">
+            <div>작성일 <span className="approval-search-s">▼</span></div>
+            <input></input>
+          </div>
+          <div className="approval-search-open-wrapper">
+            <img src="./options.png" className="approval-search-open-img"></img>
+            <div className="approval-search-open">상세검색</div>
+          </div>
+        </div>
+        <div className="approval-list-wrapper">
           <table className="approval-list-table">
             <thead>
               <tr>
@@ -86,27 +86,26 @@ function ApprovalMain() {
                 <tr key={doc.id}>
                   <td>{index + page * 10 + 1}</td>
                   <td>{doc.formNm}</td>
-                  <td><span onClick={() => handleOpenDoc(doc.id)}>{doc.title}</span></td>
+                  <td><span onClick={() => handleOpenDoc(doc.id, doc.formId)}>{doc.title}</span></td>
                   <td>{doc.writerNm}</td>
                   <td>{doc.createDt}</td>
                   <td>{doc.completedDt}</td>
                 </tr>
               ))
-            }
+              }
             </tbody>
           </table>
         </div>
-         <div>
+        <div>
           {Array.from({ length: totalPages }, (_, i) => (
             <button key={i} onClick={() => handlePageChange(i)}>
               {i + 1}
             </button>
           ))}
-         </div>
         </div>
       </div>
-    )
-  }
-  
-  export default ApprovalMain
-  
+    </div>
+  )
+}
+
+export default ApprovalMain
