@@ -16,7 +16,7 @@ function BoardList() {
   const [totalPages, setTotalPages] = useState(0);
 
   useEffect(() => {
-    axios.get('http://localhost:8080/api/approvals/list', {
+    axios.get('http://localhost:8080/api/board/list', {
       headers: {
         Authorization: `Bearer ${token}`
       },
@@ -52,7 +52,7 @@ function BoardList() {
       <BoardMenu>
       </BoardMenu>
       <div className="approval-in-wrapper">
-        <div className="menu-name">결재완료함</div>
+        <div className="menu-name">공지사항</div>
         <div className="approval-search-wrapper">
           <div className="approval-search">
             <div>제목 <span className="approval-search-s">▼</span></div>
@@ -63,21 +63,17 @@ function BoardList() {
             <div>작성일 <span className="approval-search-s">▼</span></div>
             <input></input>
           </div>
-          <div className="approval-search-open-wrapper">
-            <img src="./options.png" className="approval-search-open-img"></img>
-            <div className="approval-search-open">상세검색</div>
-          </div>
         </div>
         <div className="approval-list-wrapper">
           <table className="approval-list-table">
             <thead>
               <tr>
                 <th>번호</th>
-                <th>양식</th>
                 <th>제목</th>
                 <th>작성자</th>
                 <th>작성일</th>
-                <th>완료일</th>
+                <th>조회수</th>
+                <th>추천</th>
               </tr>
             </thead>
             <tbody>

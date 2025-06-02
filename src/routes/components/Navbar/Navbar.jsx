@@ -22,7 +22,7 @@ function Navbar() {
                 <ul className={styles['navbar-menu']}>
                     <li><Link to="/">홈</Link></li>
                     <li><Link to="/approval">전자결재</Link></li>
-                    <li><Link to="/about">게시판</Link></li>
+                    <li><Link to="/board">게시판</Link></li>
                     <li><Link onClick={() => setShowOrg(true)}>조직도</Link></li>
                     {showOrg && <OrgModal onClose={() => setShowOrg(false)} />}
                 </ul>

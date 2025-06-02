@@ -41,7 +41,7 @@ function BoardMenu() {
           setCreateOpen(!createOpen);
         }}><span>
             {/* <img src={'/pencil.png'} ></img> */}
-          </span> 결재작성</button>
+          </span> 글쓰기</button>
         {createOpen && (
           <ul className="dropdown-menu">
             {forms.map((form, index) => (
