@@ -5,7 +5,7 @@
 
 import React, { useEffect, useState } from "react"
 import axios from 'axios'
-import './Join.css'
+import styles from './Join.module.css'
 
 function Join() {
 
@@ -186,54 +186,59 @@ function Join() {
   };
 
   return (
-    <div className="login-page">
+    <div className={styles['login-page']}>
       <form>
         <div>
-          <label className="join-label">이름</label>
+          <label className={styles['join-label']}>이름</label>
           <input
-            className="join-input"
+            className={styles['join-input']}
             type="text"
             value={usrNm}
             onChange={(e) => setUsrNm(e.target.value)}></input>
         </div>
         <div>
-          <label className="join-label">사번</label>
+          <label className={styles['join-label']}>사번</label>
           <input
-            className="join-input"
+            className={styles['join-input']}
             type="text"
             value={empNo}
             onChange={(e) => setEmpNo(e.target.value)}></input>
-          <span><button type="button" className="mini-button" onClick={checkSubscript}>가입확인</button></span>
+          <span>
+            <button type="button" className={styles['mini-button']} onClick={checkSubscript}>가입확인</button>
+          </span>
         </div>
         <div>
-          <label className="join-label">로그인 아이디</label>
+          <label className={styles['join-label']}>로그인 아이디</label>
           <input
-            className="join-input"
+            className={styles['join-input']}
             type="text"
             value={loginId}
             onChange={(e) => setLoginId(e.target.value)}></input>
-          <span><button type="button" className="mini-button" onClick={checkDuplicate}>중복확인</button></span>
+          <span>
+            <button type="button" className={styles['mini-button']} onClick={checkDuplicate}>중복확인</button>
+          </span>
         </div>
         <div>
-          <label className="join-label">비밀번호</label>
+          <label className={styles['join-label']}>비밀번호</label>
           <input
-            className="join-input"
+            className={styles['join-input']}
             type="text"
             value={password}
             onChange={(e) => setPassword(e.target.value)}></input>
         </div>
         <div>
-          <label className="join-label">비밀번호 확인</label>
+          <label className={styles['join-label']}>비밀번호 확인</label>
           <input
-            className="join-input"
+            className={styles['join-input']}
             type="text"
             value={password2}
             onChange={(e) => checkSamePwd(e.target.value)}></input>
-          <label >{pwdLabel}</label>
+          <label>{pwdLabel}</label>
         </div>
-        <button className="join-button"
+        <button className={styles['join-button']}
           onClick={handleSubmit}>
-          가입</button>
+          가입
+        </button>
       </form>
     </div>
   )

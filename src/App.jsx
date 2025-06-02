@@ -10,14 +10,14 @@ import '@toast-ui/editor/dist/toastui-editor-viewer.css';
 import { useState } from 'react'
 import './App.css'
 import { BrowserRouter as Router, Routes, Route, Navigate, useLocation } from 'react-router-dom'
-import Login from './routes/Login'
-import Home from './routes/Home'
-import Navbar from "./routes/Navbar"
-import ApprovalMain from './routes/approval/ApprovalMain'
-import WritePopup from './routes/approval/WritePopup'
-import ReadPopup from './routes/approval/ReadPopup'
-import Join from './routes/Join'
-import MainEditor from './routes/common/MainEditor'
+import Login from './routes/pages/Login/Login'
+import Home from './routes/pages/Home'
+import Navbar from './routes/components/Navbar/Navbar';
+import ApprovalMain from './routes/features/board/BoardList';
+import WritePopup from './routes/features/approval/popup/WritePopup';
+import ReadPopup from './routes/features/approval/popup/ReadPopup';
+import Join from './routes/pages/Join/Join'
+import BoardList from './routes/features/board/BoardList';
 
 function App() {
 
@@ -34,6 +34,7 @@ function App() {
         <Route path="/login" element={<Login />}></Route>
         <Route path="/home" element={<Home />}></Route>
         <Route path="/join" element={<Join />}></Route>
+        <Route path="/board" element={<BoardList />}></Route>
         <Route path="/approval" element={<ApprovalMain></ApprovalMain>}></Route>
         <Route path="/approval/write" element={<WritePopup></WritePopup>}></Route>
         <Route path="/approval/read" element={<ReadPopup></ReadPopup>}></Route>

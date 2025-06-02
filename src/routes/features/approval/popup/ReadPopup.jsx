@@ -3,11 +3,10 @@
  * - 결재 조회 화면
  * - 참조 기능 포함함
  */
-import './WritePopup.css'
 import axios from 'axios';
-import ApprovalBtn from './ApprovalBtn';
-import VacationRead from './ReadForms/VacationRead';
-import DraftRead from './ReadForms/DraftRead';
+import ApprovalBtn from '../components/ApprovalBtn';
+import VacationRead from '../ReadForms/VacationRead'
+import DraftRead from '../ReadForms/DraftRead';
 import React, { useEffect, useState } from 'react';
 
 function ReadPopup() {

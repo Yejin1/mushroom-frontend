@@ -7,7 +7,7 @@
 
 import React, { useState, useEffect } from "react";
 import axios from 'axios';
-import MainViewer from "../../common/MainViewer";
+import MainViewer from '../../../components/editor/MainViewer'
 
 function DraftRead({ docId }) {
   const [form, setForm] = useState({

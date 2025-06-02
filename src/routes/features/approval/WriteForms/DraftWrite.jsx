@@ -7,7 +7,7 @@
 
 import React, { useState } from "react";
 import axios from 'axios';
-import MainEditor from "../../common/MainEditor";
+import MainEditor from "../../../components/editor/MainEditor";
 
 function DraftWrite() {
   const [form, setForm] = useState({

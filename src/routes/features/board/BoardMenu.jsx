@@ -1,13 +1,11 @@
-// Sidebar.jsx
+// BoardMenu.jsx
 /**
- * - 사이드바
- * - 전자결재 결재함 리스트 선택
+ * - 게시판 메뉴 사이드바
  */
 import { useState, useEffect, useRef } from "react"
 import axios from 'axios'
-import WritePopup from "./WritePopup";
 
-function Sidebar() {
+function BoardMenu() {
 
   let [createOpen, setCreateOpen] = useState(false);
   let [forms, setforms] = useState([]);
@@ -77,4 +75,4 @@ function Sidebar() {
 }
 
 
-export default Sidebar
+export default BoardMenu

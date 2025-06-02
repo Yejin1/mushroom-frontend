@@ -6,7 +6,6 @@
 
 import React, { useEffect, useState } from "react";
 import axios from 'axios';
-import MainViewer from '../../common/MainViewer'
 
 function VacationRead({ docId }) {
   const token = localStorage.getItem('accesToken');
