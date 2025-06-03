@@ -18,7 +18,7 @@ import ApprovalMain from './routes/features/approval/ApprovalMain';
 import WritePopup from './routes/features/approval/popup/WritePopup';
 import ReadPopup from './routes/features/approval/popup/ReadPopup';
 import Join from './routes/pages/Join/Join'
-import BoardList from './routes/features/board/BoardList';
+import BoardMain from './routes/features/board/BoardMain';
 
 
 function App() {
@@ -36,7 +36,7 @@ function App() {
         <Route path="/login" element={<Login />}></Route>
         <Route path="/home" element={<Home />}></Route>
         <Route path="/join" element={<Join />}></Route>
-        <Route path="/board" element={<BoardList />}></Route>
+        <Route path="/board" element={<BoardMain />}></Route>
         <Route path="/approval" element={<ApprovalMain></ApprovalMain>}></Route>
         <Route path="/approval/write" element={<WritePopup></WritePopup>}></Route>
         <Route path="/approval/read" element={<ReadPopup></ReadPopup>}></Route>

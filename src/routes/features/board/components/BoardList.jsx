@@ -2,7 +2,6 @@
 /**
  * - 게시글 목록
  */
-import BoardMenu from "./BoardMenu"
 import React, { useEffect, useState } from "react"
 import axios from 'axios'
 import styles from './BoardList.module.css'
@@ -48,9 +47,6 @@ function BoardList() {
   };
 
   return (
-    <div className={styles.boardWrapper}>
-      <BoardMenu>
-      </BoardMenu>
       <div className={styles.boardInWrapper}>
         <div className={styles.menuName}>공지사항</div>
         <div className={styles.boardSearchWrapper}>
@@ -103,7 +99,6 @@ function BoardList() {
           ))}
         </div>
       </div>
-    </div>
   )
 }
 
