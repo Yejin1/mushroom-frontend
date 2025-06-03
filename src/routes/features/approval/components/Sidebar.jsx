@@ -5,8 +5,7 @@
  */
 import { useState, useEffect, useRef } from "react"
 import axios from 'axios'
-import WritePopup from "./WritePopup";
-import './Sidebar.module.css'
+import styles from './Sidebar.module.css'
 
 function Sidebar() {
 
@@ -39,14 +38,14 @@ function Sidebar() {
 
   return (
     <>
-      <div className="sidebar">
-        <button className="createBtn" onClick={() => {
+      <div className={styles.sidebar}>
+        <button className={styles.createBtn} onClick={() => {
           setCreateOpen(!createOpen);
         }}><span>
             {/* <img src={'/pencil.png'} ></img> */}
           </span> 결재작성</button>
         {createOpen && (
-          <ul className="dropdown-menu">
+          <ul className={styles['dropdown-menu']}>
             {forms.map((form, index) => (
               <li key={form.id} onClick={() => window.open(
                 `/approval/write?form=${form.reactName}`,
@@ -56,26 +55,25 @@ function Sidebar() {
             ))}
           </ul>
         )}
-        <div className="menu-box">
-          <hr className="menu-line"></hr>
-          <div className="menu-title">개인결재함</div>
-          <div className="menu-list">결재함</div>
-          <div className="menu-list">진행함</div>
-          <div className="menu-list">완료함</div>
-          <div className="menu-list">임시저장함</div>
-          <div className="menu-list">참조함</div>
-          <div className="menu-list">반려함</div>
+        <div className={styles.menuBox}>
+          <hr className={styles.menuLine}></hr>
+          <div className={styles.menuTitle}>개인결재함</div>
+          <div className={styles.menuList}>결재함</div>
+          <div className={styles.menuList}>진행함</div>
+          <div className={styles.menuList}>완료함</div>
+          <div className={styles.menuList}>임시저장함</div>
+          <div className={styles.menuList}>참조함</div>
+          <div className={styles.menuList}>반려함</div>
         </div>
-        <div className="menu-box">
-          <hr className="menu-line"></hr>
-          <div className="menu-title">부서결재함</div>
-          <div className="menu-list">완료함</div>
-          <div className="menu-list">참조함</div>
+        <div className={styles.menuBox}>
+          <hr className={styles.menuLine}></hr>
+          <div className={styles.menuTitle}>부서결재함</div>
+          <div className={styles.menuList}>완료함</div>
+          <div className={styles.menuList}>참조함</div>
         </div>
       </div>
     </>
   )
 }
-
 
 export default Sidebar

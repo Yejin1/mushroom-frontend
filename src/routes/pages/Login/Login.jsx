@@ -59,7 +59,7 @@ function Login() {
             onChange={(e) => setLoginId(e.target.value)}
           />
           <input
-            type="text"
+            type="password"
             placeholder='비밀번호'
             className={styles['login-input']}
             value={password}

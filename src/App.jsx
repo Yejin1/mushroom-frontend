@@ -9,15 +9,17 @@ import '@toast-ui/editor-plugin-color-syntax/dist/toastui-editor-plugin-color-sy
 import '@toast-ui/editor/dist/toastui-editor-viewer.css';
 import { useState } from 'react'
 import './App.css'
+
 import { BrowserRouter as Router, Routes, Route, Navigate, useLocation } from 'react-router-dom'
 import Login from './routes/pages/Login/Login'
 import Home from './routes/pages/Home'
 import Navbar from './routes/components/Navbar/Navbar';
-import ApprovalMain from './routes/features/board/BoardList';
+import ApprovalMain from './routes/features/approval/ApprovalMain';
 import WritePopup from './routes/features/approval/popup/WritePopup';
 import ReadPopup from './routes/features/approval/popup/ReadPopup';
 import Join from './routes/pages/Join/Join'
 import BoardList from './routes/features/board/BoardList';
+
 
 function App() {
 

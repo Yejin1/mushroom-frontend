@@ -222,7 +222,7 @@ function Join() {
           <label className={styles['join-label']}>비밀번호</label>
           <input
             className={styles['join-input']}
-            type="text"
+            type="password"
             value={password}
             onChange={(e) => setPassword(e.target.value)}></input>
         </div>
@@ -230,7 +230,7 @@ function Join() {
           <label className={styles['join-label']}>비밀번호 확인</label>
           <input
             className={styles['join-input']}
-            type="text"
+            type="password"
             value={password2}
             onChange={(e) => checkSamePwd(e.target.value)}></input>
           <label>{pwdLabel}</label>

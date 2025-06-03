@@ -5,8 +5,8 @@
 import BoardMenu from "./BoardMenu"
 import React, { useEffect, useState } from "react"
 import axios from 'axios'
-import './BoardList.css'
-import './BoardMenu.css'
+import styles from './BoardList.module.css'
+
 
 function BoardList() {
 
@@ -21,16 +21,16 @@ function BoardList() {
         Authorization: `Bearer ${token}`
       },
       params: {
-        usrId: 1,
-        statusCd: 3,
         page: page,
         size: 10,
-        sort: 'createDt,desc'
+        sort: 'createdDt,desc'
       }
     })
       .then((response) => {
+        console.log(' response ', response);
         setTotalPages(response.data.totalPages);
         setApprovals(response.data.content);
+        console.log(' 성공 ', response.data);
       })
       .catch((error) => {
         console.error(' 실패 ', error);
@@ -48,24 +48,24 @@ function BoardList() {
   };
 
   return (
-    <div className="approval-wrapper">
+    <div className={styles.boardWrapper}>
       <BoardMenu>
       </BoardMenu>
-      <div className="approval-in-wrapper">
-        <div className="menu-name">공지사항</div>
-        <div className="approval-search-wrapper">
-          <div className="approval-search">
-            <div>제목 <span className="approval-search-s">▼</span></div>
-            <input></input>
-            <img src={'/search.png'}></img>
+      <div className={styles.boardInWrapper}>
+        <div className={styles.menuName}>공지사항</div>
+        <div className={styles.boardSearchWrapper}>
+          <div className={styles.boardSearch}>
+            <div>제목 <span className={styles.boardSearchS}>▼</span></div>
+            <input />
+            <img src={'/search.png'} />
           </div>
-          <div className="approval-search">
-            <div>작성일 <span className="approval-search-s">▼</span></div>
-            <input></input>
+          <div className={styles.boardSearch}>
+            <div>작성일 <span className={styles.boardSearchS}>▼</span></div>
+            <input />
           </div>
         </div>
-        <div className="approval-list-wrapper">
-          <table className="approval-list-table">
+        <div className={styles.boardListWrapper}>
+          <table className={styles.boardListTable}>
             <thead>
               <tr>
                 <th>번호</th>
@@ -80,11 +80,15 @@ function BoardList() {
               {approvals.map((doc, index) => (
                 <tr key={doc.id}>
                   <td>{index + page * 10 + 1}</td>
-                  <td>{doc.formNm}</td>
-                  <td><span onClick={() => handleOpenDoc(doc.id, doc.formId)}>{doc.title}</span></td>
-                  <td>{doc.writerNm}</td>
-                  <td>{doc.createDt}</td>
-                  <td>{doc.completedDt}</td>
+                  <td>
+                    <span onClick={() => handleOpenDoc(doc.id, doc.formId)}>
+                      {doc.title}
+                    </span>
+                  </td>
+                  <td>{doc.authorName}</td>
+                  <td>{doc.createdDt}</td>
+                  <td>{doc.viewCount}</td>
+                  <td>{doc.viewCount}</td>
                 </tr>
               ))
               }

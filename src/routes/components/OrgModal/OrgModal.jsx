@@ -35,33 +35,59 @@ function OrgModal({ onClose }) {
                 담당업무 <span className={styles['org-mushroom-info-cont']}> 버섯캐기</span>
               </div>
               <div className={styles['org-mushroom-info-head']}>
-                한마디 <span className={styles['org-mushroom-info-cont']}> 노루와 고라니의 차이를 아십니까</span>
+                한마디 <span className={styles['org-mushroom-info-cont']}> 노루와 고라니의 차이를 아시나요</span>
               </div>
             </div>
           </div>
           <div className={styles['org-mushroom']}>
             <div className={styles['org-mushroom-profile']}>
-              <img src='./img_profile/10001.png' alt="프로필"></img>
+              <img src='./img_profile/10005.png' alt="프로필"></img>
             </div>
             <hr />
             <div className={styles['org-mushroom-info']}>
               <div className={styles['org-mushroom-info-name']}>
-                노루궁뎅이 <span className={styles['org-mushroom-info-position']}> 과장</span>
+                송로버섯 <span className={styles['org-mushroom-info-position']}> 팀장</span>
               </div>
               <div className={styles['org-mushroom-info-head']}>
-                부서 <span className={styles['org-mushroom-info-cont']}> 인사팀</span>
+                부서 <span className={styles['org-mushroom-info-cont']}> 영업1팀</span>
               </div>
               <div className={styles['org-mushroom-info-head']}>
-                연락처 <span className={styles['org-mushroom-info-cont']}> 43-242-2423</span>
+                연락처 <span className={styles['org-mushroom-info-cont']}> 43-242-2412</span>
               </div>
               <div className={styles['org-mushroom-info-head']}>
-                메일 <span className={styles['org-mushroom-info-cont']}> deer_hip@mushroom.net</span>
+                메일 <span className={styles['org-mushroom-info-cont']}> truffle@mushroom.net</span>
               </div>
               <div className={styles['org-mushroom-info-head']}>
-                담당업무 <span className={styles['org-mushroom-info-cont']}> 버섯캐기</span>
+                담당업무 <span className={styles['org-mushroom-info-cont']}> 영업</span>
               </div>
               <div className={styles['org-mushroom-info-head']}>
-                한마디 <span className={styles['org-mushroom-info-cont']}> 노루와 고라니의 차이를 아십니까</span>
+                한마디 <span className={styles['org-mushroom-info-cont']}> I'm Truffle, not Troble </span>
+              </div>
+            </div>
+          </div>
+          <div className={styles['org-mushroom']}>
+            <div className={styles['org-mushroom-profile']}>
+              <img src='./img_profile/10010.png' alt="프로필"></img>
+            </div>
+            <hr />
+            <div className={styles['org-mushroom-info']}>
+              <div className={styles['org-mushroom-info-name']}>
+                팽이버섯 <span className={styles['org-mushroom-info-position']}> 대리</span>
+              </div>
+              <div className={styles['org-mushroom-info-head']}>
+                부서 <span className={styles['org-mushroom-info-cont']}> 영업지원팀</span>
+              </div>
+              <div className={styles['org-mushroom-info-head']}>
+                연락처 <span className={styles['org-mushroom-info-cont']}> 43-242-2424</span>
+              </div>
+              <div className={styles['org-mushroom-info-head']}>
+                메일 <span className={styles['org-mushroom-info-cont']}> pang@mushroom.net</span>
+              </div>
+              <div className={styles['org-mushroom-info-head']}>
+                담당업무 <span className={styles['org-mushroom-info-cont']}> 영업지원</span>
+              </div>
+              <div className={styles['org-mushroom-info-head']}>
+                한마디 <span className={styles['org-mushroom-info-cont']}> 마라탕 먹으러 가실분 </span>
               </div>
             </div>
           </div>

@@ -3,11 +3,10 @@
  * - 결재 목록 화면
  * - 전자결재 로그인 시 가장 먼저 보이는 화면
  */
-import Sidebar from "./Sidebar"
+import Sidebar from './components/Sidebar'
 import React, { useEffect, useState } from "react"
 import axios from 'axios'
 import './ApprovalMain.css'
-import './Sidebar.css'
 
 function ApprovalMain() {
 
@@ -26,7 +25,7 @@ function ApprovalMain() {
         statusCd: 3,
         page: page,
         size: 10,
-        sort: 'createDt,desc'
+        sort: 'createdDt,desc'
       }
     })
       .then((response) => {
@@ -88,7 +87,7 @@ function ApprovalMain() {
                   <td>{doc.formNm}</td>
                   <td><span onClick={() => handleOpenDoc(doc.id, doc.formId)}>{doc.title}</span></td>
                   <td>{doc.writerNm}</td>
-                  <td>{doc.createDt}</td>
+                  <td>{doc.createdDt}</td>
                   <td>{doc.completedDt}</td>
                 </tr>
               ))

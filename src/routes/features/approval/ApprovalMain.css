@@ -1,17 +1,17 @@
-.approval-wrapper{
+.approval-wrapper {
     display: flex;
 }
 
-.approval-in-wrapper{
+.approval-in-wrapper {
     display: block;
-    flex:1;
+    flex: 1;
 }
 
-.approval-list-wrapper{
+.approval-list-wrapper {
     display: block;
 }
 
-.menu-name{
+.menu-name {
     font-family: "SCDream5";
     font-size: 16px;
     text-align: left;
@@ -20,31 +20,32 @@
     display: block
 }
 
-.approval-search-wrapper{
+.approval-search-wrapper {
     display: flex;
 }
 
 
-.approval-search{
+.approval-search {
     display: flex;
     width: 250px;
     height: 30px;
     line-height: 30px;
     margin: 14px 14px;
     border-radius: 20px;
-    background-color:  #fdfff5;
+    background-color: #fdfff5;
     border: 1px solid #d9e7c6;
 }
 
-.approval-search div{
+.approval-search div {
     width: 30%;
     font-size: 14px;
-    color:#404d2f;
+    color: #404d2f;
     line-height: 30px;
     background-color: #f7faec;
     border-radius: 20px;
 }
-.approval-search-s{
+
+.approval-search-s {
     font-size: 12px;
 }
 
@@ -53,7 +54,7 @@
     background-color: #fdfff5;
     border: 0px solid #e8f1bd;
     outline: none;
-    border-left: 1px solid  #e8f1bd;
+    border-left: 1px solid #e8f1bd;
 }
 
 .approval-search img {
@@ -63,43 +64,45 @@
     border: 0px;
     margin: 6px 5px;
 }
-.approval-search-open-wrapper{
+
+.approval-search-open-wrapper {
     display: flex;
     width: 250px;
     margin: 14px 14px;
     align-items: center;
 }
 
-.approval-search-open{
+.approval-search-open {
     font-size: 14px;
-    color:#8d996a;
+    color: #8d996a;
     font-family: "SCDream4";
     cursor: pointer;
     text-align: left;
 }
-.approval-search-open-img{
+
+.approval-search-open-img {
     margin: 4px;
 }
 
-.approval-list-table{
+.approval-list-table {
     background-color: #fcfff5;
     width: 100%;
-    border-collapse : collapse;
+    border-collapse: collapse;
     margin: 5px 10px;
 }
 
-.approval-list-table th{
+.approval-list-table th {
     background-color: #edf5de;
-    font-size:14px;
+    font-size: 14px;
     font-family: "SCDream3";
     padding: 6px 6px;
-    border: 1px solid  #ccd8b3;
+    border: 1px solid #ccd8b3;
     border-left: none;
     border-right: none;
 }
 
-.approval-list-table td{
-    font-size:13px;
+.approval-list-table td {
+    font-size: 13px;
     font-family: "SCDream2";
     padding: 4px 4px;
     border: 1px solid #dce4cc;

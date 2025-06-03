@@ -4,20 +4,19 @@
  */
 import { useState, useEffect, useRef } from "react"
 import axios from 'axios'
+import BoardTree from "./components/MenuTree"
+import styles from './BoardMenu.module.css'
 
 function BoardMenu() {
 
   let [createOpen, setCreateOpen] = useState(false);
   let [forms, setforms] = useState([]);
-  let isFirst = useRef(true);
+  let [menus, setMenus] = useState([]);
+  const [selectedBoard, setSelectedBoard] = useState(null);
   const token = localStorage.getItem('accesToken');
 
   useEffect(() => {
-    if (isFirst.current) {
-      isFirst.current = false;
-      return;
-    }
-    axios.get('http://localhost:8080/api/approvals/formList', {
+    axios.get('http://localhost:8080/api/board/menuList', {
       headers: {
         Authorization: `Bearer ${token}`
       },
@@ -26,24 +25,24 @@ function BoardMenu() {
     })
       .then((response) => {
         //console.log(response);
-        setforms(response.data);
+        setMenus(response.data);
       })
       .catch((error) => {
         console.error(' 실패 ', error);
       });
-  }, [createOpen]);
+  }, []);
 
 
   return (
     <>
-      <div className="sidebar">
-        <button className="createBtn" onClick={() => {
+      <div className={styles.sidebar}>
+        <button className={styles.createBtn} onClick={() => {
           setCreateOpen(!createOpen);
         }}><span>
             {/* <img src={'/pencil.png'} ></img> */}
           </span> 글쓰기</button>
         {createOpen && (
-          <ul className="dropdown-menu">
+          <ul className={styles['dropdown-menu']}>
             {forms.map((form, index) => (
               <li key={form.id} onClick={() => window.open(
                 `/approval/write?form=${form.reactName}`,
@@ -53,26 +52,18 @@ function BoardMenu() {
             ))}
           </ul>
         )}
-        <div className="menu-box">
-          <hr className="menu-line"></hr>
-          <div className="menu-title">개인결재함</div>
-          <div className="menu-list">결재함</div>
-          <div className="menu-list">진행함</div>
-          <div className="menu-list">완료함</div>
-          <div className="menu-list">임시저장함</div>
-          <div className="menu-list">참조함</div>
-          <div className="menu-list">반려함</div>
-        </div>
-        <div className="menu-box">
-          <hr className="menu-line"></hr>
-          <div className="menu-title">부서결재함</div>
-          <div className="menu-list">완료함</div>
-          <div className="menu-list">참조함</div>
-        </div>
+        <BoardTree
+          boardMenuData={menus}
+          className={styles['board-tree']}
+          onSelectBoard={(boardId) => {
+            console.log('선택된 게시판 ID:', boardId);
+            // 게시글 목록 불러오기
+          }}
+        />
+
       </div>
     </>
   )
 }
-
 
 export default BoardMenu
