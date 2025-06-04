@@ -1,0 +1,47 @@
+/* ApprovalBtn.module.css */
+
+.btnWrapper {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 24px;
+    gap: 0;
+    padding: 0 30px;
+}
+
+.leftGroup {
+    display: flex;
+    gap: 12px;
+}
+
+.rightGroup {
+    display: flex;
+    gap: 12px;
+}
+
+.btn {
+    font-family: "SCDream5";
+    font-size: 16px;
+    padding: 10px 22px;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background 0.2s, box-shadow 0.2s;
+    box-shadow: 2px 2px 8px #dbeed1;
+    background-color: #7bb13c;
+    color: #fff;
+}
+
+.btn:hover {
+    background-color: #5d8c2e;
+    box-shadow: 2px 4px 12px #b7d7a2;
+}
+
+.redBtn {
+    background-color: #e74c3c;
+    color: #fff;
+}
+
+.redBtn:hover {
+    background-color: #c0392b;
+}

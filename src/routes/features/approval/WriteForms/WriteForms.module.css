@@ -1,0 +1,101 @@
+.docForm {
+    background: #f8fcf6;
+    /* 연한 초록빛 화이트 */
+    border-radius: 14px;
+    box-shadow: 0 4px 18px #e3e3e3;
+    padding: 40px 48px 32px 48px;
+    max-width: 700px;
+    margin: 40px auto;
+    font-family: "SCDream4";
+    border: 1.5px solid #e0e9c7;
+    /* 연한 초록빛 테두리 */
+}
+
+.docHeader {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 32px;
+}
+
+.docHeader h2 {
+    font-family: "SCDream5";
+    color: #4b5a36;
+    /* 딥그린 */
+    font-size: 1.7rem;
+    margin: 0;
+}
+
+.urgentLabel {
+    display: flex;
+    align-items: center;
+    font-size: 15px;
+    color: #e74c3c;
+    font-family: "SCDream4";
+    gap: 4px;
+}
+
+.formCheckbox {
+    accent-color: #e74c3c;
+    margin-right: 4px;
+}
+
+.docRow {
+    display: flex;
+    align-items: flex-start;
+    margin-bottom: 22px;
+}
+
+.docLabel {
+    width: 80px;
+    font-family: "SCDream5";
+    color: #4b5a36;
+    font-size: 15px;
+    margin-top: 8px;
+}
+
+.docInput {
+    flex: 1;
+    padding: 10px 14px;
+    border: 1.5px solid #b6d88c;
+    /* 연초록 */
+    border-radius: 7px;
+    font-size: 15px;
+    background: #fafdff;
+    font-family: "SCDream4";
+}
+
+.docTextarea {
+    flex: 1;
+    padding: 10px 14px;
+    border: 1.5px solid #b6d88c;
+    border-radius: 7px;
+    font-size: 15px;
+    background: #fafdff;
+    font-family: "SCDream4";
+    resize: vertical;
+    min-height: 90px;
+}
+
+.docFooter {
+    text-align: right;
+    margin-top: 32px;
+}
+
+.submitBtn {
+    background: #7bb13c;
+    /* 메인 초록 */
+    color: #fff;
+    font-family: "SCDream5";
+    font-size: 16px;
+    border: none;
+    border-radius: 8px;
+    padding: 12px 38px;
+    cursor: pointer;
+    transition: background 0.2s;
+    box-shadow: 1px 2px 8px #e3e3e3;
+}
+
+.submitBtn:hover {
+    background: #5d8c2e;
+}

@@ -39,7 +39,6 @@ function BoardMenu() {
         <button className={styles.createBtn} onClick={() => {
           setCreateOpen(!createOpen);
         }}><span>
-            {/* <img src={'/pencil.png'} ></img> */}
           </span> 글쓰기</button>
         {createOpen && (
           <ul className={styles['dropdown-menu']}>

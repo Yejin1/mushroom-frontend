@@ -34,6 +34,10 @@ function ApprovalMain() {
       })
       .catch((error) => {
         console.error(' 실패 ', error);
+        if (error.response && error.response.status === 403) {
+          alert('로그인이 필요합니다. 다시 로그인 해주세요.');
+          window.location.href = '/login'; // 로그인 페이지로 리다이렉트
+        }
       });
   }, [page]);
 
@@ -46,6 +50,18 @@ function ApprovalMain() {
       '_blank',
       'width=800,height=600,top=100,left=200');
   };
+
+  function formatDateTime(dateString) {
+    if (!dateString) return '';
+    const date = new Date(dateString);
+    const yyyy = date.getFullYear();
+    const MM = String(date.getMonth() + 1).padStart(2, '0');
+    const dd = String(date.getDate()).padStart(2, '0');
+    const hh = String(date.getHours()).padStart(2, '0');
+    const mi = String(date.getMinutes()).padStart(2, '0');
+    const ss = String(date.getSeconds()).padStart(2, '0');
+    return `${yyyy}-${MM}-${dd} ${hh}:${mi}:${ss}`;
+  }
 
   return (
     <div className="approval-wrapper">
@@ -85,10 +101,17 @@ function ApprovalMain() {
                 <tr key={doc.id}>
                   <td>{index + page * 10 + 1}</td>
                   <td>{doc.formNm}</td>
-                  <td><span onClick={() => handleOpenDoc(doc.id, doc.formId)}>{doc.title}</span></td>
+                  <td>
+                    <span
+                      className="approval-title"
+                      onClick={() => handleOpenDoc(doc.id, doc.formId)}
+                    >
+                      {doc.title}
+                    </span>
+                  </td>
                   <td>{doc.writerNm}</td>
-                  <td>{doc.createdDt}</td>
-                  <td>{doc.completedDt}</td>
+                  <td>{formatDateTime(doc.createdDt)}</td>
+                  <td>{formatDateTime(doc.completedDt)}</td>
                 </tr>
               ))
               }

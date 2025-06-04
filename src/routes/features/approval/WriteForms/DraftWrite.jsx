@@ -5,56 +5,21 @@
  * - 양식 코드 : DRAFT
  */
 
-import React, { useState } from "react";
-import axios from 'axios';
+import React from "react";
 import MainEditor from "../../../components/editor/MainEditor";
 
-function DraftWrite() {
-  const [form, setForm] = useState({
-    title: "",
-    startDate: "",
-    endDate: "",
-    reason: "",
-    urgentYn: "N",
-  });
-
-  const [content, setContent] = useState('');
+function DraftWrite({ form, setForm, content, setContent, setEditorYn }) {
+  React.useEffect(() => {
+    if (setEditorYn) setEditorYn("Y"); // 에디터 있는 양식이므로 무조건 Y로 세팅
+  }, [setEditorYn]);
 
   const handleChange = (e) => {
     const { name, value } = e.target;
     setForm((prev) => ({ ...prev, [name]: value }));
   };
 
-  const handleSubmit = async (e) => {
-    e.preventDefault();
-
-    const token = localStorage.getItem('accesToken');
-    const payload = {
-      formId: 2,
-      title: form.title,
-      writer: 1, //백엔드에서 세팅함
-      urgentYn: form.urgentYn,
-      editorYn: 'Y',
-      editorContent: content
-    };
-
-
-    try {
-      const response = await axios.post("http://localhost:8080/api/approvals", payload, {
-        headers: {
-          Authorization: `Bearer ${token}`
-        }
-      });
-      window.close();
-      console.log("저장성공:", response.data);
-
-    } catch (error) {
-      console.log("저장실패:", error);
-    }
-  };
-
   return (
-    <form onSubmit={handleSubmit}>
+    <div>
       <h2>일반기안서</h2>
 
       <div>
@@ -75,7 +40,6 @@ function DraftWrite() {
         />
       </div>
 
-
       <div>
         <label>
           <input
@@ -89,15 +53,10 @@ function DraftWrite() {
           />
           <span>긴급</span>
         </label>
-
-        <button
-          type="submit"
-        >
-          제출하기
-        </button>
       </div>
-    </form>
+      {/* 제출 버튼은 ApprovalWriteBtn의 [상신] 버튼으로 대체 */}
+    </div>
   );
-};
+}
 
 export default DraftWrite;

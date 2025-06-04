@@ -1,0 +1,54 @@
+.previewWrapper {
+    margin: 18px 0 26px 0;
+    min-height: 38px;
+    font-size: 15px;
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 0 10px;
+    padding: 14px 40px;
+    background: #f6f8f3;
+    border-left: 5px solid #7bb13c;
+    border-radius: 12px;
+    box-shadow: 0 2px 8px #e7f3d1;
+}
+
+.lineLabel {
+    font-family: "SCDream5";
+    color: #5d8c2e;
+    margin-right: 12px;
+    font-size: 16px;
+    line-height: 28px;
+}
+
+.userChip {
+    display: inline-flex;
+    align-items: center;
+    background: #fff;
+    color: #3a4a1f;
+    border: 1.2px solid #b6d88c;
+    border-radius: 16px;
+    padding: 5px 16px 5px 12px;
+    margin-right: 8px;
+    font-size: 15px;
+    font-family: "SCDream4";
+    box-shadow: 0 1px 4px #e7f3d1;
+    position: relative;
+    transition: box-shadow 0.2s, border 0.2s;
+}
+
+.userChip:not(:last-child)::after {
+    content: '→';
+    color: #b6d88c;
+    font-size: 16px;
+    margin-left: 10px;
+    margin-right: 2px;
+    font-family: "SCDream3";
+}
+
+.empty {
+    color: #bbb;
+    margin-left: 8px;
+    font-size: 15px;
+    font-family: "SCDream3";
+}

@@ -109,3 +109,13 @@
     border-left: none;
     border-right: none;
 }
+
+.approval-title {
+    cursor: pointer;
+    transition: color 0.2s, text-decoration 0.2s;
+}
+
+.approval-title:hover {
+    color: #7bb13c;
+    font-family: "SCDream4";
+}

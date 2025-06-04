@@ -109,3 +109,12 @@
     border-left: none;
     border-right: none;
 }
+
+.boardTitle {
+    cursor: pointer;
+}
+
+.boardTitle:hover {
+    color: #7bb13c;
+    text-decoration: underline;
+}

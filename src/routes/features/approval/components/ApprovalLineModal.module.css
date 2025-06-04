@@ -1,0 +1,138 @@
+.overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.3);
+    z-index: 1000;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.modal {
+    background: #fff;
+    border-radius: 12px;
+    min-width: 400px;
+    width: 420px;
+    max-width: 90vw;
+    min-height: 260px;
+    max-height: 500px;
+    box-shadow: 0 4px 24px rgba(0,0,0,0.18);
+    padding: 24px 28px 20px 28px;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+}
+
+.header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 16px;
+}
+
+.closeBtn {
+    background: none;
+    border: none;
+    font-size: 22px;
+    cursor: pointer;
+}
+
+.body {
+    flex: 1 1 auto;
+    overflow-y: auto;
+    min-height: 120px;
+    max-height: 350px;
+}
+
+.userList {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 16px;
+    max-height: 320px;
+    overflow-y: auto;
+}
+
+.userListColumn {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    /* overflow: unset; -- 이 줄이 있으면 삭제하세요 */
+}
+
+.userCard {
+    background: #f8fce0;
+    border: 1.5px solid #e0e9c7;
+    border-radius: 10px;
+    padding: 14px 18px;
+    min-width: 180px;
+    box-shadow: 1px 2px 8px #e7f3d1;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    cursor: pointer;
+    transition: border 0.2s, background 0.2s;
+}
+
+.userCard:hover {
+    border: 2px solid #7bb13c;
+    background: #f0ffe0;
+}
+
+.selected {
+    border: 2.5px solid #7bb13c;
+    background: #eaffc2;
+}
+
+.userName {
+    font-family: "SCDream5";
+    font-size: 16px;
+    color: #3a4a1f;
+    margin-bottom: 2px;
+}
+
+.userPos {
+    font-family: "SCDream3";
+    font-size: 14px;
+    color: #7bb13c;
+}
+
+.userDept {
+    font-size: 14px;
+    color: #6e7c5e;
+    margin-bottom: 2px;
+}
+
+.userEmail {
+    font-size: 13px;
+    color: #a0a0a0;
+}
+
+.emptyMsg {
+    color: #b0b0b0;
+    font-size: 15px;
+    margin: 20px auto;
+}
+
+.completeBtn {
+    background: #7bb13c;
+    color: #fff;
+    font-family: "SCDream5";
+    font-size: 15px;
+    border: none;
+    border-radius: 8px;
+    padding: 8px 24px;
+    cursor: pointer;
+    transition: background 0.2s;
+    margin-left: 8px;
+}
+.completeBtn:disabled {
+    background: #c8e2b0;
+    color: #fff;
+    cursor: not-allowed;
+}
+.completeBtn:hover:enabled {
+    background: #5d8c2e;
+}
