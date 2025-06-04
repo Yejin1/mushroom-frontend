@@ -6,6 +6,7 @@
 
 import React, { useEffect, useState } from "react";
 import axios from 'axios';
+import styles from './ReadForms.module.css';
 
 function VacationRead({ docId }) {
   const token = localStorage.getItem('accesToken');
@@ -13,7 +14,7 @@ function VacationRead({ docId }) {
     title: "",
     urgentYn: "N",
   });
-  const [cont, setCont] = useState([]);
+  const [cont, setCont] = useState({});
 
   useEffect(() => {
     axios.get('http://localhost:8080/api/approvals/read', {
@@ -36,40 +37,34 @@ function VacationRead({ docId }) {
       .catch((error) => {
         console.error(' 실패 ', error);
       });
-  }, []);
+  }, [docId, token]);
 
 
 
   return (
-    <div>
-      <h2>휴가 신청서</h2>
-
-      <div>
-        <label>제목</label>
-        <div>{form.title}</div>
+    <div className={styles.vacationContainer}>
+      <div className={styles.vacationTitle}>
+        휴가 신청서
+        {form.urgentYn === "Y" && (
+          <span className={styles.vacationUrgent}>긴급</span>
+        )}
       </div>
 
-      <div>
-        <label>시작일</label>
-        <div>{cont.startDate}</div>
+      <div className={styles.vacationRow}>
+        <div className={styles.vacationLabel}>제목</div>
+        <div className={styles.vacationValue}>{form.title}</div>
       </div>
-
-      <div>
-        <label>종료일</label>
-        <div>{cont.endDate}</div>
+      <div className={styles.vacationRow}>
+        <div className={styles.vacationLabel}>시작일</div>
+        <div className={styles.vacationValue}>{cont.startDate}</div>
       </div>
-
-      <div>
-        <label>사유</label>
-        <div>{cont.reason}</div>
+      <div className={styles.vacationRow}>
+        <div className={styles.vacationLabel}>종료일</div>
+        <div className={styles.vacationValue}>{cont.endDate}</div>
       </div>
-
-      <div>
-        <label>
-          <span>긴급</span>
-          <div>{form.urgentYn}</div>
-        </label>
-
+      <div className={styles.vacationRow}>
+        <div className={styles.vacationLabel}>사유</div>
+        <div className={styles.vacationValue}>{cont.reason}</div>
       </div>
     </div>
   );
