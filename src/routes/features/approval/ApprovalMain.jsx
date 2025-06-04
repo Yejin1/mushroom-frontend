@@ -9,9 +9,9 @@ import axios from 'axios'
 import './ApprovalMain.css'
 
 function ApprovalMain() {
-
   const [approvals, setApprovals] = useState([]);
   const [page, setPage] = useState(0);
+  const [boxType, setBoxType] = useState('my-completed'); 
   const token = localStorage.getItem('accesToken');
   const [totalPages, setTotalPages] = useState(0);
 
@@ -21,11 +21,10 @@ function ApprovalMain() {
         Authorization: `Bearer ${token}`
       },
       params: {
-        usrId: 1,
-        statusCd: 3,
         page: page,
         size: 10,
-        sort: 'createdDt,desc'
+        sort: 'createdDt,desc',
+        boxType: boxType // boxType 추가
       }
     })
       .then((response) => {
@@ -36,19 +35,28 @@ function ApprovalMain() {
         console.error(' 실패 ', error);
         if (error.response && error.response.status === 403) {
           alert('로그인이 필요합니다. 다시 로그인 해주세요.');
-          window.location.href = '/login'; // 로그인 페이지로 리다이렉트
+          window.location.href = '/login';
         }
       });
-  }, [page]);
+  }, [page, boxType]); // boxType 변경 시 재조회
 
   const handlePageChange = (newPage) => {
     setPage(newPage);
   };
 
+  // 결재함 타입 변경 핸들러
+  const handleBoxTypeChange = (type) => {
+    console.log(type);
+    setBoxType(type);
+    setPage(0); // 결재함 변경 시 첫 페이지로 이동
+  };
+
   const handleOpenDoc = (docId, formId) => {
-    window.open(`/approval/read?formId=${formId}&docId=${docId}`,
+    window.open(
+      `/approval/read?formId=${formId}&docId=${docId}&boxType=${boxType}`,
       '_blank',
-      'width=800,height=600,top=100,left=200');
+      'width=800,height=600,top=100,left=200'
+    );
   };
 
   function formatDateTime(dateString) {
@@ -65,8 +73,7 @@ function ApprovalMain() {
 
   return (
     <div className="approval-wrapper">
-      <Sidebar>
-      </Sidebar>
+      <Sidebar onBoxTypeChange={handleBoxTypeChange} />
       <div className="approval-in-wrapper">
         <div className="menu-name">결재완료함</div>
         <div className="approval-search-wrapper">

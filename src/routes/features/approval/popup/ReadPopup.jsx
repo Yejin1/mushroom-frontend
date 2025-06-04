@@ -13,6 +13,7 @@ function ReadPopup() {
   const params = new URLSearchParams(window.location.search);
   const docId = params.get('docId');
   const formId = params.get('formId');
+  const boxType = params.get('boxType'); // boxType 파라미터 추가
   const token = localStorage.getItem('accesToken');
 
   //문서 양식 컴포넌트 목록 변수화(양식 신규 생성할때마다 여기 추가해줘야함)
@@ -56,9 +57,9 @@ function ReadPopup() {
   }
 
   return (
-    <div >
-      <ApprovalReadBtn></ApprovalReadBtn>
-      <FormComponent docId={docId}></FormComponent>
+    <div>
+      <ApprovalReadBtn boxType={boxType} />
+      <FormComponent docId={docId} />
     </div>
   );
 }

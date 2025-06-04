@@ -7,7 +7,7 @@ import { useState, useEffect, useRef } from "react"
 import axios from 'axios'
 import styles from './Sidebar.module.css'
 
-function Sidebar() {
+function Sidebar({ onBoxTypeChange }) {
 
   let [createOpen, setCreateOpen] = useState(false);
   let [forms, setforms] = useState([]);
@@ -41,9 +41,11 @@ function Sidebar() {
       <div className={styles.sidebar}>
         <button className={styles.createBtn} onClick={() => {
           setCreateOpen(!createOpen);
-        }}><span>
+        }}>
+          <span>
             {/* <img src={'/pencil.png'} ></img> */}
-          </span> 결재작성</button>
+          </span> 결재작성
+        </button>
         {createOpen && (
           <ul className={styles['dropdown-menu']}>
             {forms.map((form, index) => (
@@ -58,18 +60,18 @@ function Sidebar() {
         <div className={styles.menuBox}>
           <hr className={styles.menuLine}></hr>
           <div className={styles.menuTitle}>개인결재함</div>
-          <div className={styles.menuList}>결재함</div>
-          <div className={styles.menuList}>진행함</div>
-          <div className={styles.menuList}>완료함</div>
-          <div className={styles.menuList}>임시저장함</div>
-          <div className={styles.menuList}>참조함</div>
-          <div className={styles.menuList}>반려함</div>
+          <div className={styles.menuList} onClick={() => onBoxTypeChange('my-approval')}>결재함</div>
+          <div className={styles.menuList} onClick={() => onBoxTypeChange('my-in-progress')}>진행함</div>
+          <div className={styles.menuList} onClick={() => onBoxTypeChange('my-completed')}>완료함</div>
+          <div className={styles.menuList} onClick={() => {}}>임시저장함</div>
+          <div className={styles.menuList} onClick={() => onBoxTypeChange('my-referenced')}>참조함</div>
+          <div className={styles.menuList} onClick={() => onBoxTypeChange('my-rejected')}>반려함</div>
         </div>
         <div className={styles.menuBox}>
           <hr className={styles.menuLine}></hr>
           <div className={styles.menuTitle}>부서결재함</div>
-          <div className={styles.menuList}>완료함</div>
-          <div className={styles.menuList}>참조함</div>
+          <div className={styles.menuList} onClick={() => onBoxTypeChange('dept-completed')}>완료함</div>
+          <div className={styles.menuList} onClick={() => onBoxTypeChange('dept-referenced')}>참조함</div>
         </div>
       </div>
     </>

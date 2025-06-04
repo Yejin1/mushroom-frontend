@@ -5,9 +5,7 @@
 import styles from './ApprovalBtn.module.css'
 
 function ApprovalReadBtn({
-    showWithdraw = false,
-    showReject = false,
-    showApprove = false,
+    boxType,
     onWithdraw,
     onReject,
     onApprove,
@@ -16,13 +14,36 @@ function ApprovalReadBtn({
         alert('준비중입니다.');
     };
 
+    // 결재함별 버튼 노출 조건
+    const showReject = boxType === 'my-approval';
+    const showApprove = boxType === 'my-approval';
+    const showWithdraw = false; // 필요시 추가
+
+    const showRefer = [
+        'my-in-progress',
+        'my-completed',
+        'my-referenced',
+        'dept-completed',
+        'dept-referenced'
+    ].includes(boxType);
+
+    const showReuse = [
+        'my-completed',
+        'my-rejected',
+        'dept-completed'
+    ].includes(boxType);
+
     return (
         <div className={styles.btnWrapper}>
             <div className={styles.leftGroup}>
             </div>
             <div className={styles.rightGroup}>
-                <button className={styles.btn} onClick={handleReady}>참조</button>
-                <button className={styles.btn} onClick={handleReady}>재사용</button>
+                {showRefer && (
+                    <button className={styles.btn} onClick={handleReady}>참조</button>
+                )}
+                {showReuse && (
+                    <button className={styles.btn} onClick={handleReady}>재사용</button>
+                )}
                 {showWithdraw && (
                     <button className={styles.btn} onClick={onWithdraw || handleReady}>회수</button>
                 )}
