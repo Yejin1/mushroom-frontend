@@ -21,6 +21,7 @@ function Login() {
 
   const handleLogin = async () => {
     try {
+      console.log(import.meta.env.VITE_BASE_URL);
       const response = await fetch(`${BASE_URL}/api/auth/login`, {
         method: 'POST',
         headers: {
