@@ -44,6 +44,8 @@ jobs:
           app_build_command: |
                                 npm install --legacy-peer-deps
                                 npm run build
+        env:
+          VITE_BASE_URL: "https://mushroom-backend-ahdkabbzbnf5hpca.koreasouth-01.azurewebsites.net"
 
 
   close_pull_request_job:
