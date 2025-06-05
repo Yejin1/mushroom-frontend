@@ -13,6 +13,7 @@ function Login() {
 
   const [loginId, setLoginId] = useState('');
   const [password, setPassword] = useState('');
+  const BASE_URL = import.meta.env.VITE_BASE_URL;
 
   const join = () => {
     navigate('/join');
@@ -20,7 +21,7 @@ function Login() {
 
   const handleLogin = async () => {
     try {
-      const response = await fetch('http://localhost:8080/api/auth/login', {
+      const response = await fetch(`${BASE_URL}/api/auth/login`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -42,6 +43,31 @@ function Login() {
     } catch (error) {
       console.error(error);
       alert('로그인 실패');
+    }
+  };
+
+  const handleVisitorLogin = async () => {
+    try {
+      const response = await fetch(`${BASE_URL}/api/auth/login`, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({ loginId: 'aaa', password: 'qlqjs123!' }),
+      });
+
+      if (!response.ok) {
+        throw new Error('방문자 로그인 실패');
+      }
+
+      const data = await response.json();
+      const token = data.token;
+      localStorage.setItem('accesToken', token);
+
+      navigate("/approval");
+    } catch (error) {
+      console.error(error);
+      alert('방문자 로그인 실패');
     }
   };
 
@@ -70,7 +96,23 @@ function Login() {
           <button className={styles['login-button']} onClick={handleLogin}> 로그인</button>
         </div>
         <div>
-          <button className={styles['login-']} onClick={join}> 회원가입</button>
+          <button className={styles['login-join-button']} onClick={join}>회원가입</button>
+          <span className={styles['login-divider']} aria-hidden="true">|</span>
+          <button
+            className={styles['login-find-button']}
+            onClick={() => alert('준비중입니다.')}
+            type="button"
+          >
+            아이디/비밀번호 찾기
+          </button>
+        </div>
+        <div>
+          <button className={styles['visitor-login-button']}
+            onClick={handleVisitorLogin}
+            type="button"
+          >
+            방문자용 로그인
+          </button>
         </div>
       </div>
     </div>

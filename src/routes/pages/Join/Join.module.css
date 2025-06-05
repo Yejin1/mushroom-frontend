@@ -1,118 +1,148 @@
+/* Join.module.css */
 /* ---------- Layout ---------- */
-.join-page {
+.login-page {
   display: flex;
   justify-content: center;
-  /* 가로 중앙 */
   align-items: center;
-  /* 세로 중앙 */
   min-height: 100vh;
-  /* 화면 전체 높이 */
   width: 100vw;
-  background-color: #F8F1E5;
-  /* 배경색도 여기 지정 */
+  background-color: #fff;
+  /* 배경색 원래대로 */
 }
 
-.join-form {
+.join-form-box {
+  width: 420px;
+  background: #fdfdfb;
+  /* 더 연한 카드 배경 */
+  border-radius: 16px;
+  box-shadow: 0 4px 24px #f3f3f3;
+  padding: 38px 38px 28px 38px;
+  margin: 40px auto;
+}
 
-  width: 45vw;
-  min-width: 400px;
-  height: 70vh;
-  min-height: 400px;
-
-  margin: auto;
-  padding: 20px;
-  background-color: #fcf4dc;
-  border-radius: 12px;
-  border: solid 1px rgb(210, 219, 167);
+.join-title {
   text-align: center;
-  box-shadow: 5px 5px 5px rgb(152, 158, 136);
+  font-size: 2rem;
+  font-family: "SCDream5";
+  color: #88b256;
+  margin-bottom: 32px;
+  letter-spacing: 2px;
 }
 
-/* ---------- Typography ---------- */
-.title {
-  font-size: clamp(30px, 4vw, 40px);
-  line-height: 1.1;
-  font-family: "Moneygraphy-Rounded";
-  margin: 10px;
-}
-
-.title-mushroom {
-  color: rgb(168, 72, 59);
-  -webkit-text-stroke: 0px;
-  -webkit-text-stroke-color: rgb(73, 72, 72);
-}
-
-
-/* ---------- Input ---------- */
 .join-label {
-  width: 300px;
+  display: block;
+  font-family: "SCDream5";
+  color: #6a7a5c;
+  font-size: 15px;
+  margin-bottom: 6px;
+  margin-top: 18px;
   text-align: left;
-  font-size: 16px;
-  padding: 3px 5px;
 }
 
 .join-input {
-  width: clamp(30px, 48vw, 250px);
-  height: 3vh;
-  margin: 4px auto;
-  display: block;
-  font-size: 22px;
-  font-family: "SCDream3";
-  color: rgb(65, 65, 65);
-
-  border: 1px solid rgb(134, 134, 101);
-  border-radius: 6px;
-
-  padding: 3px 5px;
+  width: 100%;
+  padding: 10px 12px;
+  border: 1.5px solid #e0e9c7;
+  /* 더 연한 연초록 */
+  border-radius: 7px;
+  font-size: 15px;
+  background: #f9fbf7;
+  /* 더 연한 배경 */
+  font-family: "SCDream4";
+  margin-bottom: 2px;
+  box-sizing: border-box;
 }
 
-/* ---------- Button ---------- */
 .mini-button {
-  width: 80px;
-  height: 30px;
-  padding: 10px 20px;
-  font-size: 10px;
-  font-family: "SCDream5";
-  color: rgb(51, 51, 51);
-  background-color: #b5cf84;
-
-  border: none;
+  margin-left: 8px;
+  padding: 4px 14px;
+  background: #e8f5df;
+  /* 연한 초록 */
+  color: #7bb13c;
+  border: 1px solid #d2e7c2;
   border-radius: 6px;
+  font-size: 13px;
+  font-family: "SCDream4";
   cursor: pointer;
-  transition: top 0.01s linear;
-  margin: 10px;
-  display: inline-block;
-  text-align: center;
-  position: relative;
+  transition: background 0.2s, color 0.2s;
+}
+
+.mini-button:hover {
+  background: #f3faee;
+  color: #5d8c2e;
 }
 
 .join-button {
-  width: clamp(30px, 50vw, 250px);
-  height: 50px;
-  padding: 10px 20px;
-  font-size: 22px;
+  width: 100%;
+  margin-top: 28px;
+  background: #e8f5df;
+  /* 연한 초록 */
+  color: #7bb13c;
   font-family: "SCDream5";
-  color: rgb(51, 51, 51);
-  background-color: #b5cf84;
-
-  border: none;
-  border-radius: 6px;
+  font-size: 17px;
+  border: 1px solid #d2e7c2;
+  border-radius: 8px;
+  padding: 12px 0;
   cursor: pointer;
-  transition: top 0.01s linear;
-  margin: 10px;
-  display: inline-block;
+  transition: background 0.2s, color 0.2s;
+  box-shadow: 1px 2px 8px #f3f3f3;
+}
+
+.join-button:hover {
+  background: #f3faee;
+  color: #5d8c2e;
+}
+
+.pwd-label {
+  display: block;
+  font-size: 13px;
+  margin-top: 4px;
+  color: #e74c3c;
+  font-family: "SCDream3";
+}
+
+.input-row {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.input-row .join-input {
+  flex: 1 1 0;
+  min-width: 0;
+  margin-bottom: 0;
+  /* 아래 줄 추가: 다른 인풋과 너비 맞춤 */
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.input-row .mini-button {
+  height: 40px;
+  /* 높이 늘림 */
+  min-width: 90px;
+  /* 너비 늘림 */
+  padding: 0 18px;
+  /* 좌우 패딩 */
+  font-size: 15px;
+  margin-left: 0;
+  margin-right: 0;
+  box-sizing: border-box;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.join-desc {
   text-align: center;
-  position: relative;
+  font-size: 14px;
+  color: #888;
+  margin-bottom: 18px;
+  font-family: "SCDream3";
 }
 
-.login-button:active {
-  box-shadow:
-    0 0 0 1px #82c8a0 inset,
-    0 0 0 2px rgba(255, 255, 255, 0.15) inset,
-    0 0 0 1px rgba(0, 0, 0, 0.4);
-}
-
-/* ---------- IMG ---------- */
-.login-mushroom {
-  width: clamp(20px, 30vw, 200px);
+@media (max-width: 600px) {
+  .join-form-box {
+    width: 98vw;
+    padding: 18px 6vw;
+  }
 }

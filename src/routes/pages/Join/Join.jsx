@@ -9,6 +9,8 @@ import styles from './Join.module.css'
 
 function Join() {
 
+  const BASE_URL = import.meta.env.VITE_BASE_URL;
+
   //input 값
   const [usrNm, setUsrNm] = useState('');
   const [empNo, setEmpNo] = useState('');
@@ -32,7 +34,7 @@ function Join() {
   //가입여부(이름, 사번)
   const checkSubscript = async () => {
     try {
-      const response = await fetch('http://localhost:8080/api/join/checkSubscript', {
+      const response = await fetch(`${BASE_URL}/api/join/checkSubscript`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -64,7 +66,7 @@ function Join() {
       alert('최소 3자 이상 입력해주세요.');
       return;
     }
-    axios.get('http://localhost:8080/api/join/checkId', {
+    axios.get(`${BASE_URL}/api/join/checkId`, {
       params: {
         loginId: loginId,
       }
@@ -175,7 +177,7 @@ function Join() {
     };
 
     try {
-      const response = await axios.post("http://localhost:8080/api/join/submit", payload, {
+      const response = await axios.post(`${BASE_URL}/api/join/submit"`, payload, {
       });
       console.log("저장성공:", response.data);
 
@@ -187,36 +189,43 @@ function Join() {
 
   return (
     <div className={styles['login-page']}>
-      <form>
+      <form className={styles['join-form-box']}>
+        <div className={styles['join-title']}>회원가입</div>
+        <div className={styles['join-desc']}>
+          사번을 부여받은 직원만 가입가능합니다<span style={{ color: '#b6b6b6', marginLeft: 6 }}>(문의 : 인사팀)</span>
+        </div>
         <div>
           <label className={styles['join-label']}>이름</label>
           <input
             className={styles['join-input']}
             type="text"
             value={usrNm}
-            onChange={(e) => setUsrNm(e.target.value)}></input>
+            onChange={(e) => setUsrNm(e.target.value)}
+          />
         </div>
         <div>
           <label className={styles['join-label']}>사번</label>
-          <input
-            className={styles['join-input']}
-            type="text"
-            value={empNo}
-            onChange={(e) => setEmpNo(e.target.value)}></input>
-          <span>
+          <div className={styles['input-row']}>
+            <input
+              className={styles['join-input']}
+              type="text"
+              value={empNo}
+              onChange={(e) => setEmpNo(e.target.value)}
+            />
             <button type="button" className={styles['mini-button']} onClick={checkSubscript}>가입확인</button>
-          </span>
+          </div>
         </div>
         <div>
           <label className={styles['join-label']}>로그인 아이디</label>
-          <input
-            className={styles['join-input']}
-            type="text"
-            value={loginId}
-            onChange={(e) => setLoginId(e.target.value)}></input>
-          <span>
+          <div className={styles['input-row']}>
+            <input
+              className={styles['join-input']}
+              type="text"
+              value={loginId}
+              onChange={(e) => setLoginId(e.target.value)}
+            />
             <button type="button" className={styles['mini-button']} onClick={checkDuplicate}>중복확인</button>
-          </span>
+          </div>
         </div>
         <div>
           <label className={styles['join-label']}>비밀번호</label>

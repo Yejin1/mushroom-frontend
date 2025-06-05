@@ -13,9 +13,10 @@ function PostRead({ postId }) {
   const [title, setTitle] = useState('');
   const [cont, setCont] = useState('');
   const token = localStorage.getItem('accesToken');
+  const BASE_URL = import.meta.env.VITE_BASE_URL;
 
   useEffect(() => {
-    axios.get('http://localhost:8080/api/board/read', {
+    axios.get(`${BASE_URL}/api/board/read`, {
       headers: {
         Authorization: `Bearer ${token}`
       },

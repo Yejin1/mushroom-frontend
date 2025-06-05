@@ -19,7 +19,7 @@
     max-width: 90vw;
     min-height: 260px;
     max-height: 500px;
-    box-shadow: 0 4px 24px rgba(0,0,0,0.18);
+    box-shadow: 0 4px 24px rgba(0, 0, 0, 0.18);
     padding: 24px 28px 20px 28px;
     position: relative;
     display: flex;
@@ -128,11 +128,13 @@
     transition: background 0.2s;
     margin-left: 8px;
 }
+
 .completeBtn:disabled {
     background: #c8e2b0;
     color: #fff;
     cursor: not-allowed;
 }
+
 .completeBtn:hover:enabled {
     background: #5d8c2e;
 }

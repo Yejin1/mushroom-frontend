@@ -13,13 +13,14 @@ function Sidebar({ onBoxTypeChange }) {
   let [forms, setforms] = useState([]);
   let isFirst = useRef(true);
   const token = localStorage.getItem('accesToken');
+  const BASE_URL = import.meta.env.VITE_BASE_URL;
 
   useEffect(() => {
     if (isFirst.current) {
       isFirst.current = false;
       return;
     }
-    axios.get('http://localhost:8080/api/approvals/formList', {
+    axios.get(`${BASE_URL}/api/approvals/formList`, {
       headers: {
         Authorization: `Bearer ${token}`
       },
@@ -63,7 +64,7 @@ function Sidebar({ onBoxTypeChange }) {
           <div className={styles.menuList} onClick={() => onBoxTypeChange('my-approval')}>결재함</div>
           <div className={styles.menuList} onClick={() => onBoxTypeChange('my-in-progress')}>진행함</div>
           <div className={styles.menuList} onClick={() => onBoxTypeChange('my-completed')}>완료함</div>
-          <div className={styles.menuList} onClick={() => {}}>임시저장함</div>
+          <div className={styles.menuList} onClick={() => onBoxTypeChange('my-temp')}>임시저장함</div>
           <div className={styles.menuList} onClick={() => onBoxTypeChange('my-referenced')}>참조함</div>
           <div className={styles.menuList} onClick={() => onBoxTypeChange('my-rejected')}>반려함</div>
         </div>

@@ -14,9 +14,10 @@ function BoardMenu() {
   let [menus, setMenus] = useState([]);
   const [selectedBoard, setSelectedBoard] = useState(null);
   const token = localStorage.getItem('accesToken');
+  const BASE_URL = import.meta.env.VITE_BASE_URL;
 
   useEffect(() => {
-    axios.get('http://localhost:8080/api/board/menuList', {
+    axios.get(`${BASE_URL}/api/board/menuList`, {
       headers: {
         Authorization: `Bearer ${token}`
       },

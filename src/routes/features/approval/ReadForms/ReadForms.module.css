@@ -3,9 +3,11 @@
   margin: 32px auto;
   background: #fff;
   border-radius: 12px;
-  box-shadow: 0 2px 16px rgba(0,0,0,0.08);
+  box-shadow: 0 2px 16px rgba(0, 0, 0, 0.08);
   padding: 32px 36px;
   font-family: 'Pretendard', 'sans-serif';
+  max-width: 700px;
+  min-width: 320px;
 }
 
 .vacationTitle {
@@ -56,4 +58,75 @@
   border-radius: 6px;
   padding: 8px 12px;
   border: 1px solid #e5e8eb;
+}
+
+.draftContainer {
+  background: #fff;
+  border-radius: 14px;
+  box-shadow: 0 2px 12px #f3f3f3;
+  padding: 32px 36px 28px 36px;
+  margin: 0 auto 24px auto;
+  max-width: 700px;
+  min-width: 320px;
+}
+
+.draftTitle {
+  font-size: 1.6rem;
+  font-family: "SCDream5";
+  color: #7bb13c;
+  margin-bottom: 32px;
+  text-align: center;
+  letter-spacing: 1px;
+}
+
+.draftRow {
+  display: flex;
+  align-items: flex-start;
+  margin-bottom: 22px;
+}
+
+.draftLabel {
+  width: 80px;
+  min-width: 80px;
+  color: #6a7a5c;
+  font-family: "SCDream5";
+  font-size: 15px;
+  margin-right: 12px;
+  margin-top: 6px;
+  text-align: left;
+}
+
+.draftValue {
+  flex: 1;
+  font-family: "SCDream4";
+  font-size: 15px;
+  color: #333;
+  background: #f9fbf7;
+  border-radius: 7px;
+  padding: 10px 14px;
+  min-height: 32px;
+  word-break: break-all;
+}
+
+.draftContentBox {
+  flex: 1;
+  background: #f6f9f2;
+  border-radius: 7px;
+  padding: 18px 16px;
+  min-height: 120px;
+  font-size: 15px;
+  font-family: "SCDream4";
+  color: #222;
+  box-shadow: 0 1px 4px #f3f3f3;
+}
+
+.statusWrapper {
+  margin: 18px auto 26px auto;
+  padding: 16px 32px;
+  background: #f8fcf6;
+  border-radius: 12px;
+  border-left: 5px solid #b6d88c;
+  box-shadow: 0 2px 8px #e7f3d1;
+  max-width: 600px;
+  min-width: 320px;
 }

@@ -14,6 +14,7 @@ import axios from 'axios';
 function WritePopup() {
   const params = new URLSearchParams(window.location.search);
   const form = params.get('form') + 'Write';
+  const BASE_URL = import.meta.env.VITE_BASE_URL;
 
   //문서 양식 컴포넌트 목록 변수화(양식 신규 생성할때마다 여기 추가해줘야함)
   const formComponents = { VacationWrite, DraftWrite };
@@ -52,7 +53,7 @@ function WritePopup() {
     };
 
     try {
-      await axios.post("http://localhost:8080/api/approvals", payload, {
+      await axios.post(`${BASE_URL}/api/approvals`, payload, {
         headers: { Authorization: `Bearer ${token}` }
       });
       alert("상신이 완료되었습니다.");

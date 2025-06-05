@@ -13,9 +13,10 @@ function BoardList({ onPostClick }) {
   const [page, setPage] = useState(0);
   const token = localStorage.getItem('accesToken');
   const [totalPages, setTotalPages] = useState(0);
+  const BASE_URL = import.meta.env.VITE_BASE_URL;
 
   useEffect(() => {
-    axios.get('http://localhost:8080/api/board/list', {
+    axios.get(`${BASE_URL}/api/board/list`, {
       headers: {
         Authorization: `Bearer ${token}`
       },

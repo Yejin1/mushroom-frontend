@@ -45,7 +45,7 @@ function ApprovalReadBtn({
                     <button className={styles.btn} onClick={handleReady}>재사용</button>
                 )}
                 {showWithdraw && (
-                    <button className={styles.btn} onClick={onWithdraw || handleReady}>회수</button>
+                    <button onClick={onWithdraw}>회수</button>
                 )}
                 {showReject && (
                     <button className={styles.btn} onClick={onReject || handleReady}>반려</button>

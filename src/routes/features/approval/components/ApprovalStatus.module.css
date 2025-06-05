@@ -1,0 +1,155 @@
+.statusWrapper {
+    margin: 18px auto 26px auto;
+    padding: 16px 32px;
+    background: #f8fcf6;
+    border-radius: 12px;
+    border-left: 5px solid #b6d88c;
+    box-shadow: 0 2px 8px #e7f3d1;
+    max-width: 700px;
+    min-width: 320px;
+}
+
+.statusTitle {
+    font-family: "SCDream5";
+    color: #5d8c2e;
+    font-size: 16px;
+    margin-bottom: 18px;
+}
+
+.statusLineRow {
+    display: flex;
+    align-items: flex-start;
+    gap: 0;
+    justify-content: flex-start;
+    flex-wrap: wrap;
+}
+
+.approvalStep {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    min-width: 90px;
+    position: relative;
+}
+
+/* 화살표를 결재자와 결재자 사이 중앙에 오도록 */
+.arrow {
+    font-size: 22px;
+    color: #e74c3c;
+    margin: 0 12px;
+    align-self: center;
+    display: flex;
+    align-items: center;
+    height: 100%;
+    position: relative;
+    top: 38px;
+    /* 결재자 프로필과 수직 중앙 정렬 */
+}
+
+.statusBadge {
+    display: inline-block;
+    padding: 3px 18px;
+    border-radius: 16px;
+    font-size: 14px;
+    font-family: "SCDream5";
+    margin-bottom: 8px;
+    margin-top: 2px;
+    background: #e5e8eb;
+    color: #7bb13c;
+    border: 1.5px solid #b6b6b6;
+}
+
+.statusApproved {
+    background: #e6f7e6;
+    color: #219653;
+    border: 1.5px solid #7bb13c;
+}
+
+.statusRejected {
+    background: #ffeaea;
+    color: #e74c3c;
+    border: 1.5px solid #e74c3c;
+}
+
+.statusWaiting {
+    background: #f3f6fa;
+    color: #7b8b9c;
+    border: 1.5px solid #b6b6b6;
+}
+
+.statusCreated {
+    background: #e8f0fe;
+    color: #3973e7;
+    border: 1.5px solid #3973e7;
+}
+
+.userInfo {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.userImg {
+    width: 48px;
+    height: 48px;
+    border-radius: 50%;
+    background: #f3f3f3;
+    overflow: hidden;
+    margin-bottom: 4px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.userImg img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.userNamePos {
+    font-size: 15px;
+    color: #333;
+    font-family: "SCDream5";
+    text-align: center;
+    margin-bottom: 2px;
+}
+
+.userName {
+    display: block;
+    font-weight: bold;
+}
+
+.userPos {
+    display: block;
+    font-size: 13px;
+    color: #7bb13c;
+    margin-top: 2px;
+}
+
+.userDate {
+    font-size: 12px;
+    color: #bbb;
+    margin-top: 2px;
+}
+
+.arrow {
+    font-size: 22px;
+    color: #e74c3c;
+    margin: 0 8px;
+    align-self: center;
+}
+
+.empty {
+    color: #bbb;
+    margin-left: 8px;
+    font-size: 15px;
+    font-family: "SCDream3";
+}
+
+.statusDoc {
+    margin-top: 10px;
+    color: #7bb13c;
+    font-size: 14px;
+    font-family: "SCDream4";
+}

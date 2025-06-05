@@ -9,10 +9,11 @@ function ApprovalLineModal({ open, onClose, onComplete }) {
     const token = localStorage.getItem('accesToken');
     const [users, setUsers] = useState([]);
     const [selectedUsers, setSelectedUsers] = useState([]);
+    const BASE_URL = import.meta.env.VITE_BASE_URL;
 
     useEffect(() => {
         if (!open) return;
-        fetch('http://localhost:8080/api/usr/users', {
+        fetch(`${BASE_URL}/api/usr/users`, {
             headers: {
                 Authorization: `Bearer ${token}`,
             },
