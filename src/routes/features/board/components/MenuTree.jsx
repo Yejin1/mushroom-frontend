@@ -24,29 +24,33 @@ function getAllKeys(data) {
   return keys;
 }
 
-export default function MenuTree({ boardMenuData, onSelectBoard }) {
-  const [treeData, setTreeData] = useState([]);
-  const [expandedKeys, setExpandedKeys] = useState([]);
-
-  useEffect(() => {
-    if (boardMenuData && boardMenuData.length > 0) {
-      const converted = convertToAntdTreeData(boardMenuData);
-      setTreeData(converted);
-      setExpandedKeys(getAllKeys(converted)); // 모든 노드 펼침
-    }
-  }, [boardMenuData]);
-
+function MenuTreeNode({ node, onSelectBoard }) {
   return (
-    <Tree
-      treeData={treeData}
-      expandedKeys={expandedKeys}
-      onExpand={setExpandedKeys}
-      className={styles['board-tree']}
-      onSelect={(selectedKeys, info) => {
-        if (info.node.type === 'b') {
-          onSelectBoard(info.node.key);
-        }
-      }}
-    />
+    <li className={styles.treeNode}>
+      <span
+        className={node.type === 'b' ? styles.boardNode : styles.folderNode}
+        onClick={() => node.type === 'b' && onSelectBoard(node.id)}
+        style={{ cursor: node.type === 'b' ? 'pointer' : 'default' }}
+      >
+        {node.name}
+      </span>
+      {node.children && node.children.length > 0 && (
+        <ul className={styles.treeChildren}>
+          {node.children.map(child => (
+            <MenuTreeNode key={child.id} node={child} onSelectBoard={onSelectBoard} />
+          ))}
+        </ul>
+      )}
+    </li>
+  );
+}
+
+export default function MenuTree({ boardMenuData = [], onSelectBoard }) {
+  return (
+    <ul className={styles.treeRoot}>
+      {boardMenuData.map(node => (
+        <MenuTreeNode key={node.id} node={node} onSelectBoard={onSelectBoard} />
+      ))}
+    </ul>
   );
 }

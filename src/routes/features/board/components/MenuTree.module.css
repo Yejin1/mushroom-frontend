@@ -2,7 +2,7 @@
   background: transparent !important;
   border-radius: 14px;
   padding: 18px 10px;
-  font-family: 'Pretendard', 'Apple SD Gothic Neo', 'sans-serif';
+  font-family: 'Pretendard';
   font-size: 16px;
   box-shadow: none;
   border: none;
@@ -50,4 +50,41 @@
 
 .board-tree .ant-tree-treenode-disabled .ant-tree-title {
   color: #b0b8c1;
+}
+
+.treeRoot {
+  padding-left: 12px;
+  margin: 0;
+  font-family: "SCDream4";
+  text-align: left;
+  list-style: none;
+  /* ← 동그라미(불릿) 제거 */
+}
+
+.treeNode {
+  margin: 2px 0 2px 0;
+  text-align: left;
+  /* 왼쪽 정렬 */
+}
+
+.treeNode>span,
+.treeNode>.boardNode,
+.treeNode>.folderNode {
+  text-align: left;
+  /* 왼쪽 정렬 */
+  display: inline-block;
+  width: 100%;
+}
+
+.treeChildren {
+  list-style: none;
+  /* ← 하위 트리도 불릿 제거 */
+  padding-left: 10px;
+  margin: 0;
+}
+
+.boardNode,
+.folderNode {
+  font-size: 16px;
+  line-height: 1.7;
 }

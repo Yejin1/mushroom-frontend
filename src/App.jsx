@@ -25,7 +25,7 @@ function App() {
 
 
   const location = useLocation();
-  const hideNavbarPath = ['login', '/approval/write', '/approval/read'];
+  const hideNavbarPath = ['/login', '/approval/write', '/approval/read'];
   const hideNavbar = hideNavbarPath.includes(location.pathname);
 
   return (

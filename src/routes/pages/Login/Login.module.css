@@ -16,7 +16,7 @@
 
   width: 45vw;
   min-width: 400px;
-  height: 70vh;
+  height: auto;
   min-height: 400px;
 
   margin: auto;
@@ -26,6 +26,9 @@
   border: solid 1px rgb(210, 219, 167);
   text-align: center;
   box-shadow: 5px 5px 5px rgb(152, 158, 136);
+  overflow: visible;
+  /* 또는 필요시 hidden/auto */
+  position: relative;
 }
 
 /* ---------- Typography ---------- */
@@ -160,22 +163,27 @@
   vertical-align: middle;
 }
 
-.visitor-login-button {
+.visitor-login-wrap {
   margin-top: 24px;
-  background: #fefff6;
-  border: 1.5px solid #efa990;
-  color: #b25959;
-  font-size: 16px;
+  display: flex;
+  justify-content: center;
+}
+
+.visitor-login-button {
+  background: #fff;
+  color: #c97b4a;
+  border: 2px solid #f3d6b6;
+  border-radius: 8px;
+  padding: 10px 32px;
+  font-size: 1.1rem;
   font-family: "SCDream4";
-  border-radius: 6px;
-  padding: 10px 0;
-  width: clamp(120px, 40vw, 220px);
   cursor: pointer;
-  transition: background 0.2s, color 0.2s;
-  display: inline-block;
+  transition: background 0.15s, color 0.15s, border 0.15s;
+  box-shadow: none;
 }
 
 .visitor-login-button:hover {
-  background: #f8fcf6;
-  color: #5d8c2e;
+  background: #f9f3e7;
+  color: #a65a2a;
+  border-color: #e7b98a;
 }

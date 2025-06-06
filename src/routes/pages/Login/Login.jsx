@@ -76,7 +76,9 @@ function Login() {
     <div className={styles['login-page']}>
       <div className={styles['login-box']}>
         <img src={'/main_mushroom1.png'} className={styles['login-mushroom']} />
-        <h1 className={styles['title']}> <span className={styles['title-mushroom']}>버섯상사</span> 전자결재</h1>
+        <h1 className={styles['title']}>
+          <span className={styles['title-mushroom']}>버섯상사</span> 전자결재
+        </h1>
         <div>
           <input
             type="text"
@@ -107,8 +109,10 @@ function Login() {
             아이디/비밀번호 찾기
           </button>
         </div>
-        <div>
-          <button className={styles['visitor-login-button']}
+        {/* 방문자용 로그인 버튼을 login-box 내부로 이동 */}
+        <div className={styles['visitor-login-wrap']}>
+          <button
+            className={styles['visitor-login-button']}
             onClick={handleVisitorLogin}
             type="button"
           >

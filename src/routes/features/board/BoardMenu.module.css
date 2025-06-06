@@ -1,8 +1,13 @@
 /* 사이드바용 스타일 */
 
 .sidebar {
-    width: 200px;
-    background-color: #f1fabf;
+    width: 220px;
+    /* 기존보다 더 좁게 (예: 180~240px 추천) */
+    min-width: 160px;
+    background: #f6fcd8;
+    padding: 18px 12px 0 12px;
+    /* 좌우 패딩도 줄임 */
+    box-sizing: border-box;
     height: 100vh;
     z-index: 10;
     position: relative;
@@ -77,4 +82,27 @@
 
 .board-tree {
     background-color: #f8fce0;
+}
+
+.treeRoot {
+    padding-left: 0;
+    margin: 0;
+    font-family: "SCDream4", "Pretendard", "Noto Sans KR", Arial, sans-serif;
+}
+
+.treeNode {
+    margin: 2px 0 2px 0;
+}
+
+.treeChildren {
+    list-style: none;
+    padding-left: 16px;
+    /* 들여쓰기 최소화 */
+    margin: 0;
+}
+
+.boardNode,
+.folderNode {
+    font-size: 16px;
+    line-height: 1.7;
 }
