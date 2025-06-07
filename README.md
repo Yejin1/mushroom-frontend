@@ -79,7 +79,7 @@ Spring Boot + React 기반의 전자결재 시스템으로,
 ## 👨‍💻 개발자
 
 **김예진 (Yejin Kim)**
-📧 Email: [yejin1.dev@gmail.com](yejin1.dev@gmail.com)
+📧 Email: [yejin1.dev@gmail.com](mailto:yejin1.dev@gmail.com)
 
 ---
 
