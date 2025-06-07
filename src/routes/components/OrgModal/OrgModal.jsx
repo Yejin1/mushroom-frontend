@@ -67,7 +67,7 @@ function OrgModal({ onClose }) {
           </div>
           <div className={styles['org-mushroom']}>
             <div className={styles['org-mushroom-profile']}>
-              <img src='./img_profile/10010.png' alt="프로필"></img>
+              <img src='./img_profile/10008.png' alt="프로필"></img>
             </div>
             <hr />
             <div className={styles['org-mushroom-info']}>

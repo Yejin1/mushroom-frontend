@@ -192,7 +192,7 @@ function Join() {
       <form className={styles['join-form-box']}>
         <div className={styles['join-title']}>회원가입</div>
         <div className={styles['join-desc']}>
-          사번을 부여받은 직원만 가입가능합니다<span style={{ color: '#b6b6b6', marginLeft: 6 }}>(문의 : 인사팀)</span>
+          사번을 부여받은 직원만 가입가능합니다.
         </div>
         <div>
           <label className={styles['join-label']}>이름</label>

@@ -7,7 +7,7 @@ import 'prismjs/themes/prism.css'
 import '@toast-ui/editor/dist/toastui-editor.css'
 import '@toast-ui/editor-plugin-color-syntax/dist/toastui-editor-plugin-color-syntax.css';
 import '@toast-ui/editor/dist/toastui-editor-viewer.css';
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import './App.css'
 
 import { BrowserRouter as Router, Routes, Route, Navigate, useLocation } from 'react-router-dom'
@@ -22,27 +22,35 @@ import BoardMain from './routes/features/board/BoardMain';
 
 
 function App() {
-
-
   const location = useLocation();
   const hideNavbarPath = ['/login', '/approval/write', '/approval/read'];
   const hideNavbar = hideNavbarPath.includes(location.pathname);
+
+  // 로그인 여부 확인 함수 (예: 토큰 존재 여부)
+  const isLoggedIn = !!localStorage.getItem('accesToken');
 
   return (
     <div className="app-wrapper">
       {!hideNavbar && <Navbar />}
       <Routes>
-        <Route path="/" element={<Navigate to="/login" replace />} />
-        <Route path="/login" element={<Login />}></Route>
-        <Route path="/home" element={<Home />}></Route>
-        <Route path="/join" element={<Join />}></Route>
-        <Route path="/board" element={<BoardMain />}></Route>
-        <Route path="/approval" element={<ApprovalMain></ApprovalMain>}></Route>
-        <Route path="/approval/write" element={<WritePopup></WritePopup>}></Route>
-        <Route path="/approval/read" element={<ReadPopup></ReadPopup>}></Route>
+        <Route
+          path="/"
+          element={
+            isLoggedIn
+              ? <Navigate to="/approval" replace />
+              : <Navigate to="/login" replace />
+          }
+        />
+        <Route path="/login" element={<Login />} />
+        <Route path="/home" element={<Home />} />
+        <Route path="/join" element={<Join />} />
+        <Route path="/board" element={<BoardMain />} />
+        <Route path="/approval" element={<ApprovalMain />} />
+        <Route path="/approval/write" element={<WritePopup />} />
+        <Route path="/approval/read" element={<ReadPopup />} />
       </Routes>
     </div>
-  )
+  );
 }
 
-export default App
+export default App;

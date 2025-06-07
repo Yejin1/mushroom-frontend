@@ -1,7 +1,44 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import styles from './ApprovalBtn.module.css';
+import axios from 'axios';
 
-function ReferenceStatusModal({ open, onClose, referenceList = [] }) {
+function ReferenceStatusModal({ open, onClose, docId }) {
+    const [referenceList, setReferenceList] = useState([]);
+    const BASE_URL = import.meta.env.VITE_BASE_URL;
+
+    useEffect(() => {
+        console.log(docId);
+        console.log(open);
+        if (!open || !docId) return;
+        const fetchRefs = async () => {
+            try {
+                const token = localStorage.getItem('accesToken');
+                const res = await axios.get(`${BASE_URL}/api/approvals/reference?docId=${docId}`, {
+                    headers: { Authorization: `Bearer ${token}` }
+                });
+
+                const { userRefs = [], deptRefs = [] } = res.data || {};
+                // 통합 표로 변환
+                const userRows = userRefs.map(ref => ({
+                    creatorNm: ref.createdBy,
+                    refUsrNm: ref.usrName,
+                    refDeptNm: '-',
+                    refDate: ref.createdDt ? ref.createdDt.replace('T', ' ').slice(0, 16) : '-'
+                }));
+                const deptRows = deptRefs.map(ref => ({
+                    creatorNm: ref.createdBy,
+                    refUsrNm: '-',
+                    refDeptNm: ref.deptName,
+                    refDate: ref.createdDt ? ref.createdDt.replace('T', ' ').slice(0, 16) : '-'
+                }));
+                setReferenceList([...userRows, ...deptRows]);
+            } catch (e) {
+                setReferenceList([]);
+            }
+        };
+        fetchRefs();
+    }, [open, docId]);
+
     if (!open) return null;
 
     return (
@@ -30,7 +67,7 @@ function ReferenceStatusModal({ open, onClose, referenceList = [] }) {
                                         <td>{ref.creatorNm || '-'}</td>
                                         <td>{ref.refUsrNm || '-'}</td>
                                         <td>{ref.refDeptNm || '-'}</td>
-                                        <td>{ref.refDate ? ref.refDate : '-'}</td>
+                                        <td>{ref.refDate || '-'}</td>
                                     </tr>
                                 ))}
                             </tbody>

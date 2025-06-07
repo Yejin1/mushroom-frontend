@@ -4,14 +4,16 @@
  */
 import styles from './Navbar.module.css';
 import { Link, useNavigate } from 'react-router-dom';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import OrgModal from '../OrgModal/OrgModal';
 
 function Navbar() {
-
     let [isOpen, setIsOpen] = useState(false);
     let [showOrg, setShowOrg] = useState(false);
     const navigate = useNavigate();
+
+    //사번세팅
+    const usrId = localStorage.getItem('empNo') || '10002'; // 기본값 10002
 
     //로그아웃
     const handleLogout = () => {
@@ -24,10 +26,10 @@ function Navbar() {
     return (
         <nav className={styles.navbar}>
             <div className={styles['navbar-left']}>
-                <div className={styles['navbar-brand']}>
-                    <img src={'/icon-mushroom.png'} className={styles['navbar-logo']}></img>
+                <Link to="/" className={styles['navbar-brand']}>
+                    <img src={'/icon-mushroom.png'} className={styles['navbar-logo']} />
                     <div className={styles['navbar-title']}>버섯상사</div>
-                </div>
+                </Link>
                 <ul className={styles['navbar-menu']}>
                     <li><Link to="/">홈</Link></li>
                     <li><Link to="/approval">전자결재</Link></li>
@@ -40,14 +42,14 @@ function Navbar() {
             <div className={styles['navbar-right']}>
                 <div className={styles['profile-dropdown']}>
                     <img
-                        src="img_profile/10002.png"
+                        src={`img_profile/${usrId}.png`}
                         alt="프로필"
                         className={styles['profile-img']}
                         onClick={() => setIsOpen(!isOpen)} />
                     {isOpen && (
                         <ul className={styles['dropdown-menu']}>
-                            <li><Link to="/settings">환경설정</Link></li>
-                            <li><Link to="/mypage">마이페이지</Link></li>
+                            {/* <li><Link to="/settings">환경설정</Link></li>
+                            <li><Link to="/mypage">마이페이지</Link></li> */}
                             <li><button onClick={handleLogout}>로그아웃</button></li>
                         </ul>
                     )}

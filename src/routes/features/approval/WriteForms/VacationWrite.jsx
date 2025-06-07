@@ -7,10 +7,31 @@
 import React from "react";
 import styles from './WriteForms.module.css';
 
-function VacationWrite({ form, setForm, setEditorYn }) {
+function VacationWrite({ form, setForm, setEditorYn, getPayloadRef, writer, approvalLine }) {
   React.useEffect(() => {
     setEditorYn && setEditorYn("N");
   }, [setEditorYn]);
+
+  // payload 생성 함수 (DTO에 맞게)
+  const getPayload = () => ({
+    formId: form.formId,
+    title: form.title,
+    writer: writer, // 부모에서 전달받은 작성자 ID
+    urgentYn: form.urgentYn,
+    editorYn: "N",
+    formContent: {
+      startDate: form.startDate,
+      endDate: form.endDate,
+      reason: form.reason,
+    },
+    editorContent: "", // 휴가신청서는 에디터 내용 없음
+    approvalLine: approvalLine || [],
+  });
+
+  // 부모에서 참조할 수 있도록 ref에 할당
+  React.useEffect(() => {
+    if (getPayloadRef) getPayloadRef.current = getPayload;
+  }, [form, getPayloadRef, writer, approvalLine]);
 
   const handleChange = (e) => {
     const { name, value } = e.target;

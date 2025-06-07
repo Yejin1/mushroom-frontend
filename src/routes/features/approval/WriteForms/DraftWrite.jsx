@@ -9,7 +9,7 @@ import React from "react";
 import MainEditor from "../../../components/editor/MainEditor";
 import styles from './WriteForms.module.css';
 
-function DraftWrite({ form, setForm, content, setContent, setEditorYn }) {
+function DraftWrite({ form, setForm, setEditorYn, getPayloadRef }) {
   React.useEffect(() => {
     if (setEditorYn) setEditorYn("Y"); // 에디터 있는 양식이므로 무조건 Y로 세팅
   }, [setEditorYn]);
@@ -18,6 +18,27 @@ function DraftWrite({ form, setForm, content, setContent, setEditorYn }) {
     const { name, value } = e.target;
     setForm((prev) => ({ ...prev, [name]: value }));
   };
+
+  const handleEditorChange = (value) => {
+    setForm(prev => ({ ...prev, content: value }));
+  };
+
+  // payload 생성 함수
+  const getPayload = () => ({
+    formId: form.formId,
+    title: form.title,
+    urgentYn: form.urgentYn,
+    editorYn: "Y",
+    editorContent: form.content, // 에디터 내용
+    formContent: {
+      content: form.content
+    }
+  });
+
+  // 부모에서 참조할 수 있도록 ref에 할당
+  React.useEffect(() => {
+    if (getPayloadRef) getPayloadRef.current = getPayload;
+  }, [form, getPayloadRef]);
 
   return (
     <div className={styles.formContainerLarge}>
@@ -52,8 +73,8 @@ function DraftWrite({ form, setForm, content, setContent, setEditorYn }) {
       <div className={styles.formRow}>
         <div style={{ flex: 1 }}>
           <MainEditor
-            initialContent={content}
-            onContentChange={setContent}
+            value={form.content}
+            onChange={handleEditorChange}
           />
         </div>
       </div>

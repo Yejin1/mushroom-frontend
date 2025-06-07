@@ -95,6 +95,7 @@ function ApprovalReadBtn({
                 <ReferenceStatusModal
                     open={referenceStatusOpen}
                     onClose={() => setReferenceStatusOpen(false)}
+                    docId={docId}
                     referenceUsers={referenceUsers}
                 />
             )}

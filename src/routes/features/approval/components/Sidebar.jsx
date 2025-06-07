@@ -43,14 +43,13 @@ function Sidebar({ onBoxTypeChange }) {
           setCreateOpen(!createOpen);
         }}>
           <span>
-            {/* <img src={'/pencil.png'} ></img> */}
           </span> 결재작성
         </button>
         {createOpen && (
           <ul className={styles['dropdown-menu']}>
             {forms.map((form, index) => (
               <li key={form.id} onClick={() => window.open(
-                `/approval/write?form=${form.reactName}`,
+                `/approval/write?form=${form.reactName}&formId=${form.id}`,
                 '_blank',
                 'width=1050,height=700,top=100,left=200'
               )}>{form.name}</li>

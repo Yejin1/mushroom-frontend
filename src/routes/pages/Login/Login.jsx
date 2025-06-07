@@ -36,8 +36,10 @@ function Login() {
 
       const data = await response.json();
       //로그인 토큰 저장
+      console.log('로그인 성공', data);
       const token = data.token;
       localStorage.setItem('accesToken', token);
+      localStorage.setItem('empNo', data.empNo); // 사번 저장
 
       navigate("/approval");
 
@@ -64,6 +66,7 @@ function Login() {
       const data = await response.json();
       const token = data.token;
       localStorage.setItem('accesToken', token);
+      localStorage.setItem('empNo', data.empNo); // 사번 저장
 
       navigate("/approval");
     } catch (error) {
