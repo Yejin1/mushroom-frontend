@@ -38,6 +38,10 @@ Spring Boot + React 기반의 전자결재 시스템으로,
 
 ![결재작성](docs/write.png)
 
+### 📄 결재 조회 화면
+
+![결재작성](docs/read.png)
+
 ### 📁 결재함 목록
 
 ![결재함](docs/list.png)
