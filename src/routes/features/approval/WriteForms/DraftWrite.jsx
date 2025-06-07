@@ -9,7 +9,7 @@ import React from "react";
 import MainEditor from "../../../components/editor/MainEditor";
 import styles from './WriteForms.module.css';
 
-function DraftWrite({ form, setForm, setEditorYn, getPayloadRef }) {
+function DraftWrite({ form, setForm, setEditorYn, getPayloadRef, writer, approvalLine }) {
   React.useEffect(() => {
     if (setEditorYn) setEditorYn("Y"); // 에디터 있는 양식이므로 무조건 Y로 세팅
   }, [setEditorYn]);
@@ -20,7 +20,7 @@ function DraftWrite({ form, setForm, setEditorYn, getPayloadRef }) {
   };
 
   const handleEditorChange = (value) => {
-    setForm(prev => ({ ...prev, content: value }));
+    setForm(prev => ({ ...prev, editorContent: value }));
   };
 
   // payload 생성 함수
@@ -29,16 +29,17 @@ function DraftWrite({ form, setForm, setEditorYn, getPayloadRef }) {
     title: form.title,
     urgentYn: form.urgentYn,
     editorYn: "Y",
-    editorContent: form.content, // 에디터 내용
+    editorContent: form.editorContent,
     formContent: {
-      content: form.content
-    }
+      content: form.editorContent
+    },
+    approvalLine: approvalLine || [],
   });
 
   // 부모에서 참조할 수 있도록 ref에 할당
   React.useEffect(() => {
     if (getPayloadRef) getPayloadRef.current = getPayload;
-  }, [form, getPayloadRef]);
+  }, [form, getPayloadRef, setEditorYn, writer, approvalLine]);
 
   return (
     <div className={styles.formContainerLarge}>
@@ -73,7 +74,7 @@ function DraftWrite({ form, setForm, setEditorYn, getPayloadRef }) {
       <div className={styles.formRow}>
         <div style={{ flex: 1 }}>
           <MainEditor
-            value={form.content}
+            value={form.editorContent}
             onChange={handleEditorChange}
           />
         </div>
