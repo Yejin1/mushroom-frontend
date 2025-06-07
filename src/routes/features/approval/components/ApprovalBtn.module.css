@@ -45,3 +45,83 @@
 .redBtn:hover {
     background-color: #c0392b;
 }
+
+.overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.18);
+    z-index: 1000;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.modal {
+    background: #fff;
+    border-radius: 14px;
+    box-shadow: 0 4px 18px #e3e3e3;
+    min-width: 380px;
+    max-width: 90vw;
+    min-height: 120px;
+    padding: 0;
+    overflow: hidden;
+    animation: modalPop 0.18s;
+}
+
+@keyframes modalPop {
+    0% {
+        transform: scale(0.96);
+        opacity: 0.2;
+    }
+
+    100% {
+        transform: scale(1);
+        opacity: 1;
+    }
+}
+
+.header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 18px 24px 8px 24px;
+    border-bottom: 1px solid #e0e9c7;
+    background: #f8fcf6;
+}
+
+.closeBtn {
+    background: none;
+    border: none;
+    font-size: 1.3rem;
+    color: #888;
+    cursor: pointer;
+    margin-left: 8px;
+}
+
+.refTable {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 8px;
+    font-size: 15px;
+    background: #fff;
+}
+
+.refTable th,
+.refTable td {
+    border: 1px solid #e0e9c7;
+    padding: 8px 10px;
+    text-align: center;
+}
+
+.refTable th {
+    background: #f6fbe9;
+    color: #4b5a36;
+    font-weight: 600;
+}
+
+.refTable tr:nth-child(even) td {
+    background: #fafcf6;
+}

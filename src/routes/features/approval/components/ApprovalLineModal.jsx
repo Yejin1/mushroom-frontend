@@ -5,10 +5,10 @@
 import React, { useEffect, useState } from 'react';
 import styles from './ApprovalLineModal.module.css';
 
-function ApprovalLineModal({ open, onClose, onComplete }) {
+function ApprovalLineModal({ open, onClose, onComplete, mode = "approval", defaultSelectedUsers = [], docId }) {
     const token = localStorage.getItem('accesToken');
     const [users, setUsers] = useState([]);
-    const [selectedUsers, setSelectedUsers] = useState([]);
+    const [selectedUsers, setSelectedUsers] = useState(defaultSelectedUsers);
     const BASE_URL = import.meta.env.VITE_BASE_URL;
 
     useEffect(() => {
@@ -32,30 +32,57 @@ function ApprovalLineModal({ open, onClose, onComplete }) {
             .catch(() => setUsers([]));
     }, [open, token]);
 
+    useEffect(() => {
+        if (open) {
+            setSelectedUsers(defaultSelectedUsers || []);
+        }
+    }, [open]);
+
     if (!open) return null;
 
-    // 사용자 클릭 시 선택/해제 (결재 순서 stepOrder 부여)
+    // 사용자 클릭 시 선택/해제
     const handleUserClick = (user) => {
         let newSelected;
         if (selectedUsers.find(u => u.usrId === user.usrId)) {
-            // 선택 해제 시 stepOrder 재정렬
             newSelected = selectedUsers.filter(u => u.usrId !== user.usrId)
-                .map((u, idx) => ({ ...u, stepOrder: idx + 1 }));
+                .map((u, idx) => mode === "approval" ? { ...u, stepOrder: idx + 1 } : u);
         } else {
-            // 선택 추가 시 stepOrder 부여
             newSelected = [
                 ...selectedUsers,
-                { ...user, stepOrder: selectedUsers.length + 1 }
+                mode === "approval"
+                    ? { ...user, stepOrder: selectedUsers.length + 1 }
+                    : { ...user }
             ];
         }
         setSelectedUsers(newSelected);
     };
 
     // 완료 버튼 클릭 시
-    const handleComplete = () => {
-        if (onComplete) {
-            onComplete(selectedUsers);
+    const handleComplete = async () => {
+        if (mode === "reference") {
+            // 참조 모드에서 바로 API 호출
+            try {
+                await fetch(`${BASE_URL}/api/approvals/reference`, {
+                    method: "POST",
+                    headers: {
+                        "Content-Type": "application/json",
+                        Authorization: `Bearer ${token}`,
+                    },
+                    body: JSON.stringify({
+                        docId: docId,
+                        refUsrIds: selectedUsers.map(u => u.usrId),
+                        refDeptIds: [], // 부서 참조자 선택 기능 추가 시 여기에 배열로 전달
+                    }),
+                });
+                alert("참조가 완료되었습니다.");
+            } catch (e) {
+                alert("참조 요청에 실패했습니다.");
+            }
+            onClose();
+            return;
         }
+        // 결재선 모드는 기존대로
+        if (onComplete) onComplete(selectedUsers);
         onClose();
     };
 
@@ -63,12 +90,12 @@ function ApprovalLineModal({ open, onClose, onComplete }) {
         <div className={styles.overlay}>
             <div className={styles.modal}>
                 <div className={styles.header}>
-                    <h2>결재선 선택</h2>
+                    <h2>{mode === "reference" ? "참조자 선택" : "결재선 선택"}</h2>
                     <button className={styles.closeBtn} onClick={onClose}>✕</button>
                 </div>
                 <div>
                     <div style={{ marginBottom: '12px', minHeight: '32px' }}>
-                        <b>선택된 결재선:</b>
+                        <b>선택된 {mode === "reference" ? "참조자" : "결재선"}:</b>
                         {selectedUsers.length === 0 ? (
                             <span style={{ color: '#bbb', marginLeft: 8 }}>없음</span>
                         ) : (
@@ -77,7 +104,7 @@ function ApprovalLineModal({ open, onClose, onComplete }) {
                                     key={user.usrId}
                                     style={{
                                         display: 'inline-block',
-                                        background: '#eaffc2',
+                                        background: mode === "reference" ? '#e6f0fa' : '#eaffc2',
                                         color: '#3a4a1f',
                                         borderRadius: 8,
                                         padding: '2px 10px',

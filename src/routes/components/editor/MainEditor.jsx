@@ -3,7 +3,7 @@ import { Editor } from '@toast-ui/react-editor';
 import Prism from 'prismjs';
 import codeSyntaxHighlight from '@toast-ui/editor-plugin-code-syntax-highlight';
 import colorSyntax from '@toast-ui/editor-plugin-color-syntax';
-
+import styles from './MainEditor.module.css';
 
 function MainEditor({ initialContent, onContentChange }) {
     const editorRef = useRef();
@@ -20,16 +20,18 @@ function MainEditor({ initialContent, onContentChange }) {
 
     return (
         mounted && (
-            <Editor
-                ref={editorRef}
-                initialValue={initialContent || ''}
-                previewStyle="vertical"
-                height="500px"
-                initialEditType="wysiwyg"
-                useCommandShortcut={true}
-                onChange={handleChange}
-                plugins={[colorSyntax]}
-            />
+            <div className={styles.editorRoot}>
+                <Editor
+                    ref={editorRef}
+                    initialValue={initialContent || ''}
+                    previewStyle="vertical"
+                    height="500px"
+                    initialEditType="wysiwyg"
+                    useCommandShortcut={true}
+                    onChange={handleChange}
+                    plugins={[colorSyntax]}
+                />
+            </div>
         )
     );
 }

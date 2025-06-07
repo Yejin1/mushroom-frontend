@@ -28,7 +28,6 @@ function Sidebar({ onBoxTypeChange }) {
       }
     })
       .then((response) => {
-        //console.log(response);
         setforms(response.data);
       })
       .catch((error) => {
@@ -53,7 +52,7 @@ function Sidebar({ onBoxTypeChange }) {
               <li key={form.id} onClick={() => window.open(
                 `/approval/write?form=${form.reactName}`,
                 '_blank',
-                'width=800,height=600,top=100,left=200'
+                'width=1050,height=700,top=100,left=200'
               )}>{form.name}</li>
             ))}
           </ul>

@@ -14,7 +14,7 @@ function ApprovalStatus({ approvalLine = [], writer, status }) {
             <div className={styles.statusLineRow}>
                 {approvalLine && approvalLine.length > 0 ? (
                     approvalLine.map((user, idx) => (
-                        <React.Fragment key={user.approverId}>
+                        <React.Fragment key={idx}>
                             <div className={styles.approvalStep}>
                                 <div
                                     className={`${styles.statusBadge} ${user.status === "APPROVED"
@@ -38,10 +38,10 @@ function ApprovalStatus({ approvalLine = [], writer, status }) {
                                             src={
                                                 user.empNo
                                                     ? `/img_profile/${user.empNo}.png`
-                                                    : "/default.png"
+                                                    : "/img_profile/default.png"
                                             }
                                             alt="profile"
-                                            onError={e => { e.target.src = "/profile-default.png"; }}
+                                            onError={e => { e.target.src = "/img_profile/default.png"; }}
                                         />
                                     </div>
                                     <div className={styles.userNamePos}>

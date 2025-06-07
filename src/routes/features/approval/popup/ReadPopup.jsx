@@ -119,6 +119,15 @@ function ReadPopup() {
     }
   };
 
+  // 예시: 참조 저장 함수
+  const handleReferenceSave = async () => {
+    await axios.post('/api/approvals/reference', {
+      docId,
+      refUsrIds: selectedUserIds,   // 선택된 사용자 ID 배열
+      refDeptIds: selectedDeptIds,  // 선택된 부서 ID 배열
+    });
+  };
+
   if (!FormComponent) {
     return (
       <div className="read-popup-loading">
@@ -136,6 +145,7 @@ function ReadPopup() {
         onReject={handleReject}
         onWithdraw={handleWithdraw}
         showWithdraw={boxType === "my-in-progress" && own === "Y"}
+        docId={docId}
       />
       <ApprovalStatus approvalLine={approvalLine} writer={writer} status={docData?.status} />
       <FormComponent docData={docData} />

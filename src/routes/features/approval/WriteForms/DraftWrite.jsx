@@ -7,6 +7,7 @@
 
 import React from "react";
 import MainEditor from "../../../components/editor/MainEditor";
+import styles from './WriteForms.module.css';
 
 function DraftWrite({ form, setForm, content, setContent, setEditorYn }) {
   React.useEffect(() => {
@@ -19,29 +20,10 @@ function DraftWrite({ form, setForm, content, setContent, setEditorYn }) {
   };
 
   return (
-    <div>
-      <h2>일반기안서</h2>
-
-      <div>
-        <label>제목</label>
-        <input
-          name="title"
-          type="text"
-          value={form.title}
-          onChange={handleChange}
-          placeholder="문서 제목 입력"
-        />
-      </div>
-
-      <div>
-        <MainEditor
-          initialContent={content}
-          onContentChange={setContent}
-        />
-      </div>
-
-      <div>
-        <label>
+    <div className={styles.formContainerLarge}>
+      <div className={styles.formHeader}>
+        <h2 className={styles.formHeaderTitle}>일반기안서</h2>
+        <label className={styles.urgentLabel}>
           <input
             type="checkbox"
             name="urgentYn"
@@ -49,12 +31,32 @@ function DraftWrite({ form, setForm, content, setContent, setEditorYn }) {
             onChange={(e) =>
               setForm((prev) => ({ ...prev, urgentYn: e.target.checked ? "Y" : "N" }))
             }
-            className="form-checkbox"
+            className={styles.formCheckbox}
           />
           <span>긴급</span>
         </label>
       </div>
-      {/* 제출 버튼은 ApprovalWriteBtn의 [상신] 버튼으로 대체 */}
+
+      <div className={styles.formRow}>
+        <div className={styles.formLabel}>제목</div>
+        <input
+          name="title"
+          type="text"
+          value={form.title}
+          onChange={handleChange}
+          placeholder="문서 제목 입력"
+          className={styles.formInput}
+        />
+      </div>
+
+      <div className={styles.formRow}>
+        <div style={{ flex: 1 }}>
+          <MainEditor
+            initialContent={content}
+            onContentChange={setContent}
+          />
+        </div>
+      </div>
     </div>
   );
 }

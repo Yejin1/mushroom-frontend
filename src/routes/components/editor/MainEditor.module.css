@@ -1,0 +1,26 @@
+/* MainEditor.module.css */
+.editorRoot {
+    width: 100%;
+    max-width: 100%;
+    box-sizing: border-box;
+}
+
+/* Toast UI Editor가 부모 영역을 넘지 않도록 강제 */
+.editorRoot .toastui-editor-default,
+.editorRoot .toastui-editor-contents,
+.editorRoot .toastui-editor-main,
+.editorRoot .toastui-editor {
+    max-width: 100% !important;
+    min-width: 0 !important;
+    box-sizing: border-box;
+}
+
+/* MainEditor.module.css 또는 global.css에 추가 */
+.toastui-editor,
+.toastui-editor-default,
+.toastui-editor-main,
+.toastui-editor-contents {
+    min-width: 0 !important;
+    max-width: 100% !important;
+    box-sizing: border-box;
+}

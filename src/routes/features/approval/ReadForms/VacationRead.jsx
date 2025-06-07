@@ -18,28 +18,28 @@ function VacationRead({ docId, docData }) {
 
   return (
     <div className={styles.vacationContainer}>
-      <div className={styles.vacationTitle}>
+      <div className={styles.formTitle}>
         휴가 신청서
         {form.urgentYn === "Y" && (
           <span className={styles.vacationUrgent}>긴급</span>
         )}
       </div>
 
-      <div className={styles.vacationRow}>
-        <div className={styles.vacationLabel}>제목</div>
-        <div className={styles.vacationValue}>{form.title}</div>
+      <div className={styles.formRow}>
+        <div className={styles.formLabel}>제목</div>
+        <div className={styles.formValue}>{form.title}</div>
       </div>
-      <div className={styles.vacationRow}>
-        <div className={styles.vacationLabel}>시작일</div>
-        <div className={styles.vacationValue}>{content.startDate}</div>
+      <div className={styles.formRow}>
+        <div className={styles.formLabel}>시작일</div>
+        <div className={styles.formValue}>{content.startDate}</div>
       </div>
-      <div className={styles.vacationRow}>
-        <div className={styles.vacationLabel}>종료일</div>
-        <div className={styles.vacationValue}>{content.endDate}</div>
+      <div className={styles.formRow}>
+        <div className={styles.formLabel}>종료일</div>
+        <div className={styles.formValue}>{content.endDate}</div>
       </div>
-      <div className={styles.vacationRow}>
-        <div className={styles.vacationLabel}>사유</div>
-        <div className={styles.vacationValue}>{content.reason}</div>
+      <div className={styles.formRow}>
+        <div className={styles.formLabel}>사유</div>
+        <div className={styles.formValue}>{content.reason}</div>
       </div>
     </div>
   );

@@ -1,6 +1,6 @@
-.docForm {
+/* 폼 전체 컨테이너 (공통) */
+.formContainer {
     background: #f8fcf6;
-    /* 연한 초록빛 화이트 */
     border-radius: 14px;
     box-shadow: 0 4px 18px #e3e3e3;
     padding: 40px 48px 32px 48px;
@@ -8,24 +8,36 @@
     margin: 40px auto;
     font-family: "SCDream4";
     border: 1.5px solid #e0e9c7;
-    /* 연한 초록빛 테두리 */
 }
 
-.docHeader {
+/* 기안서(일반기안 등)만 크게 */
+.formContainerLarge {
+    background: #f8fcf6;
+    border-radius: 14px;
+    box-shadow: 0 4px 18px #e3e3e3;
+    padding: 40px 48px 32px 48px;
+    max-width: 900px;
+    margin: 40px auto;
+    font-family: "SCDream4";
+    border: 1.5px solid #e0e9c7;
+}
+
+/* 폼 헤더 */
+.formHeader {
     display: flex;
     justify-content: space-between;
     align-items: center;
     margin-bottom: 32px;
 }
 
-.docHeader h2 {
+.formHeaderTitle {
     font-family: "SCDream5";
     color: #4b5a36;
-    /* 딥그린 */
     font-size: 1.7rem;
     margin: 0;
 }
 
+/* 긴급 라벨 */
 .urgentLabel {
     display: flex;
     align-items: center;
@@ -40,13 +52,15 @@
     margin-right: 4px;
 }
 
-.docRow {
+/* 공통 행 스타일 */
+.formRow {
     display: flex;
     align-items: flex-start;
     margin-bottom: 22px;
 }
 
-.docLabel {
+/* 공통 라벨 스타일 */
+.formLabel {
     width: 80px;
     font-family: "SCDream5";
     color: #4b5a36;
@@ -54,18 +68,19 @@
     margin-top: 8px;
 }
 
-.docInput {
+/* 공통 입력 스타일 */
+.formInput {
     flex: 1;
     padding: 10px 14px;
     border: 1.5px solid #b6d88c;
-    /* 연초록 */
     border-radius: 7px;
     font-size: 15px;
     background: #fafdff;
     font-family: "SCDream4";
 }
 
-.docTextarea {
+/* 공통 텍스트에어리어 스타일 */
+.formTextarea {
     flex: 1;
     padding: 10px 14px;
     border: 1.5px solid #b6d88c;
@@ -77,14 +92,15 @@
     min-height: 90px;
 }
 
-.docFooter {
+/* 폼 푸터 */
+.formFooter {
     text-align: right;
     margin-top: 32px;
 }
 
+/* 제출 버튼 */
 .submitBtn {
     background: #7bb13c;
-    /* 메인 초록 */
     color: #fff;
     font-family: "SCDream5";
     font-size: 16px;

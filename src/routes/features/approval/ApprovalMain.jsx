@@ -123,7 +123,7 @@ function ApprovalMain() {
             </thead>
             <tbody>
               {approvals.map((doc, index) => (
-                <tr key={doc.id}>
+                <tr key={index}>
                   <td>{index + page * 10 + 1}</td>
                   <td>{doc.formNm}</td>
                   <td>

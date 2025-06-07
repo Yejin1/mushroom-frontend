@@ -70,7 +70,7 @@ function WritePopup() {
         approvalLine={approvalLine}
         setApprovalLine={setApprovalLine}
         onSubmit={handleSubmit}
-        onTempSave={() => alert('임시저장 기능 구현 필요')}
+        onTempSave={() => alert('준비중입니다.')}
       />
       <FormComponent
         form={formData}

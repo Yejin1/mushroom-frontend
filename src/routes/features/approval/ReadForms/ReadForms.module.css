@@ -1,13 +1,16 @@
 .vacationContainer {
-  max-width: 480px;
-  margin: 32px auto;
-  background: #fff;
-  border-radius: 12px;
-  box-shadow: 0 2px 16px rgba(0, 0, 0, 0.08);
-  padding: 32px 36px;
-  font-family: 'Pretendard', 'sans-serif';
   max-width: 700px;
-  min-width: 320px;
+  /* formContainer와 동일하게 */
+  margin: 40px auto;
+  background: #f8fcf6;
+  border-radius: 14px;
+  box-shadow: 0 4px 18px #e3e3e3;
+  padding: 40px 48px 32px 48px;
+  font-family: "SCDream4";
+  border: 1.5px solid #e0e9c7;
+  overflow-x: auto;
+  /* 에디터가 넘칠 때 스크롤 */
+  box-sizing: border-box;
 }
 
 .vacationTitle {
@@ -66,7 +69,7 @@
   box-shadow: 0 2px 12px #f3f3f3;
   padding: 32px 36px 28px 36px;
   margin: 0 auto 24px auto;
-  max-width: 700px;
+  max-width: 800px;
   min-width: 320px;
 }
 
@@ -129,4 +132,45 @@
   box-shadow: 0 2px 8px #e7f3d1;
   max-width: 600px;
   min-width: 320px;
+}
+
+/* 공통 행 스타일 */
+.formRow {
+  display: flex;
+  align-items: flex-start;
+  margin-bottom: 22px;
+}
+
+/* 공통 라벨 스타일 */
+.formLabel {
+  width: 80px;
+  min-width: 80px;
+  color: #6a7a5c;
+  font-family: "SCDream5";
+  font-size: 15px;
+  margin-right: 12px;
+  margin-top: 6px;
+  text-align: left;
+}
+
+/* 공통 값 스타일 */
+.formValue {
+  flex: 1;
+  font-family: "SCDream4";
+  font-size: 15px;
+  background: #f5f6f2;
+  border-radius: 6px;
+  padding: 10px 14px;
+  min-height: 36px;
+  box-sizing: border-box;
+}
+
+/* 공통 제목 스타일 */
+.formTitle {
+  font-size: 1.6rem;
+  font-family: "SCDream5";
+  color: #7bb13c;
+  margin-bottom: 32px;
+  text-align: left;
+  letter-spacing: 1px;
 }

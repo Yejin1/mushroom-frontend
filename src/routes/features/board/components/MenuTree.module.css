@@ -1,3 +1,4 @@
+/* 게시판 트리 전체 컨테이너 */
 .board-tree {
   background: transparent !important;
   border-radius: 14px;
@@ -8,77 +9,34 @@
   border: none;
 }
 
+/* antd 트리 전체 배경 */
 .board-tree .ant-tree {
   background: transparent !important;
 }
 
-.board-tree .ant-tree-node-content-wrapper {
-  border-radius: 8px;
-  padding: 6px 14px;
-  transition: background 0.2s, color 0.2s;
-  color: #4a5a23;
-  font-weight: 500;
-  letter-spacing: -0.5px;
-  cursor: pointer;
-  user-select: none;
-}
-
-.board-tree .ant-tree-node-content-wrapper:hover {
-  background: #d6efb6;
-  color: #5b7d1c;
-}
-
-.board-tree .ant-tree-node-content-wrapper:active {
-  background: #c6e6a0;
-  color: #2d3a4a;
-}
-
-.board-tree .ant-tree-node-selected {
-  background: #b8e986 !important;
-  color: #2d3a4a !important;
-  font-weight: 700;
-}
-
-.board-tree .ant-tree-switcher {
-  color: #b0b8c1;
-}
-
-.board-tree .ant-tree-title {
-  font-weight: 500;
-  letter-spacing: -0.5px;
-}
-
-.board-tree .ant-tree-treenode-disabled .ant-tree-title {
-  color: #b0b8c1;
-}
-
+/* ======= 아래는 직접 구현한 트리(MenuTree)용 ======= */
 .treeRoot {
   padding-left: 12px;
   margin: 0;
   font-family: "SCDream4";
-  text-align: left;
   list-style: none;
-  /* ← 동그라미(불릿) 제거 */
 }
 
 .treeNode {
   margin: 2px 0 2px 0;
   text-align: left;
-  /* 왼쪽 정렬 */
 }
 
 .treeNode>span,
 .treeNode>.boardNode,
 .treeNode>.folderNode {
   text-align: left;
-  /* 왼쪽 정렬 */
   display: inline-block;
   width: 100%;
 }
 
 .treeChildren {
   list-style: none;
-  /* ← 하위 트리도 불릿 제거 */
   padding-left: 10px;
   margin: 0;
 }
