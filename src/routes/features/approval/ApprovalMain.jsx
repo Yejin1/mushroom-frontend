@@ -17,6 +17,9 @@ function ApprovalMain() {
   const [totalPages, setTotalPages] = useState(0);
   const [searchType, setSearchType] = useState('all');
   const [searchValue, setSearchValue] = useState('');
+  // 실제 검색에 사용할 state
+  const [searchTypeValue, setSearchTypeValue] = useState('all');
+  const [searchKeyword, setSearchKeyword] = useState('');
   const [dropdownOpen, setDropdownOpen] = useState(false);
   const dropdownRef = useRef(null);
 
@@ -31,6 +34,7 @@ function ApprovalMain() {
   const [endDate, setEndDate] = useState(todayStr);
 
   useEffect(() => {
+    console.log(startDate, endDate);
     axios.get(`${BASE_URL}/api/approvals/list`, {
       headers: {
         Authorization: `Bearer ${token}`
@@ -39,12 +43,17 @@ function ApprovalMain() {
         page: page,
         size: 10,
         sort: 'createdDt,desc',
-        boxType: boxType
+        boxType: boxType,
+        searchType: searchTypeValue,
+        keyword: searchKeyword,
+        startDate: startDate,
+        endDate: endDate
       }
     })
       .then((response) => {
         setTotalPages(response.data.totalPages);
         setApprovals(response.data.content);
+        console.log(response);
       })
       .catch((error) => {
         if (error.response && error.response.status === 403) {
@@ -52,7 +61,7 @@ function ApprovalMain() {
           window.location.href = '/login';
         }
       });
-  }, [page, boxType]);
+  }, [page, boxType, searchTypeValue, searchKeyword, startDate, endDate]);
 
   useEffect(() => {
     function handleClickOutside(event) {
@@ -71,6 +80,10 @@ function ApprovalMain() {
   const handleBoxTypeChange = (type) => {
     setBoxType(type);
     setPage(0);
+    setSearchType('all');      // 검색 드롭다운 초기화
+    setSearchValue('');        // 검색어 입력값 초기화
+    setSearchTypeValue('all'); // 실제 검색 state도 초기화
+    setSearchKeyword('');      // 실제 검색 state도 초기화
   };
 
   const handleOpenDoc = (docId, formId, lineId, userId, writer) => {
@@ -113,6 +126,23 @@ function ApprovalMain() {
     { value: "writerNm", label: "작성자" },
   ];
 
+  // 검색 버튼 클릭 시 실제 검색 state에 반영
+  const handleSearch = () => {
+    setSearchTypeValue(searchType);
+    setSearchKeyword(searchValue);
+    setPage(0);
+  };
+
+  // 날짜 변경 시에도 page를 0으로 리셋
+  const handleStartDateChange = (e) => {
+    setStartDate(e.target.value);
+    setPage(0);
+  };
+  const handleEndDateChange = (e) => {
+    setEndDate(e.target.value);
+    setPage(0);
+  };
+
   return (
     <div className={styles['approval-wrapper']}>
       <Sidebar onBoxTypeChange={handleBoxTypeChange} />
@@ -154,7 +184,7 @@ function ApprovalMain() {
               onChange={e => setSearchValue(e.target.value)}
               placeholder="검색어 입력"
             />
-            <img src={'/search.png'} alt="검색" style={{ cursor: 'pointer' }} />
+            <img src={'/search.png'} alt="검색" style={{ cursor: 'pointer' }} onClick={handleSearch} />
           </div>
           {/* 작성일 검색 영역 */}
           <div className={styles['approval-search-date']}>
@@ -162,14 +192,14 @@ function ApprovalMain() {
             <input
               type="date"
               value={startDate || ''}
-              onChange={e => setStartDate(e.target.value)}
+              onChange={handleStartDateChange}
               className={styles['search-date-input']}
             />
             <span style={{ margin: '0 6px', color: '#888' }}>~</span>
             <input
               type="date"
               value={endDate || ''}
-              onChange={e => setEndDate(e.target.value)}
+              onChange={handleEndDateChange}
               className={styles['search-date-input']}
             />
           </div>
