@@ -28,7 +28,7 @@
     line-height: 30px;
     margin: 14px 14px;
     border-radius: 20px;
-    background-color: #fdfff5;
+    background-color: #f2fae6;
     border: 1px solid #d9e7c6;
 }
 
@@ -37,13 +37,11 @@
     font-size: 14px;
     color: #404d2f;
     line-height: 30px;
-    background-color: #f7faec;
+    background-color: #f2fae6;
     border-radius: 20px;
 }
 
-.approval-search-s {
-    font-size: 12px;
-}
+
 
 .approval-search input {
     width: 55%;
@@ -180,6 +178,15 @@
     text-align: left;
 }
 
+/* 완전한 호버 해제: hover/focus 시에도 아무 변화 없음 */
+.search-dropdown-btn:hover,
+.search-dropdown-btn:focus {
+    background: none;
+    color: inherit;
+    border: none;
+    box-shadow: none;
+}
+
 .search-dropdown-list {
     position: absolute;
     left: 0;
@@ -210,7 +217,7 @@
     display: flex;
     align-items: center;
     gap: 8px;
-    background: #f8fcf6;
+    background: none;
     border-radius: 6px;
     padding: 8px 14px;
     margin-left: 16px;
@@ -228,7 +235,9 @@
     border: 1px solid #e0e9c7;
     border-radius: 4px;
     padding: 4px 8px;
-    font-size: 15px;
+    font-family: "SCDream3";
+    font-size: 14px;
+    color: #404932;
     background: #fff;
     width: 120px;
     transition: border 0.2s;

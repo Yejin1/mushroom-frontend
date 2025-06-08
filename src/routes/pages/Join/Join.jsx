@@ -5,9 +5,12 @@
 
 import React, { useEffect, useState } from "react"
 import axios from 'axios'
+import { useNavigate } from 'react-router-dom';
 import styles from './Join.module.css'
 
 function Join() {
+
+  const navigate = useNavigate();
 
   const BASE_URL = import.meta.env.VITE_BASE_URL;
 
@@ -177,11 +180,12 @@ function Join() {
     };
 
     try {
-      const response = await axios.post(`${BASE_URL}/api/join/submit"`, payload, {
+      const response = await axios.post(`${BASE_URL}/api/join/submit`, payload, {
       });
       console.log("저장성공:", response.data);
-
-
+      alert('회원가입이 완료되었습니다.');
+      // 회원가입 후 로그인 페이지로 이동 
+      navigate('/login');
     } catch (error) {
       console.log("저장실패:", error);
     }

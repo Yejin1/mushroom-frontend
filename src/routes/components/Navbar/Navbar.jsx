@@ -23,15 +23,33 @@ function Navbar() {
         navigate('/login');
     };
 
+    // 홈 이동 함수
+    const goHome = () => {
+        const token = localStorage.getItem('accesToken');
+        if (token) {
+            navigate('/approval');
+        } else {
+            navigate('/login');
+        }
+    };
+
     return (
         <nav className={styles.navbar}>
             <div className={styles['navbar-left']}>
-                <Link to="/" className={styles['navbar-brand']}>
+                <div
+                    className={styles['navbar-brand']}
+                    onClick={goHome}
+                    style={{ cursor: 'pointer' }}
+                >
                     <img src={'/icon-mushroom.png'} className={styles['navbar-logo']} />
                     <div className={styles['navbar-title']}>버섯상사</div>
-                </Link>
+                </div>
                 <ul className={styles['navbar-menu']}>
-                    <li><Link to="/">홈</Link></li>
+                    <li onClick={goHome}>
+                        <Link>
+                            홈
+                        </Link>
+                    </li>
                     <li><Link to="/approval">전자결재</Link></li>
                     <li><Link to="/board">게시판</Link></li>
                     <li><Link onClick={() => setShowOrg(true)}>조직도</Link></li>

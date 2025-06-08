@@ -65,7 +65,7 @@ function BoardList({ onPostClick }) {
   return (
     <div className={styles.boardInWrapper}>
       <div className={styles.menuName}>공지사항</div>
-      <div className={styles.boardSearchWrapper}>
+      {/* <div className={styles.boardSearchWrapper}>
         <div className={styles.boardSearch}>
           <div>제목 <span className={styles.boardSearchS}>▼</span></div>
           <input />
@@ -75,7 +75,7 @@ function BoardList({ onPostClick }) {
           <div>작성일 <span className={styles.boardSearchS}>▼</span></div>
           <input />
         </div>
-      </div>
+      </div> */}
       <div className={styles.boardListWrapper}>
         <table className={styles.boardListTable}>
           <thead>

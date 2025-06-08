@@ -33,14 +33,7 @@ function App() {
     <div className="app-wrapper">
       {!hideNavbar && <Navbar />}
       <Routes>
-        <Route
-          path="/"
-          element={
-            isLoggedIn
-              ? <Navigate to="/approval" replace />
-              : <Navigate to="/login" replace />
-          }
-        />
+        <Route path="/" element={<Login />} />
         <Route path="/login" element={<Login />} />
         <Route path="/home" element={<Home />} />
         <Route path="/join" element={<Join />} />
