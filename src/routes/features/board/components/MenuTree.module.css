@@ -5,26 +5,23 @@
   padding: 18px 10px;
   font-family: 'Pretendard';
   font-size: 16px;
-  box-shadow: none;
-  border: none;
 }
 
-/* antd 트리 전체 배경 */
-.board-tree .ant-tree {
-  background: transparent !important;
-}
-
-/* ======= 아래는 직접 구현한 트리(MenuTree)용 ======= */
+/* ======= 직접 구현한 트리(MenuTree)용 ======= */
 .treeRoot {
+  font-size: 15px;
+  font-weight: 600;
+  color: #3a4a2f;
   padding-left: 12px;
   margin: 0;
-  font-family: "SCDream4";
-  list-style: none;
+  background: none;
 }
 
 .treeNode {
-  margin: 2px 0 2px 0;
-  text-align: left;
+  list-style: none;
+  margin: 0 0 8px 0;
+  /* 아래쪽 간격 추가 */
+  padding: 0;
 }
 
 .treeNode>span,
@@ -33,16 +30,63 @@
   text-align: left;
   display: inline-block;
   width: 100%;
+  padding-top: 4px;
+  padding-bottom: 4px;
+  /* 요소 내부 패딩으로도 간격 확보 */
 }
 
 .treeChildren {
-  list-style: none;
-  padding-left: 10px;
-  margin: 0;
+  margin-left: 16px;
+  padding-left: 8px;
 }
 
-.boardNode,
+.treeChildren .treeNode {
+  margin-bottom: 6px;
+  /* 하위 트리 간격도 추가 */
+}
+
+/* 게시판(클릭 가능한) 노드 호버 효과 */
+.boardNode {
+  font-size: 15px;
+  font-weight: 600;
+  color: #3a4a2f;
+  cursor: pointer;
+  transition: background 0.15s, color 0.15s;
+}
+
+.boardNode:hover {
+  background: #e9f7d2;
+  color: #599208;
+  font-weight: 500;
+  border-radius: 8px;
+}
+
+/* 폴더(비클릭) 노드도 약한 호버 효과 */
 .folderNode {
+  font-size: 17px;
+  font-weight: 600;
+  color: #3a4a2f;
+  transition: background 0.15s, color 0.15s;
+}
+
+.folderNode:hover {
+  background: #f4fae3;
+  color: #7a8c6a;
+  border-radius: 8px;
+}
+
+/* 트리 하위 요소(2단계 이하) - 얇은 폰트 */
+.treeChildren .treeNode>.boardNode,
+.treeChildren .treeNode>.folderNode {
   font-size: 16px;
-  line-height: 1.7;
+  font-weight: 400;
+  color: #5c6e4a;
+}
+
+/* 더 하위 단계(3단계 이하)는 더 얇게 하고 싶으면 아래 추가 */
+.treeChildren .treeChildren .treeNode>.boardNode,
+.treeChildren .treeChildren .treeNode>.folderNode {
+  font-size: 15px;
+  font-weight: 300;
+  color: #7a8c6a;
 }

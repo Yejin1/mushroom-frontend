@@ -7,10 +7,6 @@
     flex: 1;
 }
 
-.approval-list-wrapper {
-    display: block;
-}
-
 .menu-name {
     font-family: "SCDream5";
     font-size: 16px;
@@ -84,6 +80,10 @@
     margin: 4px;
 }
 
+.approval-list-wrapper {
+    display: block;
+}
+
 .approval-list-table {
     background-color: #fcfff5;
     width: 100%;
@@ -149,4 +149,92 @@
 .approval-pagination-btn:hover:not(.active) {
     background: #e8f5df;
     color: #5d8c2e;
+}
+
+.active {
+    color: #4eaa49;
+    border: 1.5px solid #accf85;
+}
+
+.approval-search-select {
+    padding: 4px 8px;
+    margin-right: 8px;
+    border-radius: 4px;
+    border: 1px solid #d0d0d0;
+    font-size: 15px;
+}
+
+.search-dropdown {
+    position: relative;
+    display: inline-block;
+    margin-right: 8px;
+}
+
+.search-dropdown-btn {
+    background: none;
+    border-radius: 4px;
+    padding: 4px 16px 4px 8px;
+    font-size: 15px;
+    cursor: pointer;
+    min-width: 70px;
+    text-align: left;
+}
+
+.search-dropdown-list {
+    position: absolute;
+    left: 0;
+    top: 110%;
+    background: #fff;
+    border: 1px solid #d0d0d0;
+    border-radius: 4px;
+    box-shadow: 0 2px 8px #eee;
+    z-index: 10;
+    min-width: 90px;
+    padding: 0;
+    margin: 0;
+    list-style: none;
+}
+
+.search-dropdown-item {
+    padding: 8px 12px;
+    cursor: pointer;
+    font-size: 15px;
+}
+
+.search-dropdown-item:hover {
+    background: #f6fbe9;
+}
+
+/* ApprovalMain.module.css */
+.approval-search-date {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    background: #f8fcf6;
+    border-radius: 6px;
+    padding: 8px 14px;
+    margin-left: 16px;
+    height: 40px;
+}
+
+.search-date-label {
+    font-size: 15px;
+    color: #4b5a36;
+    font-weight: 600;
+    margin-right: 8px;
+}
+
+.search-date-input {
+    border: 1px solid #e0e9c7;
+    border-radius: 4px;
+    padding: 4px 8px;
+    font-size: 15px;
+    background: #fff;
+    width: 120px;
+    transition: border 0.2s;
+}
+
+.search-date-input:focus {
+    border: 1.5px solid #b2c59b;
+    outline: none;
 }

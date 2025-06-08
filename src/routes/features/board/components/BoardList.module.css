@@ -118,3 +118,32 @@
     color: #7bb13c;
     text-decoration: underline;
 }
+
+.board-pagination {
+    display: flex;
+    justify-content: center;
+    gap: 6px;
+    margin: 24px 0 8px 0;
+}
+
+.board-pagination-btn {
+    background: none;
+    color: #7bb13c;
+    font-family: "SCDream4";
+    font-size: 12px;
+    border-radius: 6px;
+    padding: 8px 14px;
+    cursor: pointer;
+    transition: background 0.18s, color 0.18s, border 0.18s;
+}
+
+.board-pagination-btn.active,
+.board-pagination-btn:focus {
+    color: #4eaa49;
+    border: 1.5px solid #accf85;
+}
+
+.board-pagination-btn:hover:not(.active) {
+    background: #e8f5df;
+    color: #5d8c2e;
+}

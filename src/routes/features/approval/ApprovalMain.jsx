@@ -4,18 +4,31 @@
  * - 전자결재 로그인 시 가장 먼저 보이는 화면
  */
 import Sidebar from './components/Sidebar'
-import React, { useEffect, useState } from "react"
+import React, { useEffect, useState, useRef } from "react"
 import axios from 'axios'
-import './ApprovalMain.css'
+import styles from './ApprovalMain.module.css';
 
 function ApprovalMain() {
   const BASE_URL = import.meta.env.VITE_BASE_URL;
   const [approvals, setApprovals] = useState([]);
   const [page, setPage] = useState(0);
-  // 처음 접속 시 'my-completed'(결재완료함)로 고정
   const [boxType, setBoxType] = useState('my-completed');
   const token = localStorage.getItem('accesToken');
   const [totalPages, setTotalPages] = useState(0);
+  const [searchType, setSearchType] = useState('all');
+  const [searchValue, setSearchValue] = useState('');
+  const [dropdownOpen, setDropdownOpen] = useState(false);
+  const dropdownRef = useRef(null);
+
+  const today = new Date();
+  const yyyy = today.getFullYear();
+  const mm = String(today.getMonth() + 1).padStart(2, '0');
+  const dd = String(today.getDate()).padStart(2, '0');
+  const todayStr = `${yyyy}-${mm}-${dd}`;
+  const tenYearsAgoStr = `${yyyy - 10}-${mm}-${dd}`;
+
+  const [startDate, setStartDate] = useState(tenYearsAgoStr);
+  const [endDate, setEndDate] = useState(todayStr);
 
   useEffect(() => {
     axios.get(`${BASE_URL}/api/approvals/list`, {
@@ -26,7 +39,7 @@ function ApprovalMain() {
         page: page,
         size: 10,
         sort: 'createdDt,desc',
-        boxType: boxType // boxType 추가
+        boxType: boxType
       }
     })
       .then((response) => {
@@ -34,23 +47,30 @@ function ApprovalMain() {
         setApprovals(response.data.content);
       })
       .catch((error) => {
-        console.error(' 실패 ', error);
         if (error.response && error.response.status === 403) {
           alert('로그인이 필요합니다. 다시 로그인 해주세요.');
           window.location.href = '/login';
         }
       });
-  }, [page, boxType]); // boxType 변경 시 재조회
+  }, [page, boxType]);
+
+  useEffect(() => {
+    function handleClickOutside(event) {
+      if (dropdownRef.current && !dropdownRef.current.contains(event.target)) {
+        setDropdownOpen(false);
+      }
+    }
+    document.addEventListener("mousedown", handleClickOutside);
+    return () => document.removeEventListener("mousedown", handleClickOutside);
+  }, []);
 
   const handlePageChange = (newPage) => {
     setPage(newPage);
   };
 
-  // 결재함 타입 변경 핸들러
   const handleBoxTypeChange = (type) => {
-    console.log(type);
     setBoxType(type);
-    setPage(0); // 결재함 변경 시 첫 페이지로 이동
+    setPage(0);
   };
 
   const handleOpenDoc = (docId, formId, lineId, userId, writer) => {
@@ -75,7 +95,6 @@ function ApprovalMain() {
     return `${yyyy}-${MM}-${dd} ${hh}:${mi}:${ss}`;
   }
 
-  // 결재함 타입에 따른 이름 매핑
   const boxTypeNames = {
     'my-approval': '결재함',
     'my-in-progress': '진행함',
@@ -87,30 +106,76 @@ function ApprovalMain() {
     'dept-referenced': '참조함',
   };
 
+  const searchOptions = [
+    { value: "all", label: "전체" },
+    { value: "title", label: "제목" },
+    { value: "formNm", label: "양식" },
+    { value: "writerNm", label: "작성자" },
+  ];
+
   return (
-    <div className="approval-wrapper">
+    <div className={styles['approval-wrapper']}>
       <Sidebar onBoxTypeChange={handleBoxTypeChange} />
-      <div className="approval-in-wrapper">
-        <div className="menu-name">{boxTypeNames[boxType] || '결재함'}</div>
-        <div className="approval-search-wrapper">
-          <div className="approval-search">
-            <div>제목 <span className="approval-search-s">▼</span></div>
-            <input></input>
-            <img src={'/search.png'}></img>
+      <div className={styles['approval-in-wrapper']}>
+        <div className={styles['menu-name']}>{boxTypeNames[boxType] || '결재함'}</div>
+        <div className={styles['approval-search-wrapper']}>
+          <div className={styles['approval-search']}>
+            <div
+              className={styles['search-dropdown']}
+              ref={dropdownRef}
+            >
+              <button
+                type="button"
+                className={styles['search-dropdown-btn']}
+                onClick={() => setDropdownOpen((open) => !open)}
+              >
+                {searchOptions.find(opt => opt.value === searchType)?.label || "전체"}
+                <span style={{ marginLeft: 4 }}>▼</span>
+              </button>
+              {dropdownOpen && (
+                <ul className={styles['search-dropdown-list']}>
+                  {searchOptions.map(opt => (
+                    <li
+                      key={opt.value}
+                      className={styles['search-dropdown-item']}
+                      onClick={() => {
+                        setSearchType(opt.value);
+                        setDropdownOpen(false);
+                      }}
+                    >
+                      {opt.label}
+                    </li>
+                  ))}
+                </ul>
+              )}
+            </div>
+            <input
+              value={searchValue}
+              onChange={e => setSearchValue(e.target.value)}
+              placeholder="검색어 입력"
+            />
+            <img src={'/search.png'} alt="검색" style={{ cursor: 'pointer' }} />
           </div>
-          <div className="approval-search">
-            <div>작성일 <span className="approval-search-s">▼</span></div>
-            <input></input>
+          {/* 작성일 검색 영역 */}
+          <div className={styles['approval-search-date']}>
+            <span className={styles['search-date-label']}>작성일</span>
+            <input
+              type="date"
+              value={startDate || ''}
+              onChange={e => setStartDate(e.target.value)}
+              className={styles['search-date-input']}
+            />
+            <span style={{ margin: '0 6px', color: '#888' }}>~</span>
+            <input
+              type="date"
+              value={endDate || ''}
+              onChange={e => setEndDate(e.target.value)}
+              className={styles['search-date-input']}
+            />
           </div>
-          {/* 
-          <div className="approval-search-open-wrapper">
-            <img src="./options.png" className="approval-search-open-img"></img>
-            <div className="approval-search-open">상세검색</div>
-          </div>
-          */}
         </div>
-        <div className="approval-list-wrapper">
-          <table className="approval-list-table">
+        <div className={styles['approval-list-wrapper']}>
+          <table className={styles['approval-list-table']}>
             <thead>
               <tr>
                 <th>번호</th>
@@ -128,7 +193,7 @@ function ApprovalMain() {
                   <td>{doc.formNm}</td>
                   <td>
                     <span
-                      className="approval-title"
+                      className={styles['approval-title']}
                       onClick={() => handleOpenDoc(doc.id, doc.formId, doc.lineId, doc.userId, doc.writer)}
                     >
                       {doc.title}
@@ -138,16 +203,15 @@ function ApprovalMain() {
                   <td>{formatDateTime(doc.createdDt)}</td>
                   <td>{formatDateTime(doc.completedDt)}</td>
                 </tr>
-              ))
-              }
+              ))}
             </tbody>
           </table>
         </div>
-        <div className="approval-pagination">
+        <div className={styles['approval-pagination']}>
           {Array.from({ length: totalPages }, (_, i) => (
             <button
               key={i}
-              className={`approval-pagination-btn${page === i ? ' active' : ''}`}
+              className={`${styles['approval-pagination-btn']}${page === i ? ' ' + styles.active : ''}`}
               onClick={() => handlePageChange(i)}
               disabled={page === i}
             >

@@ -107,9 +107,12 @@ function BoardList({ onPostClick }) {
           </tbody>
         </table>
       </div>
-      <div>
+      <div className={styles['board-pagination']}>
         {Array.from({ length: totalPages }, (_, i) => (
-          <button key={i} onClick={() => handlePageChange(i)}>
+          <button
+            className={`${styles['board-pagination-btn']}${page === i ? ' ' + styles.active : ''}`}
+            key={i}
+            onClick={() => handlePageChange(i)}>
             {i + 1}
           </button>
         ))}

@@ -3,7 +3,7 @@
  * - 로그인화면
  */
 import { BrowserRouter as Router, Routes, Route, Navigate, useNavigate, redirect } from 'react-router-dom'
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import styles from './Login.module.css'
 
 
@@ -74,6 +74,7 @@ function Login() {
       alert('방문자 로그인 실패');
     }
   };
+
 
   return (
     <div className={styles['login-page']}>

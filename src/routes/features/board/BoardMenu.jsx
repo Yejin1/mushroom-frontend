@@ -56,8 +56,6 @@ function BoardMenu() {
           boardMenuData={menus}
           className={styles['board-tree']}
           onSelectBoard={(boardId) => {
-            console.log('선택된 게시판 ID:', boardId);
-            // 게시글 목록 불러오기
           }}
         />
 
