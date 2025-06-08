@@ -75,13 +75,7 @@ function Login() {
     }
   };
 
-  // 로그인 되어있으면 바로 /approval로 이동
-  useEffect(() => {
-    const token = localStorage.getItem('accesToken');
-    if (token) {
-      navigate('/approval', { replace: true });
-    }
-  }, [navigate]);
+
 
 
   return (
