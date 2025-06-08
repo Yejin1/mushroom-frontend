@@ -2,9 +2,34 @@
 /**
  * - 조직도 모달
  */
+import React, { useEffect, useState } from 'react';
 import styles from './OrgModal.module.css';
 
 function OrgModal({ onClose }) {
+  const [orgList, setOrgList] = useState([]);
+  const BASE_URL = import.meta.env.VITE_BASE_URL;
+  const token = localStorage.getItem('accesToken');
+
+  useEffect(() => {
+    const fetchOrgList = async () => {
+      try {
+        const response = await fetch(`${BASE_URL}/api/usr/org/modalList`, {
+          headers: {
+            'Authorization': `Bearer ${token}`,
+            'Content-Type': 'application/json',
+          },
+        });
+        if (!response.ok) throw new Error('조직도 정보를 불러오지 못했습니다.');
+        const data = await response.json();
+        console.log('조직도 정보:', data);
+        setOrgList(data);
+      } catch (error) {
+        alert(error.message);
+      }
+    };
+    fetchOrgList();
+  }, [BASE_URL, token]);
+
   return (
     <div className={styles['modal-overlay']}>
       <div className={styles['modal-content']}>
@@ -13,84 +38,34 @@ function OrgModal({ onClose }) {
           <button onClick={onClose} className={styles['close-btn']}>✕</button>
         </div>
         <div className={styles['modal-body']}>
-          <div className={styles['org-mushroom']}>
-            <div className={styles['org-mushroom-profile']}>
-              <img src='./img_profile/10001.png' alt="프로필"></img>
-            </div>
-            <hr />
-            <div className={styles['org-mushroom-info']}>
-              <div className={styles['org-mushroom-info-name']}>
-                노루궁뎅이 <span className={styles['org-mushroom-info-position']}> 과장</span>
+          {orgList.map((user) => (
+            <div className={styles['org-mushroom']} key={user.usrId}>
+              <div className={styles['org-mushroom-profile']}>
+                <img src={`./img_profile/${user.empNo}.png`} alt="프로필" onError={e => { e.target.onerror = null; e.target.src = './img_profile/default.png' }} />
               </div>
-              <div className={styles['org-mushroom-info-head']}>
-                부서 <span className={styles['org-mushroom-info-cont']}> 인사팀</span>
-              </div>
-              <div className={styles['org-mushroom-info-head']}>
-                연락처 <span className={styles['org-mushroom-info-cont']}> 43-242-2423</span>
-              </div>
-              <div className={styles['org-mushroom-info-head']}>
-                메일 <span className={styles['org-mushroom-info-cont']}> deer_hip@mushroom.net</span>
-              </div>
-              <div className={styles['org-mushroom-info-head']}>
-                담당업무 <span className={styles['org-mushroom-info-cont']}> 버섯캐기</span>
-              </div>
-              <div className={styles['org-mushroom-info-head']}>
-                한마디 <span className={styles['org-mushroom-info-cont']}> 노루와 고라니의 차이를 아시나요</span>
-              </div>
-            </div>
-          </div>
-          <div className={styles['org-mushroom']}>
-            <div className={styles['org-mushroom-profile']}>
-              <img src='./img_profile/10005.png' alt="프로필"></img>
-            </div>
-            <hr />
-            <div className={styles['org-mushroom-info']}>
-              <div className={styles['org-mushroom-info-name']}>
-                송로버섯 <span className={styles['org-mushroom-info-position']}> 팀장</span>
-              </div>
-              <div className={styles['org-mushroom-info-head']}>
-                부서 <span className={styles['org-mushroom-info-cont']}> 영업1팀</span>
-              </div>
-              <div className={styles['org-mushroom-info-head']}>
-                연락처 <span className={styles['org-mushroom-info-cont']}> 43-242-2412</span>
-              </div>
-              <div className={styles['org-mushroom-info-head']}>
-                메일 <span className={styles['org-mushroom-info-cont']}> truffle@mushroom.net</span>
-              </div>
-              <div className={styles['org-mushroom-info-head']}>
-                담당업무 <span className={styles['org-mushroom-info-cont']}> 영업</span>
-              </div>
-              <div className={styles['org-mushroom-info-head']}>
-                한마디 <span className={styles['org-mushroom-info-cont']}> I'm Truffle, not Troble </span>
+              <hr />
+              <div className={styles['org-mushroom-info']}>
+                <div className={styles['org-mushroom-info-name']}>
+                  {user.usrNm} <span className={styles['org-mushroom-info-position']}> {user.posNm}</span>
+                </div>
+                <div className={styles['org-mushroom-info-head']}>
+                  부서 <span className={styles['org-mushroom-info-cont']}> {user.deptNm}</span>
+                </div>
+                <div className={styles['org-mushroom-info-head']}>
+                  연락처 <span className={styles['org-mushroom-info-cont']}> {user.extensionNo}</span>
+                </div>
+                <div className={styles['org-mushroom-info-head']}>
+                  메일 <span className={styles['org-mushroom-info-cont']}> {user.email}</span>
+                </div>
+                <div className={styles['org-mushroom-info-head']}>
+                  담당업무 <span className={styles['org-mushroom-info-cont']}> {user.jobDesc}</span>
+                </div>
+                <div className={styles['org-mushroom-info-head']}>
+                  한마디 <span className={styles['org-mushroom-info-cont']}> {user.profileBio}</span>
+                </div>
               </div>
             </div>
-          </div>
-          <div className={styles['org-mushroom']}>
-            <div className={styles['org-mushroom-profile']}>
-              <img src='./img_profile/10008.png' alt="프로필"></img>
-            </div>
-            <hr />
-            <div className={styles['org-mushroom-info']}>
-              <div className={styles['org-mushroom-info-name']}>
-                팽이버섯 <span className={styles['org-mushroom-info-position']}> 대리</span>
-              </div>
-              <div className={styles['org-mushroom-info-head']}>
-                부서 <span className={styles['org-mushroom-info-cont']}> 영업지원팀</span>
-              </div>
-              <div className={styles['org-mushroom-info-head']}>
-                연락처 <span className={styles['org-mushroom-info-cont']}> 43-242-2424</span>
-              </div>
-              <div className={styles['org-mushroom-info-head']}>
-                메일 <span className={styles['org-mushroom-info-cont']}> pang@mushroom.net</span>
-              </div>
-              <div className={styles['org-mushroom-info-head']}>
-                담당업무 <span className={styles['org-mushroom-info-cont']}> 영업지원</span>
-              </div>
-              <div className={styles['org-mushroom-info-head']}>
-                한마디 <span className={styles['org-mushroom-info-cont']}> 마라탕 먹으러 가실분 </span>
-              </div>
-            </div>
-          </div>
+          ))}
         </div>
       </div>
     </div>

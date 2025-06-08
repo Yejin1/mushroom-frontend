@@ -12,7 +12,7 @@ function ApprovalMain() {
   const BASE_URL = import.meta.env.VITE_BASE_URL;
   const [approvals, setApprovals] = useState([]);
   const [page, setPage] = useState(0);
-  const [boxType, setBoxType] = useState('my-completed');
+  const [boxType, setBoxType] = useState('my-approval');
   const token = localStorage.getItem('accesToken');
   const [totalPages, setTotalPages] = useState(0);
   const [searchType, setSearchType] = useState('all');
