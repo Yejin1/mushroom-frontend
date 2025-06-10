@@ -2,51 +2,13 @@
 /**
  * - 게시글 목록
  */
-import React, { useEffect, useState } from "react"
-import axios from 'axios'
+import React from "react"
 import styles from './BoardList.module.css'
 
 
-function BoardList({ onPostClick }) {
-
-  const [approvals, setApprovals] = useState([]);
-  const [page, setPage] = useState(0);
-  const token = localStorage.getItem('accesToken');
-  const [totalPages, setTotalPages] = useState(0);
-  const BASE_URL = import.meta.env.VITE_BASE_URL;
-
-  useEffect(() => {
-    axios.get(`${BASE_URL}/api/board/list`, {
-      headers: {
-        Authorization: `Bearer ${token}`
-      },
-      params: {
-        page: page,
-        size: 10,
-        sort: 'createdDt,desc'
-      }
-    })
-      .then((response) => {
-        console.log(' response ', response);
-        setTotalPages(response.data.totalPages);
-        setApprovals(response.data.content);
-        console.log(' 성공 ', response.data);
-      })
-      .catch((error) => {
-        console.error(' 실패 ', error);
-        if (error.response && error.response.status === 403) {
-          alert('로그인이 필요합니다. 다시 로그인 해주세요.');
-          window.location.href = '/login'; // 로그인 페이지로 리다이렉트
-        }
-      });
-  }, [page]);
-
-  const handlePageChange = (newPage) => {
-    setPage(newPage);
-  };
+function BoardList({ approvals, setApprovals, page, totalPages, onPageChange, onPostClick }) {
 
   const handlePostClick = (postId) => {
-    console.log('게시글 클릭:', postId);
     onPostClick(postId);
   }
 
@@ -65,17 +27,6 @@ function BoardList({ onPostClick }) {
   return (
     <div className={styles.boardInWrapper}>
       <div className={styles.menuName}>공지사항</div>
-      {/* <div className={styles.boardSearchWrapper}>
-        <div className={styles.boardSearch}>
-          <div>제목 <span className={styles.boardSearchS}>▼</span></div>
-          <input />
-          <img src={'/search.png'} />
-        </div>
-        <div className={styles.boardSearch}>
-          <div>작성일 <span className={styles.boardSearchS}>▼</span></div>
-          <input />
-        </div>
-      </div> */}
       <div className={styles.boardListWrapper}>
         <table className={styles.boardListTable}>
           <thead>
@@ -102,8 +53,7 @@ function BoardList({ onPostClick }) {
                 <td>{doc.viewCount}</td>
                 <td>{doc.viewCount}</td>
               </tr>
-            ))
-            }
+            ))}
           </tbody>
         </table>
       </div>
@@ -112,7 +62,7 @@ function BoardList({ onPostClick }) {
           <button
             className={`${styles['board-pagination-btn']}${page === i ? ' ' + styles.active : ''}`}
             key={i}
-            onClick={() => handlePageChange(i)}>
+            onClick={() => onPageChange(i)}>
             {i + 1}
           </button>
         ))}
