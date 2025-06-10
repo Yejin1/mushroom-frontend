@@ -25,13 +25,11 @@ function PostRead({ postId }) {
       }
     })
       .then((response) => {
-        console.log(response.data);
         //제목, 긴급여부 데이터 세팅
         setTitle(response.data.title);
 
         //문서 내용 json 파싱 및 세팅 
         setCont(response.data.content);
-        console.log(response.data.content);
 
       })
       .catch((error) => {
