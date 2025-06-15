@@ -109,3 +109,46 @@
     border-left: none;
     border-right: none;
 }
+
+.titleRow {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    margin: 18px 0 12px 0;
+}
+
+.titleLabel {
+    font-size: 15px;
+    font-family: "SCDream4";
+    color: #4b5a36;
+    min-width: 48px;
+    font-weight: 600;
+}
+
+.postTitle {
+    font-size: 18px;
+    font-family: "SCDream5";
+    color: #404d2f;
+    background: #f7faec;
+    border-radius: 6px;
+    padding: 8px 18px;
+    flex: 1;
+    font-weight: 500;
+}
+
+.contentAreaLabel {
+    font-size: 14px;
+    color: #7bb13c;
+    font-family: "SCDream3";
+    margin: 18px 0 6px 2px;
+}
+
+.contentArea {
+    background: #fcfef6;
+    border-radius: 10px;
+    padding: 24px 18px;
+    min-height: 180px;
+    box-shadow: 0 2px 8px #e8f5df44;
+    margin: 0 auto 24px auto;
+    max-width: 450px;
+}

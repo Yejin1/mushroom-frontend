@@ -1,6 +1,6 @@
-// BoardList.jsx
+// PostRead.jsx
 /**
- * - 게시글 목록
+ * - 게시글 조회
  */
 import React, { useEffect, useState } from "react"
 import axios from 'axios'
@@ -43,13 +43,13 @@ function PostRead({ postId }) {
 
   return (
     <div className={styles.boardInWrapper}>
-      <div className={styles.menuName}>공지사항</div>
-      <div>제목</div>
-      <div className={styles.postTitle}>{title}</div>
-      <div>
+      <div className={styles.titleRow}>
+        <label className={styles.titleLabel}>제목</label>
+        <div className={styles.postTitle}>{title}</div>
+      </div>
+      <div className={styles.contentArea}>
         <MainViewer markdownContent={cont} />
       </div>
-      <div />
     </div>
   )
 }

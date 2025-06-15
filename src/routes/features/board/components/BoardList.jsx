@@ -36,7 +36,6 @@ function BoardList({ approvals, setApprovals, page, totalPages, onPageChange, on
               <th>작성자</th>
               <th>작성일</th>
               <th>조회수</th>
-              <th>추천</th>
             </tr>
           </thead>
           <tbody>
@@ -50,7 +49,6 @@ function BoardList({ approvals, setApprovals, page, totalPages, onPageChange, on
                 </td>
                 <td>{doc.authorName}</td>
                 <td>{formatDateTime(doc.createdDt)}</td>
-                <td>{doc.viewCount}</td>
                 <td>{doc.viewCount}</td>
               </tr>
             ))}

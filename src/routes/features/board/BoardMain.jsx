@@ -8,6 +8,7 @@ import React, { useEffect, useState } from "react"
 import axios from 'axios'
 import styles from './BoardMain.module.css'
 import BoardList from "./components/BoardList"
+import PostWrite from "./posts/PostWrite"
 
 function BoardMain() {
 
@@ -17,6 +18,8 @@ function BoardMain() {
   const [approvals, setApprovals] = useState([]); // approvals 상태를 BoardMain에서 관리
   const [page, setPage] = useState(0);
   const [totalPages, setTotalPages] = useState(0);
+  const [isWriting, setIsWriting] = useState(false);
+  const [menuId, setMenuId] = useState(4);
   const BASE_URL = import.meta.env.VITE_BASE_URL;
 
   useEffect(() => {
@@ -27,7 +30,8 @@ function BoardMain() {
       params: {
         page: page,
         size: 10,
-        sort: 'createdDt,desc'
+        sort: 'createdDt,desc',
+        menuId: menuId // 메뉴 ID를 파라미터로 전달
       }
     })
       .then((response) => {
@@ -41,10 +45,19 @@ function BoardMain() {
           window.location.href = '/login';
         }
       });
-  }, [page, BASE_URL, token]);
+  }, [page, BASE_URL, token, isWriting, menuId]);
+
+  // 재접속(새로고침) 시 isWriting 초기화
+  useEffect(() => {
+    setIsWriting(false);
+  }, []);
 
   const handlePageChange = (newPage) => {
     setPage(newPage);
+  };
+
+  const handleWriteClick = () => {
+    setIsWriting(true);
   };
 
   const handlePostClick = async (postId) => {
@@ -81,17 +94,21 @@ function BoardMain() {
 
   return (
     <div className={styles.boardWrapper}>
-      <BoardMenu>
+      <BoardMenu
+        isWriting={isWriting}
+        setMenuId={setMenuId}>
       </BoardMenu>
-      <BoardList
-        approvals={approvals}
-        setApprovals={setApprovals}
-        page={page}
-        totalPages={totalPages}
-        onPageChange={handlePageChange}
-        onPostClick={handlePostClick}
-      />
-      {isRead && <PostRead postId={selectedPostId} />}
+      {!isWriting && (
+        <BoardList
+          approvals={approvals}
+          setApprovals={setApprovals}
+          page={page}
+          totalPages={totalPages}
+          onPageChange={handlePageChange}
+          onPostClick={handlePostClick}
+        />)}
+      {!isWriting && isRead && <PostRead postId={selectedPostId} />}
+      {isWriting && <PostWrite setIsWriting={setIsWriting} />}
     </div>
   )
 }
