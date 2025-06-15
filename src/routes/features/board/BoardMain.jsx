@@ -95,7 +95,7 @@ function BoardMain() {
   return (
     <div className={styles.boardWrapper}>
       <BoardMenu
-        isWriting={isWriting}
+        handleWriteClick={handleWriteClick}
         setMenuId={setMenuId}>
       </BoardMenu>
       {!isWriting && (
