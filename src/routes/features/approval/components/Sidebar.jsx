@@ -69,8 +69,8 @@ function Sidebar({ onBoxTypeChange }) {
         <div className={styles.menuBox}>
           <hr className={styles.menuLine}></hr>
           <div className={styles.menuTitle}>부서결재함</div>
-          <div className={styles.menuList} onClick={() => onBoxTypeChange('dept-completed')}>완료함</div>
-          <div className={styles.menuList} onClick={() => onBoxTypeChange('dept-referenced')}>참조함</div>
+          <div className={styles.menuList} onClick={() => onBoxTypeChange('my-completed')}>완료함</div>
+          <div className={styles.menuList} onClick={() => onBoxTypeChange('my-referenced')}>참조함</div>
         </div>
       </div>
     </>

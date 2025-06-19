@@ -78,6 +78,10 @@ function ApprovalMain() {
   };
 
   const handleBoxTypeChange = (type) => {
+    if (type == "dept-completed" || type == "dept-referenced") {
+      alert('부서결재함은 관리자만 접근할 수 있습니다.');
+      return;
+    }
     setBoxType(type);
     setPage(0);
     setSearchType('all');      // 검색 드롭다운 초기화
