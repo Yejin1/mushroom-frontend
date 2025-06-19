@@ -8,25 +8,25 @@ import React, { useState, useRef } from 'react';
 import ApprovalWriteBtn from '../components/ApprovalWriteBtn';
 import VacationWrite from '../WriteForms/VacationWrite';
 import DraftWrite from '../WriteForms/DraftWrite';
+import SaleRegistWrite from '../WriteForms/SaleRegistWrite';
 import ApprovalLinePreview from '../components/ApprovalLinePreview';
 import axios from 'axios';
 
 function WritePopup() {
   const params = new URLSearchParams(window.location.search);
   const form = params.get('form') + 'Write';
-  console.log("form", form);
   const formId = params.get('formId'); // 양식 ID
   const BASE_URL = import.meta.env.VITE_BASE_URL;
 
   //문서 양식 컴포넌트 목록 변수화(양식 신규 생성할때마다 여기 추가해줘야함)
-  const formComponents = { VacationWrite, DraftWrite };
+  const formComponents = { VacationWrite, DraftWrite, SaleRegistWrite };
 
   //양식명으로 컴포넌트 할당
   const FormComponent = formComponents[form];
 
   // 상태를 WritePopup에서 관리
   const [formData, setFormData] = useState({
-    formId: formId, // ← 추가
+    formId: formId,
     editorContent: "",
     title: "",
     startDate: "",

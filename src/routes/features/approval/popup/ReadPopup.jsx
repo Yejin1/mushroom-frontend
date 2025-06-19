@@ -7,6 +7,7 @@ import axios from 'axios';
 import ApprovalReadBtn from '../components/ApprovalReadBtn';
 import VacationRead from '../ReadForms/VacationRead'
 import DraftRead from '../ReadForms/DraftRead';
+import SaleRegistRead from '../ReadForms/SaleRegistRead';
 import React, { useEffect, useState } from 'react';
 import ApprovalStatus from '../components/ApprovalStatus';
 
@@ -20,7 +21,7 @@ function ReadPopup() {
   const token = localStorage.getItem('accesToken');
 
   //문서 양식 컴포넌트 목록 변수화(양식 신규 생성할때마다 여기 추가해줘야함)
-  const formComponents = { VacationRead, DraftRead };
+  const formComponents = { VacationRead, DraftRead, SaleRegistRead };
 
   //양식명으로 컴포넌트 할당
   const [FormComponent, setFormComponent] = useState(null);

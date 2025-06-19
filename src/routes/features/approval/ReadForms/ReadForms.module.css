@@ -156,13 +156,19 @@
 /* 공통 값 스타일 */
 .formValue {
   flex: 1;
-  font-family: "SCDream4";
-  font-size: 15px;
-  background: #f5f6f2;
-  border-radius: 6px;
-  padding: 10px 14px;
-  min-height: 36px;
-  box-sizing: border-box;
+  color: #222;
+  font-size: 16px;
+  background: #eef5ef;
+  border-radius: 4px;
+  padding: 7px 14px;
+  min-height: 32px;
+  display: flex;
+  align-items: center;
+}
+
+.formValue.right {
+  justify-content: flex-end;
+  text-align: right;
 }
 
 /* 공통 제목 스타일 */
