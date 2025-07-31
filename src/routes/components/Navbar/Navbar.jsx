@@ -53,6 +53,7 @@ function Navbar() {
                     <li><Link to="/approval">전자결재</Link></li>
                     <li><Link to="/board">게시판</Link></li>
                     <li><Link onClick={() => setShowOrg(true)}>조직도</Link></li>
+                    <li><Link to="/calendar" onClick={() => alert('캘린더 기능은 개발 진행중입니다.😸\n\n현재는 달력 조회 기능만 제공되며,\n25년 8월 중으로 일정 등록 기능이 제공될 예정입니다.🐱 ')}>캘린더</Link></li>
                     {showOrg && <OrgModal onClose={() => setShowOrg(false)} />}
                 </ul>
             </div>

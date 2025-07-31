@@ -152,3 +152,21 @@
     margin: 0 auto 24px auto;
     max-width: 450px;
 }
+
+.deleteBtn {
+    margin-left: auto;
+    background: #ffeded;
+    color: #d32f2f;
+    border: 1px solid #f5bcbc;
+    border-radius: 6px;
+    padding: 6px 18px;
+    font-size: 15px;
+    font-weight: 500;
+    cursor: pointer;
+    transition: background 0.15s, color 0.15s;
+}
+
+.deleteBtn:hover {
+    background: #ffd6d6;
+    color: #b71c1c;
+}

@@ -19,6 +19,7 @@ import WritePopup from './routes/features/approval/popup/WritePopup';
 import ReadPopup from './routes/features/approval/popup/ReadPopup';
 import Join from './routes/pages/Join/Join'
 import BoardMain from './routes/features/board/BoardMain';
+import CalendarMain from './routes/features/calendar/CalendarMain';
 
 
 function App() {
@@ -41,6 +42,7 @@ function App() {
         <Route path="/approval" element={<ApprovalMain />} />
         <Route path="/approval/write" element={<WritePopup />} />
         <Route path="/approval/read" element={<ReadPopup />} />
+        <Route path="/calendar" element={<CalendarMain />} />
       </Routes>
     </div>
   );

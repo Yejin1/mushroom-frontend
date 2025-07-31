@@ -1,0 +1,30 @@
+.calendar-container {
+    width: 95vw;
+    max-width: 1200px;
+    height: 100%;
+    margin: 0 auto;
+    padding: 20px;
+    background-color: #f8fcf6;
+}
+
+.calendar-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 20px;
+    background-color: #f0f4e0;
+    border-bottom: 1px solid #d0d0d0;
+}
+
+.fc-toolbar-chunk {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.fc-toolbar-title {
+    margin: 0 10px;
+    font-family: "SCDream5";
+    font-size: 12px;
+    /* 버튼과 간격 */
+}
