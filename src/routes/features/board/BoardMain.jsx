@@ -20,6 +20,7 @@ function BoardMain() {
   const [totalPages, setTotalPages] = useState(0);
   const [isWriting, setIsWriting] = useState(false);
   const [menuId, setMenuId] = useState(4);
+  const [onDelete, setOnDelete] = useState(null);
   const BASE_URL = import.meta.env.VITE_BASE_URL;
 
   useEffect(() => {
@@ -106,8 +107,9 @@ function BoardMain() {
           totalPages={totalPages}
           onPageChange={handlePageChange}
           onPostClick={handlePostClick}
+          onDelete={setOnDelete}
         />)}
-      {!isWriting && isRead && <PostRead postId={selectedPostId} />}
+      {!isWriting && isRead && <PostRead postId={selectedPostId} onDelete={setOnDelete} />}
       {isWriting && <PostWrite setIsWriting={setIsWriting} />}
     </div>
   )
