@@ -8,7 +8,7 @@ import styles from './PostRead.module.css'
 import MainViewer from '../../../components/editor/MainViewer'
 
 
-function PostRead({ postId, onDelete }) {
+function PostRead({ postId }) {
   const [title, setTitle] = useState('');
   const [cont, setCont] = useState('');
   const token = localStorage.getItem('accesToken');
@@ -51,7 +51,7 @@ function PostRead({ postId, onDelete }) {
         }
       });
       alert('게시글이 삭제되었습니다.');
-      if (onDelete) onDelete();
+      window.location.href = '/board'; // 게시글 삭제 후 게시판 목록으로 이동
     } catch (error) {
       alert('본인이 작성한 게시글만 삭제할 수 있습니다.');
     }

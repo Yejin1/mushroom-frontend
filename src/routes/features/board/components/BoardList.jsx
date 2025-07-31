@@ -6,7 +6,7 @@ import React from "react"
 import styles from './BoardList.module.css'
 
 
-function BoardList({ approvals, setApprovals, page, totalPages, onPageChange, onPostClick, onDelete }) {
+function BoardList({ approvals, setApprovals, page, totalPages, onPageChange, onPostClick }) {
 
   const handlePostClick = (postId) => {
     onPostClick(postId);
