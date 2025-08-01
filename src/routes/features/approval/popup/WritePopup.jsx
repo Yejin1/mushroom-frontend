@@ -40,6 +40,7 @@ function WritePopup() {
   // editorYn 상태 추가 (폼별로 다르게 전달)
   const [editorYn, setEditorYn] = useState("N");
   const getPayloadRef = useRef(null); // 추가
+  const validateRef = useRef(null); // 각 양식 컴포넌트에서 유효성 검사
 
   React.useEffect(() => {
     setFormData(prev => ({ ...prev, formId }));
@@ -48,10 +49,16 @@ function WritePopup() {
   // 상신 버튼 클릭 시 실행
   const handleSubmit = async () => {
     const token = localStorage.getItem('accesToken');
-    if (!getPayloadRef.current) {
-      alert("양식 데이터가 준비되지 않았습니다.");
+    // 유효성 검사
+    if (!validateRef.current || !validateRef.current()) {
       return;
     }
+    //결재선 확인
+    if (approvalLine.length === 0) {
+      alert("결재선을 선택해주세요.");
+      return;
+    }
+
     const payload = getPayloadRef.current(); // 자식에서 만든 payload 사용
     try {
       await axios.post(`${BASE_URL}/api/approvals`, payload, {
@@ -80,6 +87,7 @@ function WritePopup() {
         getPayloadRef={getPayloadRef}
         writer={writer}
         approvalLine={approvalLine}
+        validateRef={validateRef}
       />
     </div>
   );

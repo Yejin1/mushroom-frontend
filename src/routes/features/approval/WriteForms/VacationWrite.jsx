@@ -6,8 +6,9 @@
 
 import React from "react";
 import styles from './WriteForms.module.css';
+import { use } from "react";
 
-function VacationWrite({ form, setForm, setEditorYn, getPayloadRef, writer, approvalLine }) {
+function VacationWrite({ form, setForm, setEditorYn, getPayloadRef, writer, approvalLine, validateRef }) {
   React.useEffect(() => {
     setEditorYn && setEditorYn("N");
   }, [setEditorYn]);
@@ -32,6 +33,34 @@ function VacationWrite({ form, setForm, setEditorYn, getPayloadRef, writer, appr
   React.useEffect(() => {
     if (getPayloadRef) getPayloadRef.current = getPayload;
   }, [form, getPayloadRef, writer, approvalLine]);
+
+  // 유효성 검사 함수
+  React.useEffect(() => {
+    if (validateRef) validateRef.current = () => {
+      const errors = [];
+      if (!form.title) errors.push("제목을 입력해주세요.");
+      if (!form.startDate) errors.push("시작일을 선택해주세요.");
+      if (!form.endDate) errors.push("종료일을 선택해주세요.");
+      if (!form.reason) errors.push("사유를 입력해주세요.");
+
+      // 결재선에 팀장 포함 필수
+      const hasManager = approvalLine.some(line => line.posNm === "팀장");
+      if (!hasManager) errors.push("결재선에 팀장이 포함되어야 합니다.");
+
+      // 날짜 유효성 검사
+      if (form.startDate && form.endDate) {
+        if (new Date(form.startDate) > new Date(form.endDate)) {
+          errors.push("시작일은 종료일보다 이전이어야 합니다.");
+        }
+      }
+
+      if (errors.length > 0) {
+        alert(errors.join('\n'));
+        return false;
+      }
+      return true;
+    };
+  }, [form, validateRef, approvalLine]);
 
   const handleChange = (e) => {
     const { name, value } = e.target;
