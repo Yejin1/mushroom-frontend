@@ -9,7 +9,7 @@ import React from "react";
 import MainEditor from "../../../components/editor/MainEditor";
 import styles from './WriteForms.module.css';
 
-function DraftWrite({ form, setForm, setEditorYn, getPayloadRef, writer, approvalLine }) {
+function DraftWrite({ form, setForm, setEditorYn, getPayloadRef, writer, approvalLine, validateRef }) {
   React.useEffect(() => {
     if (setEditorYn) setEditorYn("Y"); // 에디터 있는 양식이므로 무조건 Y로 세팅
   }, [setEditorYn]);
@@ -40,6 +40,22 @@ function DraftWrite({ form, setForm, setEditorYn, getPayloadRef, writer, approva
   React.useEffect(() => {
     if (getPayloadRef) getPayloadRef.current = getPayload;
   }, [form, getPayloadRef, setEditorYn, writer, approvalLine]);
+
+
+  // 유효성 검사 함수
+  React.useEffect(() => {
+    if (validateRef) validateRef.current = () => {
+      const errors = [];
+      if (!form.title) errors.push("제목을 입력해주세요.");
+      if (!form.editorContent) errors.push("내용을 입력해주세요.");
+
+      if (errors.length > 0) {
+        alert(errors.join('\n'));
+        return false;
+      }
+      return true;
+    };
+  }, [form, validateRef, approvalLine]);
 
   return (
     <div className={styles.formContainerLarge}>

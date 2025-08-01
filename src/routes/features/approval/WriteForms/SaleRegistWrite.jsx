@@ -7,7 +7,7 @@
 import React from "react";
 import styles from './WriteForms.module.css';
 
-function SaleRegistWrite({ form, setForm, setEditorYn, getPayloadRef, writer, approvalLine }) {
+function SaleRegistWrite({ form, setForm, setEditorYn, getPayloadRef, writer, approvalLine, validateRef }) {
   React.useEffect(() => {
     setEditorYn && setEditorYn("N");
   }, [setEditorYn]);
@@ -71,6 +71,22 @@ function SaleRegistWrite({ form, setForm, setEditorYn, getPayloadRef, writer, ap
       setForm(prev => ({ ...prev, amount: '' }));
     }
   }, [form.quantity, form.unitPrice, setForm]);
+
+  // 유효성 검사 함수
+  React.useEffect(() => {
+    if (validateRef) validateRef.current = () => {
+      const errors = [];
+      if (!form.saleDate) errors.push("판매일을 선택해주세요.");
+      if (!form.saleItem) errors.push("판매 항목을 선택해주세요.");
+      if (!form.quantity || form.quantity <= 0) errors.push("판매 수량을 입력해주세요.");
+
+      if (errors.length > 0) {
+        alert(errors.join('\n'));
+        return false;
+      }
+      return true;
+    };
+  }, [form, validateRef, approvalLine]);
 
   return (
     <form className={styles.docForm} onSubmit={e => e.preventDefault()}>
