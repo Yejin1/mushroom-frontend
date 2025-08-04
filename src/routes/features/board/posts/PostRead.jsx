@@ -30,7 +30,7 @@ function PostRead({ postId }) {
         //문서 내용 json 파싱 및 세팅 
         setCont(response.data.content);
 
-        console.log('게시글 조회:', response.data);
+        //console.log('게시글 조회:', response.data);
 
       })
       .catch((error) => {

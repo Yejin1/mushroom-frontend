@@ -1,0 +1,139 @@
+.modalOverlay {
+    position: fixed;
+    z-index: 1000;
+    left: 0;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.18);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.modalContent {
+    background: #fff;
+    border-radius: 12px;
+    padding: 28px 32px 24px 32px;
+    min-width: 440px;
+    box-shadow: 0 4px 24px #b2c59b33;
+    position: relative;
+}
+
+.modalHeader {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 18px;
+    font-weight: 600;
+    margin-bottom: 18px;
+}
+
+.closeBtn {
+    background: none;
+    border: none;
+    font-size: 22px;
+    cursor: pointer;
+    color: #b2c59b;
+}
+
+.modalForm {
+    width: 100%;
+}
+
+.modalForm label {
+    display: flex;
+    flex-direction: column;
+    font-size: 15px;
+    margin-bottom: 14px;
+    color: #4b5a36;
+}
+
+.modalForm input,
+.modalForm textarea,
+.modalForm select {
+    margin-top: 4px;
+    padding: 7px 10px;
+    border: 1px solid #b2c59b;
+    border-radius: 5px;
+    font-size: 15px;
+    background: #f8fcf6;
+}
+
+.modalForm textarea {
+    resize: vertical;
+    min-height: 60px;
+}
+
+.formRow {
+    display: flex;
+    align-items: center;
+    margin-bottom: 16px;
+    gap: 14px;
+    line-height: 39px;
+}
+
+.inputLabel {
+    min-width: 90px;
+    font-size: 15px;
+    color: #4b5a36;
+    font-weight: 500;
+}
+
+.inputBox {
+    flex: 1;
+    padding: 7px 10px;
+    border: 1px solid #b2c59b;
+    border-radius: 5px;
+    font-size: 15px;
+    background: #f8fcf6;
+}
+
+.dateTime {
+    max-width: 180px;
+}
+
+.addBtn {
+    margin-top: 8px;
+    padding: 8px 18px;
+    background: #b2c59b;
+    color: #fff;
+    border: none;
+    border-radius: 6px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background 0.15s;
+}
+
+.addBtn:hover {
+    background: #7fa650;
+}
+
+.deleteBtn {
+    margin-top: 8px;
+    padding: 8px 18px;
+    background: #da8b8b;
+    color: #4c0c0c;
+    border: none;
+    border-radius: 6px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background 0.15s, color 0.15s;
+}
+
+.deleteBtn:hover {
+    background: #ffd6d6;
+}
+
+.modalForm .allDayRow {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.modalForm .allDayCheckbox {
+    margin-left: 10px;
+    display: flex;
+    align-items: center;
+    gap: 4px;
+}

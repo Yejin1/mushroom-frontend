@@ -170,7 +170,6 @@ function Join() {
     if (!lastChk) return;
 
     e.preventDefault();
-    //console.log("제출된 데이터:", form);
 
     const payload = {
       usrNm: usrNm,
@@ -182,7 +181,6 @@ function Join() {
     try {
       const response = await axios.post(`${BASE_URL}/api/join/submit`, payload, {
       });
-      console.log("저장성공:", response.data);
       alert('회원가입이 완료되었습니다.');
       // 회원가입 후 로그인 페이지로 이동 
       navigate('/login');

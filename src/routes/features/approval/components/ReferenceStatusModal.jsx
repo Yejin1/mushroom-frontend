@@ -7,8 +7,6 @@ function ReferenceStatusModal({ open, onClose, docId }) {
     const BASE_URL = import.meta.env.VITE_BASE_URL;
 
     useEffect(() => {
-        console.log(docId);
-        console.log(open);
         if (!open || !docId) return;
         const fetchRefs = async () => {
             try {

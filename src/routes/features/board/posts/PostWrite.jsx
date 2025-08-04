@@ -26,7 +26,6 @@ function PostWrite({ setIsWriting }) {
         })
             .then((response) => {
                 setMenus(response.data);
-                console.log('게시판 메뉴 목록:', response.data);
             })
             .catch((error) => {
                 console.error(' 실패 ', error);

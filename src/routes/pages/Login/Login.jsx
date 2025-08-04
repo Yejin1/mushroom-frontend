@@ -21,7 +21,6 @@ function Login() {
 
   const handleLogin = async () => {
     try {
-      console.log(import.meta.env.VITE_BASE_URL);
       const response = await fetch(`${BASE_URL}/api/auth/login`, {
         method: 'POST',
         headers: {
@@ -36,7 +35,6 @@ function Login() {
 
       const data = await response.json();
       //로그인 토큰 저장
-      console.log('로그인 성공', data);
       const token = data.token;
       localStorage.setItem('accesToken', token);
       localStorage.setItem('empNo', data.empNo); // 사번 저장

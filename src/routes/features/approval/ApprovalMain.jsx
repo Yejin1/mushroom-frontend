@@ -34,7 +34,7 @@ function ApprovalMain() {
   const [endDate, setEndDate] = useState(todayStr);
 
   useEffect(() => {
-    console.log(startDate, endDate);
+    //console.log(startDate, endDate);
     axios.get(`${BASE_URL}/api/approvals/list`, {
       headers: {
         Authorization: `Bearer ${token}`
@@ -53,7 +53,7 @@ function ApprovalMain() {
       .then((response) => {
         setTotalPages(response.data.totalPages);
         setApprovals(response.data.content);
-        console.log(response);
+        //console.log(response);
       })
       .catch((error) => {
         if (error.response && error.response.status === 403) {

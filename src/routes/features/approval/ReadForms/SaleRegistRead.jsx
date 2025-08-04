@@ -10,7 +10,6 @@ import styles from './ReadForms.module.css';
 
 function SaleRegistRead({ docId, docData }) {
   const token = localStorage.getItem('accesToken');
-  console.log("SaleRegistRead docData", docData);
   if (!docData) return null;
   const form = docData.doc;
   const content = JSON.parse(docData.formContent);

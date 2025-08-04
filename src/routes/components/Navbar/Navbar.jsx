@@ -3,7 +3,7 @@
  * - 최상단 네비게이션 바
  */
 import styles from './Navbar.module.css';
-import { Link, useNavigate } from 'react-router-dom';
+import { Link, useNavigate, useLocation } from 'react-router-dom';
 import { useState, useEffect } from 'react';
 import OrgModal from '../OrgModal/OrgModal';
 
@@ -11,6 +11,7 @@ function Navbar() {
     let [isOpen, setIsOpen] = useState(false);
     let [showOrg, setShowOrg] = useState(false);
     const navigate = useNavigate();
+    const location = useLocation();
 
     //사번세팅
     const usrId = localStorage.getItem('empNo') || '10002'; // 기본값 10002
@@ -33,6 +34,15 @@ function Navbar() {
         }
     };
 
+    // 새로고침 핸들러
+    const handleNavClick = (path) => {
+        if (location.pathname === path) {
+            window.location.reload();
+        } else {
+            navigate(path);
+        }
+    };
+
     return (
         <nav className={styles.navbar}>
             <div className={styles['navbar-left']}>
@@ -45,15 +55,13 @@ function Navbar() {
                     <div className={styles['navbar-title']}>버섯상사</div>
                 </div>
                 <ul className={styles['navbar-menu']}>
-                    <li onClick={goHome}>
-                        <Link>
-                            홈
-                        </Link>
+                    <li onClick={() => handleNavClick('/') /* 홈 경로 */}>
+                        <Link to="/">홈</Link>
                     </li>
-                    <li><Link to="/approval">전자결재</Link></li>
-                    <li><Link to="/board">게시판</Link></li>
+                    <li onClick={() => handleNavClick('/approval')}><Link to="/approval">전자결재</Link></li>
+                    <li onClick={() => handleNavClick('/board')}><Link to="/board">게시판</Link></li>
                     <li><Link onClick={() => setShowOrg(true)}>조직도</Link></li>
-                    <li><Link to="/calendar" onClick={() => alert('캘린더 기능은 개발 진행중입니다.😸\n\n현재는 달력 조회 기능만 제공되며,\n25년 8월 중으로 일정 등록 기능이 제공될 예정입니다.🐱 ')}>캘린더</Link></li>
+                    <li onClick={() => handleNavClick('/calendar')}><Link to="/calendar">캘린더</Link></li>
                     {showOrg && <OrgModal onClose={() => setShowOrg(false)} />}
                 </ul>
             </div>
