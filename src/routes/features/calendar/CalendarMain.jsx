@@ -30,6 +30,7 @@ function CalendarMain() {
 
     const [modalOpen, setModalOpen] = useState(false);
     const [refreshKey, setRefreshKey] = useState(0);
+    const [tagRefreshKey, setTagRefreshKey] = useState(0);
     const [selectedSchedule, setSelectedSchedule] = useState(null);
 
     const handleTagChange = (tag) => {
@@ -110,7 +111,7 @@ function CalendarMain() {
                 setEvents(mappedEvents);
             })
             .catch(err => {
-                console.error('스케줄 목록 조회 실패:', err);
+                //console.error('스케줄 목록 조회 실패:', err);
             });
     }, [startDate, endDate, modalOpen, refreshKey, selectedTags]);
 
@@ -134,7 +135,7 @@ function CalendarMain() {
             .catch(err => {
                 console.error('태그 목록 조회 실패:', err);
             });
-    }, []);
+    }, [tagRefreshKey]);
 
     return (
         <div className={styles['calendar-layout']}>
@@ -144,6 +145,7 @@ function CalendarMain() {
                     selectedTags={selectedTags}
                     onTagChange={handleTagChange}
                     onAddTodo={handleAddTodo}
+                    setTagRefreshKey={setTagRefreshKey}
                 />
             </div>
             <div className={styles['calendar-main-area']}>

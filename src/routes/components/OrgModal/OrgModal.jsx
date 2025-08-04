@@ -21,7 +21,6 @@ function OrgModal({ onClose }) {
         });
         if (!response.ok) throw new Error('조직도 정보를 불러오지 못했습니다.');
         const data = await response.json();
-        //console.log('조직도 정보:', data);
         setOrgList(data);
       } catch (error) {
         alert(error.message);

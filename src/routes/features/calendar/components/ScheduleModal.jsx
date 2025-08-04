@@ -186,7 +186,7 @@ export default function ScheduleModal({
                         <button type="submit" className={styles.addBtn}>등록</button>
                     )}
                     {mode === "edit" && (
-                        <div style={{ display: "flex", gap: "10px" }}>
+                        <div className={styles.modalBtnRow}>
                             <button type="submit" className={styles.addBtn}>수정</button>
                             <button type="button" className={styles.deleteBtn} onClick={handleDelete}>삭제</button>
                         </div>
