@@ -12,6 +12,12 @@ import SaleRegistWrite from '../WriteForms/SaleRegistWrite';
 import ApprovalLinePreview from '../components/ApprovalLinePreview';
 import axios from 'axios';
 
+// 중복 상신 방지 키 생성 (crypto.randomUUID 우선 사용)
+const genIdempotencyKey = () =>
+  (typeof crypto !== 'undefined' && typeof crypto.randomUUID === 'function')
+    ? crypto.randomUUID()
+    : `${Date.now()}-${Math.random().toString(16).slice(2)}-${Math.random().toString(16).slice(2)}`;
+
 function WritePopup() {
   const params = new URLSearchParams(window.location.search);
   const form = params.get('form') + 'Write';
@@ -42,6 +48,9 @@ function WritePopup() {
   const getPayloadRef = useRef(null); // 추가
   const validateRef = useRef(null); // 각 양식 컴포넌트에서 유효성 검사
 
+  // 동일 상신 플로우에서 재시도 시에도 같은 키 사용
+  const [idempotencyKey] = useState(genIdempotencyKey);
+
   React.useEffect(() => {
     setFormData(prev => ({ ...prev, formId }));
   }, [formId]);
@@ -59,7 +68,10 @@ function WritePopup() {
       return;
     }
 
-    const payload = getPayloadRef.current(); // 자식에서 만든 payload 사용
+    // 자식에서 만든 payload 사용 + idempotencyKey 추가
+    const basePayload = getPayloadRef.current();
+    const payload = { ...basePayload, idempotencyKey };
+
     try {
       await axios.post(`${BASE_URL}/api/approvals`, payload, {
         headers: { Authorization: `Bearer ${token}` }
