@@ -1,6 +1,11 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import axios from 'axios';
 import styles from "./ScheduleModal.module.css";
+
+// helper functions
+const toDateOnly = (v) => (v ? v.split('T')[0] : '');
+const extractTime = (v) => (v && v.includes('T') ? v.split('T')[1].slice(0,5) : '');
+const toDateTime = (date, time = '09:00') => (date ? `${date}T${time}` : '');
 
 export default function ScheduleModal({
     tags,
@@ -17,6 +22,7 @@ export default function ScheduleModal({
     const [desc, setDesc] = useState(schedule?.desc || "");
     const [tag, setTag] = useState(schedule?.tag || (tags[0]?.id || ""));
     const [allDay, setAllDay] = useState(schedule?.allDay || false);
+    const timeMemoRef = useRef({ start: '09:00', end: '18:00' });
 
     useEffect(() => {
         if (schedule) {
@@ -26,8 +32,28 @@ export default function ScheduleModal({
             setDesc(schedule.desc || "");
             setTag(schedule.tag || (tags[0]?.id || ""));
             setAllDay(schedule.allDay || false);
+            // normalize by allDay so input renders correctly
+            setStart((prev) => (schedule.allDay ? toDateOnly(prev) : toDateTime(toDateOnly(prev), extractTime(schedule.start) || '09:00')));
+            setEnd((prev) => (schedule.allDay ? toDateOnly(prev) : toDateTime(toDateOnly(prev), extractTime(schedule.end) || '18:00')));
         }
     }, [schedule, tags]);
+
+    const handleAllDayToggle = (checked) => {
+        setAllDay(checked);
+        if (checked) {
+            // switching to all-day: remember times and strip time from value
+            timeMemoRef.current = {
+                start: extractTime(start) || timeMemoRef.current.start || '09:00',
+                end: extractTime(end) || timeMemoRef.current.end || '18:00',
+            };
+            setStart(toDateOnly(start));
+            setEnd(toDateOnly(end) || toDateOnly(start));
+        } else {
+            // switching back to datetime: restore times (or sensible defaults)
+            setStart(toDateTime(toDateOnly(start), timeMemoRef.current.start || '09:00'));
+            setEnd(toDateTime(toDateOnly(end || start), timeMemoRef.current.end || '18:00'));
+        }
+    };
 
     const handleSubmit = async (e) => {
         e.preventDefault();
@@ -35,6 +61,11 @@ export default function ScheduleModal({
             alert("제목, 시작일시, 종료일시를 모두 입력하세요.");
             return;
         }
+
+        // ensure payload datetime format even in allDay mode
+        const payloadStart = allDay ? `${toDateOnly(start)}T00:00:00` : start;
+        const payloadEnd = allDay ? `${toDateOnly(end)}T23:59:59` : end;
+
         if (mode === "create") {
             try {
                 const token = localStorage.getItem('accesToken');
@@ -42,8 +73,8 @@ export default function ScheduleModal({
                 await axios.post(`${BASE_URL}/api/schedules`, {
                     title,
                     description: desc,
-                    startDateTime: start,
-                    endDateTime: end,
+                    startDateTime: payloadStart,
+                    endDateTime: payloadEnd,
                     tagIds: tag ? [tag] : [],
                     attendeeIds: [],
                     allDay
@@ -53,7 +84,7 @@ export default function ScheduleModal({
                     }
                 });
                 alert('일정이 등록되었습니다.');
-                if (onSubmit) onSubmit({ title, start, end, desc, tag, allDay });
+                if (onSubmit) onSubmit({ title, start: payloadStart, end: payloadEnd, desc, tag, allDay });
                 onClose();
             } catch (error) {
                 alert('일정 등록에 실패했습니다.');
@@ -66,8 +97,8 @@ export default function ScheduleModal({
                     id: schedule.id,
                     title,
                     description: desc,
-                    startDateTime: start,
-                    endDateTime: end,
+                    startDateTime: payloadStart,
+                    endDateTime: payloadEnd,
                     tagIds: tag ? [tag] : [],
                     attendeeIds: [],
                     allDay
@@ -77,7 +108,7 @@ export default function ScheduleModal({
                     }
                 });
                 alert('일정이 수정되었습니다.');
-                if (onSubmit) onSubmit({ title, start, end, desc, tag, allDay });
+                if (onSubmit) onSubmit({ title, start: payloadStart, end: payloadEnd, desc, tag, allDay });
                 onClose();
             } catch (error) {
                 alert('일정 수정에 실패했습니다.');
@@ -144,7 +175,7 @@ export default function ScheduleModal({
                             <input
                                 type="checkbox"
                                 checked={allDay}
-                                onChange={e => setAllDay(e.target.checked)}
+                                onChange={e => handleAllDayToggle(e.target.checked)}
                                 id="allDay"
                                 disabled={isReadOnly}
                             />
