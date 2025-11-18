@@ -13,6 +13,8 @@ function Login() {
 
   const [loginId, setLoginId] = useState('');
   const [password, setPassword] = useState('');
+  const [isLoggingIn, setIsLoggingIn] = useState(false);
+  const [isVisitorLoggingIn, setIsVisitorLoggingIn] = useState(false);
   const BASE_URL = import.meta.env.VITE_BASE_URL;
 
   const join = () => {
@@ -20,6 +22,8 @@ function Login() {
   }
 
   const handleLogin = async () => {
+    if (isLoggingIn) return;
+    setIsLoggingIn(true);
     try {
       const response = await fetch(`${BASE_URL}/api/auth/login`, {
         method: 'POST',
@@ -44,10 +48,14 @@ function Login() {
     } catch (error) {
       console.error(error);
       alert('로그인 실패');
+    } finally {
+      setIsLoggingIn(false);
     }
   };
 
   const handleVisitorLogin = async () => {
+    if (isVisitorLoggingIn) return;
+    setIsVisitorLoggingIn(true);
     try {
       const response = await fetch(`${BASE_URL}/api/auth/login`, {
         method: 'POST',
@@ -70,6 +78,8 @@ function Login() {
     } catch (error) {
       console.error(error);
       alert('방문자 로그인 실패');
+    } finally {
+      setIsVisitorLoggingIn(false);
     }
   };
 
@@ -98,7 +108,13 @@ function Login() {
           />
         </div>
         <div>
-          <button className={styles['login-button']} onClick={handleLogin}> 로그인</button>
+          <button
+            className={styles['login-button']}
+            onClick={handleLogin}
+            disabled={isLoggingIn || isVisitorLoggingIn}
+          >
+            {isLoggingIn ? '로그인중...' : '로그인'}
+          </button>
         </div>
         <div>
           <button className={styles['login-join-button']} onClick={join}>회원가입</button>
@@ -116,9 +132,9 @@ function Login() {
           <button
             className={styles['visitor-login-button']}
             onClick={handleVisitorLogin}
-            type="button"
+            disabled={isLoggingIn || isVisitorLoggingIn}
           >
-            방문자용 로그인
+            {isVisitorLoggingIn ? '로그인중...' : '방문자용 로그인'}
           </button>
         </div>
       </div>
